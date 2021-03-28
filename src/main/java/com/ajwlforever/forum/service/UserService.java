@@ -1,13 +1,16 @@
 package com.ajwlforever.forum.service;
 
 import com.ajwlforever.forum.dao.UserMapper;
+import com.ajwlforever.forum.entity.LoginTicket;
 import com.ajwlforever.forum.entity.User;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.MailClient;
+import com.ajwlforever.forum.utils.RedisKeyUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -38,8 +41,11 @@ public class UserService implements ForumConstant {
     private String contextPath;
 
     @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Autowired
     private MailClient mailClient;
-    public Map<String, Object> login(User user){
+    public Map<String, Object> login(User user, int expiredSeconds){
         Map<String, Object> res = new HashMap<>();
         if(StringUtils.isBlank(user.getUsername())||StringUtils.isBlank(user.getPassword())) {
             res.put("loginError","用户名或密码不能为空！");
@@ -61,10 +67,31 @@ public class UserService implements ForumConstant {
             return res;
         }
         //登录成功,生成登录凭证传入redis
+        LoginTicket loginTicket = new LoginTicket();
+        loginTicket.setUserId(tmp.getId())
+        .setStatus(0)
+        .setTicket(ForumUtils.generateUUID())
+        .setExpired(new Date(System.currentTimeMillis()+expiredSeconds * 1000));
 
+        //存放在redis
+        String redisKey = RedisKeyUtil.getTicketKey(loginTicket.getTicket());
+        redisTemplate.opsForValue().set(redisKey,loginTicket);
+
+        res.put("ticket",loginTicket.getTicket());
         return res;
     }
+    public LoginTicket findLoginTicket(String ticket) {
+        String redisKey = RedisKeyUtil.getTicketKey(ticket);
+       return (LoginTicket) redisTemplate.opsForValue().get(redisKey);
+    }
+    public void logout(String ticket)
+    {
+        String redisKey = RedisKeyUtil.getTicketKey(ticket);
+        LoginTicket loginTicket =(LoginTicket) redisTemplate.opsForValue().get(redisKey);
 
+        loginTicket.setStatus(1); //shixiao
+        redisTemplate.opsForValue().set(redisKey,loginTicket);
+    }
     public Map<String, Object> resgiter(User user)
     {
         Map<String, Object> res = new HashMap<>();
@@ -145,6 +172,7 @@ public class UserService implements ForumConstant {
         return userMapper.insertUser(user);
     }
 
+
     public User selectById(int userId){
         return userMapper.selectById(userId);
     }
@@ -168,4 +196,6 @@ public class UserService implements ForumConstant {
     public int updatePassword(int userId, String password){
         return userMapper.updatePassword(userId, password);
     }
+
+
 }

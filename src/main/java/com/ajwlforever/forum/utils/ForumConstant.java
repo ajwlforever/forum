@@ -17,4 +17,14 @@ public interface ForumConstant {
      * 激活失败
      */
     int activation_failed = 2;
+    /*
+    正常的到期时间
+     */
+    int DEFAULT_EXPIRED_TIME = 3600 * 12;
+
+    /*
+    长一点的
+     */
+    int REMEMBER_EXPIRED_TIME = 3600 * 24 * 7;
+
 }

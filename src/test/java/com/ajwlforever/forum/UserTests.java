@@ -6,13 +6,15 @@ import com.ajwlforever.forum.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 
-
+@RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes =  ForumApplication.class)
 public class UserTests {
@@ -20,6 +22,20 @@ public class UserTests {
     @Autowired
     private UserService userService;
 
+    @Qualifier("redisTemplate")
+    @Autowired
+    private RedisTemplate template;
+
+    @org.junit.Test
+    public void testStrings()
+    {
+        String redisKey ="test:count";
+        template.opsForValue().set(redisKey,1);
+
+        System.out.println(template.opsForValue().get(redisKey));
+        System.out.println(template.opsForValue().increment(redisKey));
+        System.out.println(template.opsForValue().decrement(redisKey,2));
+    }
     @Test
     public void insertTest()
     {
@@ -55,11 +71,11 @@ public class UserTests {
     {
         User user4 = userService.selectByEmail("ajwlforever@163.com");
         System.out.println(user4);
-        userService.updateStatus(user4.getId(),1);
-        userService.updateHeader(user4.getId(),"aaaaaaaaaaaa");
-        userService.updatePassword(user4.getId(),"aaaaaaaaaa");
-
-        System.out.println(userService.selectById(user4.getId()));
+//        userService.updateStatus(user4.getId(),1);
+//        userService.updateHeader(user4.getId(),"aaaaaaaaaaaa");
+//        userService.updatePassword(user4.getId(),"aaaaaaaaaa");
+//
+//        System.out.println(userService.selectById(user4.getId()));
 
     }
 }

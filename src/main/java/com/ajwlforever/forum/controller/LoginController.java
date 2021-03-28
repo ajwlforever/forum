@@ -51,9 +51,24 @@ public class LoginController implements ForumConstant {
 
     @PostMapping("/login")
     @ResponseBody
-    public String loginCheck(User user) {
+    public String loginCheck(String username,String password,boolean rememberMe,
+                             Model model, HttpServletResponse response) {
+        User user = new User().setUsername(username).setPassword(password);
+        int exprireTimes = !rememberMe ? DEFAULT_EXPIRED_TIME : REMEMBER_EXPIRED_TIME;
+        Map<String, Object> res = userService.login(user,exprireTimes);
+        if(!res.containsKey("ticket")) {
+            //登录失败
+            return ForumUtils.toJsonString(1,"用户名或密码错误") ;
+        }else{
+            //验证通过 登录成功
+            Cookie cookie = new Cookie("ticket",(String)res.get("ticket"));
+            cookie.setPath(contextPath);
+            cookie.setMaxAge(exprireTimes);
+            response.addCookie(cookie);
 
-        return "";
+            return ForumUtils.toJsonString(0) ;
+        }
+
     }
     @PostMapping("/register")
     @ResponseBody
@@ -111,7 +126,8 @@ public class LoginController implements ForumConstant {
 
     }
     @GetMapping("/logout")
-    public String logout() {
-        return "";
+    public String logout(@CookieValue("ticket")String ticket) {
+        userService.logout(ticket);
+        return "redirect:/login";
     }
 }

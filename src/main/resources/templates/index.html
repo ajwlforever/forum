@@ -126,10 +126,34 @@
                 </div>
                 <!-- /tt-search -->
             </div>
-            <div class="col-auto ml-auto">
+            <div class="col-auto ml-auto" th:if="${loginUser==null}">
                 <div class="tt-account-btn">
-                    <a href="page-login.html" class="btn btn-primary">登录</a>
-                    <a href="page-signup.html" class="btn btn-secondary">注册</a>
+                    <a th:href="@{/login}" class="btn btn-primary">登录</a>
+                    <a th:href="@{/register}" class="btn btn-secondary">注册</a>
+                </div>
+            </div>
+            <div class="col-auto ml-auto" th:if="${loginUser!=null}" >
+                <div class="tt-user-info d-flex justify-content-center">
+                    <a href="#" class="tt-btn-icon">
+                        <i class="tt-icon"><svg><use xlink:href="#icon-notification"></use></svg></i>
+                    </a>
+                    <div class="tt-avatar-icon tt-size-md">
+                        <i class="tt-icon">
+<!--                            <svg><use xlink:href="#icon-ava-a"></use></svg>-->
+                            <img th:src="${loginUser.headerUrl}" style="width:30px;margin-top: 10px" alt="">
+                        </i>
+                    </div>
+                    <div class="">
+                        <div class="dropdown">
+                            <div class="dropbtn" th:text="${loginUser.nickname}">下拉菜单</div>
+                            <div class="dropdown-content">
+                                <a th:href="@{/user/profile}">个人中心</a>
+                                <a th:href="@{/user/setting}">个人设置</a>
+                                <a th:href="@{/logout}">退出登录</a>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
