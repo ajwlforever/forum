@@ -20,6 +20,9 @@ $(function () {
         // alert(content);
         // alert(boardName);
         // alert(tags);
+        if(title == null || content == null || boardName==null || tags == null){
+            alert("有元素为空，创建失败！");
+        }else
         $.post(
             CONTEXT_PATH+"/post/create",
             {

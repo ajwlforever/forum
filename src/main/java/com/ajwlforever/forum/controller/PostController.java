@@ -5,6 +5,7 @@ import com.ajwlforever.forum.entity.Board;
 import com.ajwlforever.forum.entity.Post;
 import com.ajwlforever.forum.entity.User;
 import com.ajwlforever.forum.service.PostService;
+import com.ajwlforever.forum.service.UserService;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
@@ -27,12 +28,19 @@ public class PostController implements ForumConstant {
     private HostHolder hostHolder;
     @Autowired
     private BoardMapper boardMapper;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/post/{podtId}")
     public String getPost(@PathVariable("postId")int postId, Model model){
         // 加载帖子
         Post post = postService.selectByPostId(postId);
- 
+        if(post == null ) return "error404";
+        User  postUser = userService.selectById(post.getUserId());
+
+        model.addAttribute("user",postUser);
+        model.addAttribute("post",post);
+
         return "/";
     }
     @GetMapping("/post/create")
