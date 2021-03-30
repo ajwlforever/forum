@@ -26,5 +26,38 @@ public interface ForumConstant {
     长一点的
      */
     int REMEMBER_EXPIRED_TIME = 3600 * 24 * 7;
+    /**
+     * 帖子级别
+     */
+    //正常级别
+    int POST_LEVEL_NORMAL = 1;
+    /**
+     * 帖子类容类型
+     */
+    //讨论 1
+    int POST_TYPE_DISCUSS = 1;
+    //提问  2
+    int POST_TYPE_QUESTION = 2;
+    //投票 3
+    int POST_TYPE_POLL = 3;
+    //相册 4
+    int POST_TYPE_GALLERY = 4;
+    //视频 5
+    int POST_TYPE_VEDIO = 5 ;
+    //其他 6
+    int POST_TYPE_OTHER = 6;
+    /**
+     * 帖子的状态
+     */
+    // 0-删除 1-正常状态 2-加精 3-置顶
+    int POST_STATUS_DELTE = 0;
+    int POST_STATUS_NOMAL = 1;
+    int POST_STATUS_ESSENCE = 2;
+    int POST_STATUS_TOP = 3;
+
+    /**
+     * 分页显示
+     */
+     int PAGE_INDEX_LIMIT = 1;
 
 }

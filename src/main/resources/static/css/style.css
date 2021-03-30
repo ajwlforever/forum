@@ -7926,3 +7926,13 @@ html.ie.gecko body.modal-open {
 .dropdown:hover .dropbtn {
   cursor: pointer;
 }
+.post_user_img{
+  width:40px;
+  position: absolute;
+  top:30%;
+  left: 5%;
+  border-radius:50%;
+}
+.ck-content {
+  min-height: 400px;
+}

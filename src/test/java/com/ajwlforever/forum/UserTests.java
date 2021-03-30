@@ -78,4 +78,11 @@ public class UserTests {
 //        System.out.println(userService.selectById(user4.getId()));
 
     }
+    @Test
+    public void selectTest()
+    {
+        System.out.println(userService);
+        User u1 = userService.selectById(1);
+        System.out.println(u1);
+    }
 }

@@ -1,6 +1,7 @@
+<!--suppress ALL-->
 <!doctype html>
-<html lang="en">
-<head>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::head">
     <meta charset="utf-8">
     <title>Forum - Responsive HTML5 Template</title>
     <meta name="keywords" content="HTML5 Template">
@@ -11,9 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/style.css">
 </head>
+<script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
 <body>
 <!-- tt-mobile menu -->
-<nav class="panel-menu" id="mobile-menu">
+<nav th:replace="index::mobile_menu" class="panel-menu" id="mobile-menu">
     <ul>
 
     </ul>
@@ -29,7 +31,7 @@
         <div class="mm-backbtn">Back</div>
     </div>
 </nav>
-<header id="tt-header">
+<header th:replace="index::header"  id="tt-header">
     <div class="container">
         <div class="row tt-row no-gutters">
             <div class="col-auto">
@@ -188,19 +190,20 @@
     <div class="container">
         <div class="tt-wrapper-inner">
             <h1 class="tt-title-border">
-                Create New Topic
+                创建一篇新的帖子
             </h1>
             <form class="form-default form-create-topic">
                 <div class="form-group">
-                    <label for="inputTopicTitle">Topic Title</label>
+                    <label for="inputTopicTitle">帖子标题</label>
                     <div class="tt-value-wrapper">
-                        <input type="text" name="name" class="form-control" id="inputTopicTitle" placeholder="Subject of your topic">
+                        <input type="text" name="name" class="form-control" id="inputTopicTitle" placeholder="键入您的标题，请控制字数在50以内">
                         <span class="tt-value-input">99</span>
                     </div>
-                    <div class="tt-note">Describe your topic well, while keeping the subject as short as possible.</div>
+                    <div class="tt-note">
+                        描述好你的主题，同时主题尽量简短。</div>
                 </div>
                 <div class="form-group">
-                    <label>Topic Type</label>
+                    <label>帖子种类</label>
                     <div class="tt-js-active-btn tt-wrapper-btnicon">
                         <div class="row tt-w410-col-02">
                             <div class="col-4 col-lg-3 col-xl-2">
@@ -210,7 +213,7 @@
                                             <use xlink:href="#icon-discussion"></use>
                                         </svg>
                                     </span>
-                                    <span class="tt-text">Discussion</span>
+                                    <span class="tt-text">讨论</span>
                                 </a>
                             </div>
                             <div class="col-4 col-lg-3 col-xl-2">
@@ -220,7 +223,7 @@
                                             <use xlink:href="#Question"></use>
                                         </svg>
                                     </span>
-                                    <span class="tt-text">Question</span>
+                                    <span class="tt-text">提问</span>
                                 </a>
                             </div>
                             <div class="col-4 col-lg-3 col-xl-2">
@@ -230,7 +233,7 @@
                                             <use xlink:href="#Poll"></use>
                                         </svg>
                                     </span>
-                                    <span class="tt-text">Poll</span>
+                                    <span class="tt-text">投票</span>
                                 </a>
                             </div>
                             <div class="col-4 col-lg-3 col-xl-2">
@@ -240,7 +243,7 @@
                                             <use xlink:href="#icon-gallery"></use>
                                         </svg>
                                     </span>
-                                    <span class="tt-text">Gallery</span>
+                                    <span class="tt-text">相册</span>
                                 </a>
                             </div>
                             <div class="col-4 col-lg-3 col-xl-2">
@@ -250,7 +253,7 @@
                                             <use xlink:href="#Video"></use>
                                         </svg>
                                     </span>
-                                    <span class="tt-text">Video</span>
+                                    <span class="tt-text">视频</span>
                                 </a>
                             </div>
                             <div class="col-4 col-lg-3 col-xl-2">
@@ -260,302 +263,44 @@
                                             <use xlink:href="#Others"></use>
                                         </svg>
                                     </span>
-                                    <span class="tt-text">Other</span>
+                                    <span class="tt-text">其他</span>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="pt-editor">
-                    <h6 class="pt-title">Topic Body</h6>
-                    <div class="pt-row">
-                        <div class="col-left">
-                            <ul class="pt-edit-btn">
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-quote"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-bold"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-italic"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-share_topic"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-blockquote"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-performatted"></use>
-                                    </svg>
-                                </button></li>
-                                <li class="hr"></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-upload_files"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-bullet_list"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-heading"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-horizontal_line"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-emoticon"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-settings"></use>
-                                    </svg>
-                                </button></li>
-                                <li><button type="button" class="btn-icon">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-color_picker"></use>
-                                    </svg>
-                                </button></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" class="form-control" rows="5" placeholder="Lets get started"></textarea>
-                    </div>
+                    <h6 class="pt-title">帖子内容</h6>
+                    <div id="editor"></div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="inputTopicTitle">Category</label>
-                                <select class="form-control">
-                                    <option value="Select">Select</option>
-                                    <option value="Value 01">Value 01</option>
-                                    <option value="Value 02">Value 02</option>
+                                <label for="inputTopicTitle">板块</label>
+                                <select id="board-select" class="form-control">
+                                    <option th:each="board:${boards}" th:value="${board.boardName}" th:text="${board.boardName}">Select</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="inputTopicTags">Tags</label>
-                                <input type="text" name="name" class="form-control" id="inputTopicTags" placeholder="Use comma to separate tags">
+                                <label for="inputTopicTags">标签</label>
+                                <input type="text" name="name" class="form-control" id="inputTopicTags" placeholder="使用，（中文逗号）分割标签（最多有4个标签，多的无效）">
                             </div>
                         </div>
                     </div>
                      <div class="row">
                         <div class="col-auto ml-md-auto">
-                            <a href="#" class="btn btn-secondary btn-width-lg">Create Post</a>
+                            <a href="javascript:;"  class="btn btn-secondary btn-width-lg create-post">创建帖子</a>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="tt-topic-list tt-offset-top-30">
-            <div class="tt-list-search">
-                <div class="tt-title">Suggested Topics</div>
-                <!-- tt-search -->
-                <div class="tt-search">
-                    <form class="search-wrapper">
-                        <div class="search-form">
-                            <input type="text" class="tt-search__input" placeholder="Search for topics">
-                            <button class="tt-search__btn" type="submit">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-search"></use>
-                                </svg>
-                            </button>
-                             <button class="tt-search__close">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-cancel"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /tt-search -->
-            </div>
-            <div class="tt-list-header tt-border-bottom">
-                <div class="tt-col-topic">Topic</div>
-                <div class="tt-col-category">Category</div>
-                <div class="tt-col-value hide-mobile">Likes</div>
-                <div class="tt-col-value hide-mobile">Replies</div>
-                <div class="tt-col-value hide-mobile">Views</div>
-                <div class="tt-col-value">Activity</div>
-            </div>
-            <div class="tt-item">
-                <div class="tt-col-avatar">
-                    <svg class="tt-icon">
-                      <use xlink:href="#icon-ava-n"></use>
-                    </svg>
-                </div>
-                <div class="tt-col-description">
-                    <h6 class="tt-title"><a href="#">
-                        Does Envato act against the authors of Envato markets?
-                    </a></h6>
-                    <div class="row align-items-center no-gutters hide-desktope">
-                        <div class="col-auto">
-                            <ul class="tt-list-badge">
-                                <li class="show-mobile"><a href="#"><span class="tt-color05 tt-badge">music</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="col-auto ml-auto show-mobile">
-                           <div class="tt-value">1d</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tt-col-category"><span class="tt-color05 tt-badge">music</span></div>
-                <div class="tt-col-value hide-mobile">358</div>
-                <div class="tt-col-value tt-color-select hide-mobile">68</div>
-                <div class="tt-col-value hide-mobile">8.3k</div>
-                <div class="tt-col-value hide-mobile">1d</div>
-            </div>
-            <div class="tt-item">
-                <div class="tt-col-avatar">
-                   <svg class="tt-icon">
-                      <use xlink:href="#icon-ava-h"></use>
-                    </svg>
-                </div>
-                <div class="tt-col-description">
-                    <h6 class="tt-title"><a href="#">
-                        <svg class="tt-icon">
-                          <use xlink:href="#icon-locked"></use>
-                        </svg>
-                        We Want to Hear From You! What Would You Like?
-                    </a></h6>
-                    <div class="row align-items-center no-gutters hide-desktope">
-                        <div class="col-auto">
-                            <ul class="tt-list-badge">
-                                <li class="show-mobile"><a href="#"><span class="tt-color06 tt-badge">movies</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="col-auto ml-auto show-mobile">
-                           <div class="tt-value">2d</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tt-col-category"><span class="tt-color06 tt-badge">movies</span></div>
-                <div class="tt-col-value hide-mobile">674</div>
-                <div class="tt-col-value tt-color-select  hide-mobile">29</div>
-                <div class="tt-col-value hide-mobile">1.3k</div>
-                <div class="tt-col-value hide-mobile">2d</div>
-            </div>
-            <div class="tt-item">
-                <div class="tt-col-avatar">
-                   <svg class="tt-icon">
-                      <use xlink:href="#icon-ava-j"></use>
-                    </svg>
-                </div>
-                <div class="tt-col-description">
-                    <h6 class="tt-title"><a href="#">
-                       Seeking partner backend developer
-                    </a></h6>
-                    <div class="row align-items-center no-gutters">
-                        <div class="col-auto">
-                            <ul class="tt-list-badge">
-                                <li class="show-mobile"><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></li>
-                                <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
-                                <li><a href="#"><span class="tt-badge">elements</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="col-auto ml-auto show-mobile">
-                           <div class="tt-value">2d</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tt-col-category"><span class="tt-color13 tt-badge">movies</span></div>
-                <div class="tt-col-value hide-mobile">278</div>
-                <div class="tt-col-value tt-color-select  hide-mobile">27</div>
-                <div class="tt-col-value hide-mobile">1.4k</div>
-                <div class="tt-col-value hide-mobile">2d</div>
-            </div>
-            <div class="tt-item">
-                <div class="tt-col-avatar">
-                   <svg class="tt-icon">
-                      <use xlink:href="#icon-ava-t"></use>
-                    </svg>
-                </div>
-                <div class="tt-col-description">
-                    <h6 class="tt-title"><a href="#">
-                        Cannot customize my intro
-                    </a></h6>
-                    <div class="row align-items-center no-gutters">
-                        <div class="col-auto">
-                             <ul class="tt-list-badge">
-                                <li class="show-mobile"><a href="#"><span class="tt-color07 tt-badge">video games</span></a></li>
-                                <li><a href="#"><span class="tt-badge">videohive</span></a></li>
-                                <li><a href="#"><span class="tt-badge">photodune</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="col-auto ml-auto show-mobile">
-                           <div class="tt-value">2d</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tt-col-category"><span class="tt-color07 tt-badge">video games</span></div>
-                <div class="tt-col-value hide-mobile">364</div>
-                <div class="tt-col-value tt-color-select  hide-mobile">36</div>
-                <div class="tt-col-value  hide-mobile">982</div>
-                <div class="tt-col-value hide-mobile">2d</div>
-            </div>
-            <div class="tt-item">
-                <div class="tt-col-avatar">
-                   <svg class="tt-icon">
-                      <use xlink:href="#icon-ava-k"></use>
-                    </svg>
-                </div>
-                <div class="tt-col-description">
-                    <h6 class="tt-title"><a href="#">
-                        <svg class="tt-icon">
-                          <use xlink:href="#icon-verified"></use>
-                        </svg>
-                        Microsoft Word and Power Point
-                    </a></h6>
-                    <div class="row align-items-center no-gutters hide-desktope">
-                        <div class="col-auto">
-                            <ul class="tt-list-badge">
-                                <li class="show-mobile"><a href="#"><span class="tt-color08 tt-badge">youtube</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="col-auto ml-auto show-mobile">
-                           <div class="tt-value">3d</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tt-col-category"><span class="tt-color08 tt-badge">youtube</span></div>
-                <div class="tt-col-value  hide-mobile">698</div>
-                <div class="tt-col-value tt-color-select  hide-mobile">78</div>
-                <div class="tt-col-value  hide-mobile">2.1k</div>
-                <div class="tt-col-value hide-mobile">3d</div>
-            </div>
-            <div class="tt-row-btn">
-                <button type="button" class="btn-icon js-topiclist-showmore">
-                    <svg class="tt-icon">
-                      <use xlink:href="#icon-load_lore_icon"></use>
-                    </svg>
-                </button>
-            </div>
-        </div>
+<!--        <div class="tt-topic-list tt-offset-top-30">-->
+
     </div>
 </main>
-<div id="js-popup-settings" class="tt-popup-settings">
+<div th:replace="index::setting" id="js-popup-settings" class="tt-popup-settings">
 	<div class="tt-btn-col-close">
 		<a href="#">
 			<span class="tt-icon-title">
@@ -644,15 +389,15 @@
 		</div>
 		</form>
 </div>
-<a href="page-create-topic.html" class="tt-btn-create-topic">
+<a th:replace="index::create" class="tt-btn-create-topic">
     <span class="tt-icon">
         <svg>
           <use xlink:href="#icon-create_new"></use>
         </svg>
     </span>
 </a>
-
-<div class="modal fade" id="modalAdvancedSearch" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+<script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
+<div th:replace="index::advanced_search" class="modal fade" id="modalAdvancedSearch" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="tt-modal-advancedSearch">
@@ -777,7 +522,9 @@
 		</div>
 	</div>
 </div>
-<script src="js/bundle.js"></script>
+<script th:src="@{/js/bundle.js}"></script>
+<script th:src="@{/js/create.js}"></script>
+<!--<script th:src="@{/js/ckeditor.js}"></script>-->
 <svg width="0" height="0" class="hidden">
 	 <symbol aria-hidden="true" data-prefix="fab" data-icon="facebook-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 512" id="facebook-f-brands">
     <path fill="currentColor" d="M215.8 85H264V3.6C255.7 2.5 227.1 0 193.8 0 124.3 0 76.7 42.4 76.7 120.3V192H0v91h76.7v229h94V283h73.6l11.7-91h-85.3v-62.7c0-26.3 7.3-44.3 45.1-44.3z"></path>

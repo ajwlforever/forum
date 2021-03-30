@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ajwlforever.forum.dao.PostMapper">
+    <sql id="select">
+        id,user_id,board_name,title,content,type,level,tags,status,create_time,reply_amount,last_reply_time
+    </sql>
+    <sql id="insert">
+        user_id,board_name,title,content,type,level,tags,status,create_time,reply_amount,last_reply_time
+    </sql>
+
+    <select id="selectAllPost" resultType="Post">
+        select <include refid="select"></include>
+        from t_post
+        where status != 0
+        <if test="userId!=0">
+        and user_id = #{userId}
+        </if>
+        order by status desc , create_time desc
+        limit #{offset} , #{limit}
+    </select>
+
+    <select id="selectPostRows" resultType="int">
+        select count(id)
+        from t_post
+        where status != 0
+        <if test="userId!=0">
+        and user_id = #{userId}
+        </if>
+    </select>
+    <select id="selectByPostId" resultType="Post">
+        select <include refid="select"></include>
+        from t_post
+        where id = #{postId}
+    </select>
+
+    <insert id="insertPost" keyProperty="id" parameterType="Post">
+        insert into t_post(<include refid="insert"></include>)
+        values(#{userId},#{boardName},#{title},#{content},#{type},#{level},#{tags},#{status},#{createTime},#{replyAmount},#{lastReplyTime})
+    </insert>
+    <update id="updateStatus">
+        update t_post set status = #{status} where id = #{postId}
+    </update>
+    <update id="updateReplyAmount">
+        update t_post set reply_amount = #{amount} where id = #{postId}
+    </update>
+    <update id="updateLastReplyTime">
+        update t_post set last_reply_time = #{lastReplyTime} where id = #{postId}
+    </update>
+</mapper>

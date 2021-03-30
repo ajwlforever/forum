@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ajwlforever.forum.dao.BoardMapper">
+    <sql id="select">
+        id,board_name,board_desc
+    </sql>
+    <sql id="insert">
+        board_name,board_desc
+    </sql>
+
+    <select id="selectAllBoards" resultType="Board">
+        select <include refid="select"></include>
+        from t_board
+    </select>
+    <select id="selectByByName" resultType="Board">
+        select <include refid="select"></include>
+        from t_board
+        where board_name = #{boardName}
+    </select>
+    <select id="selectByById" resultType="Board">
+        select <include refid="select"></include>
+        from t_board
+        where id = #{id}
+    </select>
+
+    <insert id="insertBoard" keyProperty="id" parameterType="Board">
+        insert into t_board(<include refid="insert"></include>)
+        values(#{boardName},#{boardDesc})
+    </insert>
+
+    <update id="updateBoardName">
+        update t_board set board_name = #{boardName} where id = #{id}
+    </update>
+    <update id="updateBoardDesc">
+        update t_board set board_desc = #{boardDesc} where id = #{id}
+    </update>
+</mapper>
