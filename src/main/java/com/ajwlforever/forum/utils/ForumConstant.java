@@ -59,5 +59,14 @@ public interface ForumConstant {
      * 分页显示
      */
      int PAGE_INDEX_LIMIT = 1;
+     int PAGE_REPLY_LIMIT = 1;
+    /**
+     * 回复的常量
+     */
+    //状态 0-正常 1-置顶 2-折叠 3-删除
+    int REPLY_STATUS_NORMAL = 0;
+    int REPLY_STATUS_TOP = 1;
+    int REPLY_STATUS_FOLD = 2;
+    int REPLY_STATUS_DELETE = 3;
 
 }

@@ -5,10 +5,54 @@
 
 <mapper namespace="com.ajwlforever.forum.dao.ReplyMapper">
     <sql id="select">
-        id,user_id,board_name,title,content,type,level,tags,status,create_time,reply_amount,last_reply_time
+       id,post_id,user_id,father_id,reply_time,content,status
     </sql>
     <sql id="insert">
-        user_id,board_name,title,content,type,level,tags,status,create_time,reply_amount,last_reply_time
+        post_id,user_id,father_id,reply_time,content,status
     </sql>
+    <select id="selectById" resultType="Reply">
+        select <include refid="select"></include>
+        from t_reply
+        where id = #{id}
+    </select>
+    <select id="selectByPostId" resultType="Reply">
+        select <include refid="select"></include>
+        from t_reply
+        where post_id = #{postId}
+        and status!= 3
+        and father_id = 0
+        order by reply_time
+        limit #{offset} , #{limit}
+    </select>
+    <select id="selectByUserId" resultType="Reply">
+        select <include refid="select"></include>
+        from t_reply
+        where user_id = #{userId}
+        and status!= 3
+        order by reply_time
+        limit #{offset} , #{limit}
+    </select>
+    <select id="selectByFatherId" resultType="Reply">
+        select <include refid="select"></include>
+        from t_reply
+        where father_id = #{fatherId}
+        and status!= 3
+        order by  reply_time
+        <if test="limit!=0">
+            limit #{offset} , #{limit}
+        </if>
+
+    </select>
+
+    <insert id="insertReply" keyProperty="id" parameterType="Reply">
+        insert into t_reply(<include refid="insert"></include>)
+        values(#{postId},#{userId},#{fatherId},#{replyTime},#{content},#{status})
+    </insert>
+
+    <update id="updateReplyStatus">
+        update t_reply
+        set status = #{status} where id = #{id}
+    </update>
+
 
 </mapper>
