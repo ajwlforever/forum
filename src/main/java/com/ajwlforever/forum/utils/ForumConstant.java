@@ -58,8 +58,8 @@ public interface ForumConstant {
     /**
      * 分页显示
      */
-     int PAGE_INDEX_LIMIT = 1;
-     int PAGE_REPLY_LIMIT = 1;
+     int PAGE_INDEX_LIMIT = 7;
+     int PAGE_REPLY_LIMIT = 7;
     /**
      * 回复的常量
      */

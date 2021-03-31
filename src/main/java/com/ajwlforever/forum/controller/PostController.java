@@ -9,6 +9,7 @@ import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class PostController implements ForumConstant {
@@ -108,5 +106,20 @@ public class PostController implements ForumConstant {
          postService.createPost(post);
 
         return ForumUtils.toJsonString(code,msg) ;
+    }
+
+    @PostMapping("/post/reply/create")
+    @ResponseBody
+    public String createPostReply(Reply reply,Model model) {
+
+        if(StringUtils.isBlank(reply.getContent())||reply.getContent().length() > 160 ||reply.getPostId()==0){
+            return ForumUtils.toJsonString(1,"有空数据，回复失败!");
+        }
+        User user = hostHolder.getUser();
+        reply.setUserId(user.getId()).setReplyTime(new Date()
+        ).setStatus(REPLY_STATUS_NORMAL);
+        replyService.insert(reply);
+
+        return ForumUtils.toJsonString(0,"回复成功!");
     }
 }

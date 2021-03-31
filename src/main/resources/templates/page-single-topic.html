@@ -248,6 +248,7 @@
                     </div>
                 </div>
             </div>
+            <a id="pign-show"></a>
 <!--    todo 帖子数据        -->
             <div class="tt-item">
                 <div class="tt-info-box">
@@ -376,7 +377,8 @@
                             <div class="topic-inner">
                                 <div class="topic-inner-title">
                                     <div class="topic-inner-avatar">
-                                        <i class="tt-icon"><svg><use xlink:href="#icon-ava-s"></use></svg></i>
+                                            <img th:src="${rereplyMap.user.headerUrl}"  class="reply_user_img" alt="">
+
                                     </div>
                                     <div class="topic-inner-title">
                                         <a th:href="@{'/user/profile'+${rereplyMap.user.id}}"
@@ -412,10 +414,24 @@
                         <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
                             <i class="tt-icon"><svg><use xlink:href="#icon-flag"></use></svg></i>
                         </a>
-                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                        <a href="javascript:;" th:onclick="|showReply(${map.reply.id});|" class="tt-icon-btn tt-hover-02 tt-small-indent">
                             <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
                         </a>
                     </div>
+                    <div style="display: none;" th:class="|create-reply${map.reply.id} tt-wrapper-inner|">
+                    <div class="pt-editor form-default">
+                        <h6 class="pt-title">输入您的回复</h6>
+                        <div class="form-group">
+                            <textarea  maxlength="80" name="message" th:id="|reply-input${post.id}${map.reply.id}|" class="form-control" rows="2" placeholder="请将字符数控制在80内"></textarea>
+                        </div>
+                        <div class="pt-row">
+                            <div class="col-auto">
+                                <a href="javascript:;" class="btn btn-secondary btn-width-lg "
+                                   th:onclick="|create_reply(${post.id},${map.reply.id});|">回复</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 <!--          分页-->
@@ -424,7 +440,7 @@
             </div>
         </div>
         <div class="tt-wrapper-inner">
-            <h4 class="tt-title-separator"><span>You’ve reached the end of replies</span></h4>
+            <h4 class="tt-title-separator"><span>到底了</span></h4>
         </div>
 
         <div class="tt-topic-list">
@@ -452,21 +468,12 @@
             <div class="pt-editor form-default">
                 <h6 class="pt-title">输入您的回复</h6>
                 <div class="form-group">
-                    <textarea name="message" class="form-control" rows="5" placeholder="Lets get started"></textarea>
+                    <textarea  maxlength="160" name="message" th:id="|reply-input${post.id}0|" class="form-control" rows="5" placeholder="请将字符数控制在160内"></textarea>
                 </div>
                 <div class="pt-row">
                     <div class="col-auto">
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="checkBox21" name="checkbox" checked="">
-                            <label for="checkBox21">
-                                <span class="check"></span>
-                                <span class="box"></span>
-                                <span class="tt-text">订阅这个话题.</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <a href="#" class="btn btn-secondary btn-width-lg">回复</a>
+                        <a href="javascript:;" class="btn btn-secondary btn-width-lg "
+                           th:onclick="|create_reply(${post.id},0);|">回复</a>
                     </div>
                 </div>
             </div>
@@ -697,7 +704,7 @@
 </div>
 <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
 <script th:src="@{/js/bundle.js}"></script>
-
+<script th:src="@{/js/post-detail.js}"></script>
 <svg width="0" height="0" class="hidden">
 	 <symbol aria-hidden="true" data-prefix="fab" data-icon="facebook-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 512" id="facebook-f-brands">
     <path fill="currentColor" d="M215.8 85H264V3.6C255.7 2.5 227.1 0 193.8 0 124.3 0 76.7 42.4 76.7 120.3V192H0v91h76.7v229h94V283h73.6l11.7-91h-85.3v-62.7c0-26.3 7.3-44.3 45.1-44.3z"></path>
