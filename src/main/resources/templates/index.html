@@ -229,7 +229,7 @@
                 >1h</div>
             </div>
             <!-- 提示注册 -->
-            <div th:if="${loginUser==null}" class="tt-item tt-item-popup hint-sign">
+            <div th:fragment="hint-login" th:if="${loginUser==null}" class="tt-item tt-item-popup hint-sign">
                 <div class="tt-col-avatar">
                     <svg class="tt-icon">
                         <use xlink:href="#icon-ava-f"></use>

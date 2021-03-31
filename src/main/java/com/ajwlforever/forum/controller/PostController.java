@@ -9,6 +9,7 @@ import com.ajwlforever.forum.service.UserService;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,17 +32,20 @@ public class PostController implements ForumConstant {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/post/{podtId}")
+    @GetMapping("/post/{postId}")
     public String getPost(@PathVariable("postId")int postId, Model model){
         // 加载帖子
         Post post = postService.selectByPostId(postId);
         if(post == null ) return "error404";
         User  postUser = userService.selectById(post.getUserId());
 
+
         model.addAttribute("user",postUser);
         model.addAttribute("post",post);
-
-        return "/";
+        //tags
+        List<String> tagList = (List<String>) JSONObject.parse(post.getTags());
+        model.addAttribute("tags",tagList);
+        return "/page-single-topic";
     }
     @GetMapping("/post/create")
     public String getCreatePostPage(Model model) {
