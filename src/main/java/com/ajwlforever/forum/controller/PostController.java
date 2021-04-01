@@ -2,9 +2,7 @@ package com.ajwlforever.forum.controller;
 
 import com.ajwlforever.forum.dao.BoardMapper;
 import com.ajwlforever.forum.entity.*;
-import com.ajwlforever.forum.service.PostService;
-import com.ajwlforever.forum.service.ReplyService;
-import com.ajwlforever.forum.service.UserService;
+import com.ajwlforever.forum.service.*;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
@@ -36,9 +34,15 @@ public class PostController implements ForumConstant {
     private ReplyService replyService;
     @Value("${server.servlet.context-path}")
     private String CONTEXTPATH;
+    @Autowired
+    private LikeService likeService;
+    @Autowired
+    private FollowService followService;
 
     @GetMapping("/post/{postId}")
     public String getPost(@PathVariable("postId")int postId, Page page, Model model){
+
+        User hostUser = hostHolder.getUser();
         // 加载帖子
         Post post = postService.selectByPostId(postId);
         if(post == null ) return "error";
@@ -50,6 +54,26 @@ public class PostController implements ForumConstant {
         //tags
         List<String> tagList = (List<String>) JSONObject.parse(post.getTags());
         model.addAttribute("tags",tagList);
+        long AllLikeCount = 0;
+        //帖子的赞踩处理
+        //帖子的点赞
+        long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST,post.getId());
+        AllLikeCount+=likeCount;
+        int likeStatus = likeService.findEntityLikeStatus(hostUser.getId(),ENTITY_TYPE_POST,post.getId());
+        model.addAttribute("likeCount",likeCount);
+        model.addAttribute("likeStatus",likeStatus);
+        //帖子的点踩
+        long dislikeCount = likeService.findEntityDisLikeCount(ENTITY_TYPE_POST,post.getId());
+        int dislikeStatus = likeService.findEntityDisLikeStatus(hostUser.getId(),ENTITY_TYPE_POST,post.getId());
+        model.addAttribute("dislikeCount",dislikeCount);
+        model.addAttribute("dislikeStatus",dislikeStatus);
+        //帖子的关注
+        long allFollowCount = 0;
+        long followCount = followService.findFansCount(ENTITY_TYPE_POST,post.getId());
+        boolean isFollowed = followService.isFollow(hostUser.getId(),ENTITY_TYPE_POST,post.getId());
+        model.addAttribute("followCount",followCount);
+        model.addAttribute("isFollowed",isFollowed);
+        allFollowCount+=followCount;
         //Reply 处理
         int replyAmount = post.getReplyAmount();
         page.setLimit(PAGE_REPLY_LIMIT);
@@ -65,6 +89,25 @@ public class PostController implements ForumConstant {
                 replyMap.put("reply",reply);  //回复
                 User replyUser = userService.selectById(reply.getUserId());
                 replyMap.put("user",replyUser);  //回复的主人
+                //回复的点赞
+                likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_REPLY,reply.getId());
+                likeStatus = likeService.findEntityLikeStatus(hostUser.getId(),ENTITY_TYPE_REPLY,reply.getId());
+                replyMap.put("likeCount",likeCount);
+                replyMap.put("likeStatus",likeStatus);
+                AllLikeCount+=likeCount;
+                //回复的点踩
+                dislikeCount = likeService.findEntityDisLikeCount(ENTITY_TYPE_REPLY,reply.getId());
+                dislikeStatus = likeService.findEntityDisLikeStatus(hostUser.getId(),ENTITY_TYPE_REPLY,reply.getId());
+                replyMap.put("dislikeCount",dislikeCount);
+                replyMap.put("dislikeStatus",dislikeStatus);
+
+                //回复的关注
+                followCount = followService.findFansCount(ENTITY_TYPE_REPLY,reply.getId());
+                isFollowed = followService.isFollow(hostUser.getId(),ENTITY_TYPE_REPLY,reply.getId());
+                replyMap.put("followCount",followCount);
+                replyMap.put("isFollowed",isFollowed);
+                allFollowCount+=followCount;
+
                 //回复的回复
                 //todo 回复的回复暂时没有限制，全部找出来
                 List<Reply> rereplyList = replyService.selectByFatherId(reply.getId(), 0, 0);
@@ -84,8 +127,9 @@ public class PostController implements ForumConstant {
             replies.add(replyMap);
         }
         model.addAttribute("replies",replies);
-
         }
+        model.addAttribute("allLikeCount",AllLikeCount);
+        model.addAttribute("allFollowCount",allFollowCount);
         return "/page-single-topic";
     }
     @GetMapping("/post/create")

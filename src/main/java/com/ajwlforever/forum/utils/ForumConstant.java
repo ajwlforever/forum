@@ -70,4 +70,12 @@ public interface ForumConstant {
     int REPLY_STATUS_FOLD = 2;
     int REPLY_STATUS_DELETE = 3;
 
+    /**
+     * 实体类型
+     */
+    // 1-用户 2-帖子 3-板块 4-回复
+    int ENTITY_TYPE_USER = 1;
+    int ENTITY_TYPE_POST = 2;
+    int ENTITY_TYPE_BOARD = 3;
+    int ENTITY_TYPE_REPLY = 4;
 }

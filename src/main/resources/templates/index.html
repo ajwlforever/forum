@@ -13,6 +13,7 @@
     <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <script th:src="@{/js/setting.js}"></script>
+    <script th:src="@{/js/entityoperation.js}"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -199,7 +200,8 @@
                         <div class="col-11">
                             <ul class="tt-list-badge">
                                 <li class="show-mobile"><a th:href="@{'/board/'+${postMessage.post.boardName}}">
-                                    <span class="tt-color01 tt-badge" th:text="${postMessage.post.boardName}">politics</span></a></li>
+                                    <span th:class="|tt-color${postMessage.colorNumber}   tt-badge|"
+                                          th:text="${postMessage.post.boardName}">politics</span></a></li>
                                 <li th:each="tag:${postMessage.tags}">
                                     <a th:href="@{'/post/search?tag='+${tag}}" >
                                         <span class="tt-badge" th:text="${tag}">contests</span>
@@ -221,7 +223,8 @@
                 </div>
 <!--                todo 点赞和浏览人数 -->
                 <div class="tt-col-value hide-mobile"
-
+                     th:style="${postMessage.isFollowed==1?'color:#e74c3c;':'color:#666f74;'}"
+                     th:text="${postMessage.followCount}"
                 >985</div>
                 <div class="tt-col-value tt-color-select hide-mobile"
                      th:text="${postMessage.post.replyAmount}">502</div>
@@ -271,7 +274,8 @@
                         <div class="col-11">
                             <ul class="tt-list-badge">
                                 <li class="show-mobile"><a th:href="@{'/board/'+${postMessage.post.boardName}}">
-                                    <span class="tt-color01 tt-badge" th:text="${postMessage.post.boardName}">politics</span></a></li>
+                                    <span th:class="|tt-color${postMessage.colorNumber}   tt-badge|"
+                                          th:text="${postMessage.post.boardName}">politics</span></a></li>
                                 <li th:each="tag:${postMessage.tags}">
                                     <a th:href="@{'/post/search?tag='+${tag}}" >
                                         <span class="tt-badge" th:text="${tag}">contests</span>
@@ -293,7 +297,8 @@
                 </div>
                 <!--                todo 点赞和浏览人数 -->
                 <div class="tt-col-value hide-mobile"
-
+                     th:style="${postMessage.isFollowed==1?'color:#e74c3c;':'color:#666f74;'}"
+                     th:text="${postMessage.followCount}"
                 >985</div>
                 <div class="tt-col-value tt-color-select hide-mobile"
                      th:text="${postMessage.post.replyAmount}">502</div>

@@ -3,6 +3,7 @@ package com.ajwlforever.forum.controller;
 import com.ajwlforever.forum.entity.Page;
 import com.ajwlforever.forum.entity.Post;
 import com.ajwlforever.forum.entity.User;
+import com.ajwlforever.forum.service.FollowService;
 import com.ajwlforever.forum.service.PostService;
 import com.ajwlforever.forum.service.UserService;
 import com.ajwlforever.forum.utils.ForumConstant;
@@ -14,10 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 首页控制器
@@ -32,6 +30,9 @@ public class HomeController implements ForumConstant {
     private UserService userService;
     @Autowired
     private HostHolder hostHolder;
+    @Autowired
+    private FollowService followService;
+
     @GetMapping( "/error" )
     public String getErrorPage(Model model) {
         return "error";
@@ -61,6 +62,12 @@ public class HomeController implements ForumConstant {
                 //tags
                 List<String> tagList = (List<String>)JSONObject.parse(post.getTags());
                 postMessage.put("tags",tagList);
+                //关注人数
+                long followCount = followService.findFansCount(ENTITY_TYPE_POST,post.getId());
+                boolean isFollowed = followService.isFollow(hostUser.getId(),ENTITY_TYPE_POST,post.getId());
+                postMessage.put("followCount",followCount);
+                postMessage.put("isFollowed",isFollowed);
+                postMessage.put("colorNumber",new Random().nextInt(10)+10);
                 //最后活跃时间
                 postMessage.put("lastActiveTime", ForumUtils.getLastActiveTime(post.getCreateTime()));
                 //封装入PostMessages

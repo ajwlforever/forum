@@ -203,7 +203,13 @@
                             <span th:class="|tt-color${colorLevel}  tt-badge|">LVL :
                                 <b th:text="${user.level}"></b>
                             </span></a></li>
+                        <div class="user-info ">
+                        居住地：<b th:if="${location!=null}" th:text="${location}"></b> <br>
+                        个人网站：<b th:if="${website!=null}" th:text="${website}"></b> <br>
+                        个人简介：<b th:if="${about!=null}" th:text="${about}"></b> <br>
+                    </div>
                     </ul>
+
                 </div>
                 <div class="tt-col-btn">
                     <div class="tt-list-btn" >

@@ -223,17 +223,30 @@
 
                     </div>
                     <div class="tt-item-info info-bottom">
-                        <a href="#" class="tt-icon-btn">
-                            <i class="tt-icon"><svg><use xlink:href="#icon-like"></use></svg></i>
-                            <span class="tt-text">671</span>
+<!--                        帖子的实体类型是2-->
+                        <a href="javascript:;" th:onclick="|like(this,2,${post.id},${user.id},${post.id});|"
+                           class="tt-icon-btn" >
+                                <i class="tt-icon"><svg
+                            ><use xlink:href="#icon-like" class="test-svg"></use></svg></i>
+                            <span class=" tt-text "
+                                  th:style="${likeStatus==1?'color:#e74c3c;':'color:#666f74;'}"
+                                  th:text="${likeCount}"
+                            >671</span>
                         </a>
-                        <a href="#" class="tt-icon-btn">
+                        <a href="javascript:;" th:onclick="|dislike(this,2,${post.id},${user.id},${post.id});|"
+                           class="tt-icon-btn">
                              <i class="tt-icon"><svg><use xlink:href="#icon-dislike"></use></svg></i>
-                            <span class="tt-text">39</span>
+                            <span class=" tt-text "
+                                  th:style="${dislikeStatus==1?'color:#e74c3c;':'color:#666f74;'}"
+                                    th:text="${dislikeCount}"
+                            >39</span>
                         </a>
-                        <a href="#" class="tt-icon-btn">
+                        <a href="javascript:;" th:onclick="|follow(this,2,${post.id});|" class="tt-icon-btn">
                              <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                            <span class="tt-text">12</span>
+                            <span class="tt-text"
+                                  th:style="${isFollowed==1?'color:#e74c3c;':'color:#666f74;'}"
+                                  th:text="${followCount}"
+                            >12</span>
                         </a>
                         <div class="col-separator"></div>
                         <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
@@ -252,12 +265,14 @@
 <!--    todo 帖子数据        -->
             <div class="tt-item">
                 <div class="tt-info-box">
-                    <h6 class="tt-title">Thread Status</h6>
+                    <h6 class="tt-title">帖子的整体数据</h6>
                     <div class="tt-row-icon">
                         <div class="tt-item">
                             <a href="#" class="tt-icon-btn tt-position-bottom">
                                 <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
-                                <span class="tt-text">283</span>
+                                <span class="tt-text"
+                                    th:text="${post.replyAmount}"
+                                >283</span>
                             </a>
                         </div>
                         <div class="tt-item">
@@ -266,6 +281,7 @@
                                 <span class="tt-text">10.5k</span>
                             </a>
                         </div>
+<!--                        todo 帖子人数-->
                         <div class="tt-item">
                             <a href="#" class="tt-icon-btn tt-position-bottom">
                                 <i class="tt-icon"><svg><use xlink:href="#icon-user"></use></svg></i>
@@ -275,15 +291,18 @@
                         <div class="tt-item">
                             <a href="#" class="tt-icon-btn tt-position-bottom">
                                 <i class="tt-icon"><svg><use xlink:href="#icon-like"></use></svg></i>
-                                <span class="tt-text">2.4k</span>
+                                <span class="tt-text" th:text="${allLikeCount}"></span>
                             </a>
                         </div>
                         <div class="tt-item">
                             <a href="#" class="tt-icon-btn tt-position-bottom">
                                 <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                <span class="tt-text">951</span>
+                                <span class="tt-text"
+                                    th:text="${allFollowCount}"
+                                >951</span>
                             </a>
                         </div>
+<!--                        todo 帖子分享人数-->
                         <div class="tt-item">
                               <a href="#" class="tt-icon-btn tt-position-bottom">
                                 <i class="tt-icon"><svg><use xlink:href="#icon-share"></use></svg></i>
@@ -332,20 +351,20 @@
                     </div>
                     <hr>
                     <div class="row-object-inline form-default">
-                        <h6 class="tt-title">Sort replies by:</h6>
+                        <h6 class="tt-title">评论的排序方式为:</h6>
                         <ul class="tt-list-badge tt-size-lg">
-                            <li><a href="#"><span class="tt-badge">Recent</span></a></li>
-                            <li><a href="#"><span class="tt-color02 tt-badge">Most Liked</span></a></li>
-                            <li><a href="#"><span class="tt-badge">Longest</span></a></li>
-                            <li><a href="#"><span class="tt-badge">Shortest</span></a></li>
-                            <li><a href="#"><span class="tt-badge">Accepted Answers</span></a></li>
+                            <li><a href="#"><span class="tt-badge">最近</span></a></li>
+                            <li><a href="#"><span class="tt-color02 tt-badge">最受喜爱</span></a></li>
+                            <li><a href="#"><span class="tt-badge">长的靠前</span></a></li>
+                            <li><a href="#"><span class="tt-badge">短的靠前</span></a></li>
+                            <li><a href="#"><span class="tt-badge">参与过的评论</span></a></li>
                         </ul>
                         <select class="tt-select form-control">
-                            <option value="Recent">Recent</option>
-                            <option value="Most Liked">Most Liked</option>
-                            <option value="Longest">Longest</option>
-                            <option value="Shortest">Shortest</option>
-                            <option value="Accepted Answer">Accepted Answer</option>
+                            <option value="Recent">最近</option>
+                            <option value="Most Liked">最受喜爱</option>
+                            <option value="Longest">长的靠前</option>
+                            <option value="Shortest">短的靠前</option>
+                            <option value="Accepted Answer">参与过的评论</option>
                         </select>
                     </div>
                 </div>
@@ -395,17 +414,31 @@
                     </div>
 <!--                   todo 回复的数据-->
                     <div class="tt-item-info info-bottom">
-                        <a href="#" class="tt-icon-btn">
+<!--                        对这个回复点赞-->
+                        <a href="javascript:;" th:onclick="|like(this,4,${map.reply.id},${map.user.id},${post.id});|" class="tt-icon-btn">
                             <i class="tt-icon"><svg><use xlink:href="#icon-like"></use></svg></i>
-                            <span class="tt-text">671</span>
+                            <span class=" tt-text "
+                                  th:style="${map.likeStatus==1?'color:#e74c3c;':'color:#666f74;'}"
+                                        th:text="${map.likeCount}"
+                            >671</span>
                         </a>
-                        <a href="#" class="tt-icon-btn">
+<!--                        点踩-->
+                        <a href="javascript:;" th:onclick="|dislike(this,4,${map.reply.id},${map.user.id},${post.id});|"
+                                class="tt-icon-btn">
                             <i class="tt-icon"><svg><use xlink:href="#icon-dislike"></use></svg></i>
-                            <span class="tt-text">39</span>
+                            <span class=" tt-text "
+                                  th:style="${map.dislikeStatus==1?'color:#e74c3c;':'color:#666f74;'}"
+                                  th:text="${map.dislikeCount}"
+                            >39</span>
                         </a>
-                        <a href="#" class="tt-icon-btn">
+<!--                        关注-->
+                        <a href="javascript:;" th:onclick="|follow(this,4,${map.reply.id});|"
+                           class="tt-icon-btn">
                             <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                            <span class="tt-text">12</span>
+                            <span class="tt-text"
+                                  th:style="${map.isFollowed==1?'color:#e74c3c;':'color:#666f74;'}"
+                                  th:text="${map.followCount}"
+                            >12</span>
                         </a>
                         <div class="col-separator"></div>
                         <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">

@@ -18,7 +18,7 @@
 
 
 
-## 三登录注册功能的实现
+## 三、登录注册功能的实现
 
 ### 1.注册
 
@@ -38,3 +38,31 @@
 
 登录模块的核心在于，在服务器持久存放登录用户保证多界面切换，任然保持登录，和离线后再登录凭借登录凭证再次保持登录。
 
+## 四、个人功能
+
+## 五、帖子回复相关功能
+
+## 六、对实体的操作
+
+> 实体分别为用户，帖子，回复，板块
+>
+> 对实体的操作包括：点赞，点踩，关注，分享，浏览（not all）
+
+用redis存储这些操作产生的数据
+
+- 点赞: like:entitytype:entityId -->  set(int)
+
+  - like:user:userId --> set(int)  收到赞的数量 
+
+- 点踩: dislike:entitytype:entityId -->  set(int)
+
+  - dislike:user:userId --> set(int)  收到赞的数量 
+
+-	关注:
+
+	-	关注者（某个实体粉丝）：follower:entityType:entityId 
+	-	关注了谁：followee:userId:entityType   -> zset(entityId,now) 按时间排序
+	
+-	浏览：view:entityType:entityId : int
+
+  
