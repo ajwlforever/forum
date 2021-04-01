@@ -28,6 +28,7 @@ public interface ReplyMapper {
     List<Reply> selectByFatherId(int fatherId, int offset, int limit);
     //统计数量
     //用户回复某个帖子的数量
+    int countRowsByUserId(int userId);
     //插入回复
     int insertReply(Reply reply);
 

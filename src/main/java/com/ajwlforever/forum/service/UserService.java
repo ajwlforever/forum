@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -45,6 +46,35 @@ public class UserService implements ForumConstant {
 
     @Autowired
     private MailClient mailClient;
+
+
+    public Map<String, Object> changeUserInfo(int userId,String nickName,String email,String password,String location, String website,
+                                              String about){
+        Map<String, Object> res = new HashMap<>();
+        if(!StringUtils.isBlank(nickName)){
+            userMapper.updateNickName(userId,nickName);
+            res.put("nickNameMsg","昵称修改为"+nickName);
+        }
+        if(!StringUtils.isBlank(email))
+        {
+            //todo 重新激活email
+            res.put("emailMsg", "邮件修改功能未完成");
+
+        }
+        if(!StringUtils.isBlank(password))
+        {
+            userMapper.updatePassword(userId,password);
+            res.put("passwordMsg","密码已修改");
+        }
+        if(!StringUtils.isBlank(location)||!StringUtils.isBlank(website)||!StringUtils.isBlank(about))
+        {
+            String jsonStr = ForumUtils.getUserInfoJsonString(location,website,about);
+            userMapper.updateInfo(userId,jsonStr);
+            res.put("infoMsg","地址，个人网站，个人简介修改成功!");
+        }
+        return res;
+    }
+    //注册
     public Map<String, Object> login(User user, int expiredSeconds){
         Map<String, Object> res = new HashMap<>();
         if(StringUtils.isBlank(user.getUsername())||StringUtils.isBlank(user.getPassword())) {

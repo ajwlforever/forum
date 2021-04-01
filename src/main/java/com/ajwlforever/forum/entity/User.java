@@ -8,13 +8,33 @@ public class User {
     private String nickname;
     private String password;
     private String salt;
+    private String info;
     private String email;
+    private int level;
     private int type;
     private String activeCode;
     private int status;
     private Date createTime;
     private Date activeTime;
     private String headerUrl;
+
+    public String getInfo() {
+        return info;
+    }
+
+    public User setInfo(String info) {
+        this.info = info;
+        return this;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public User setLevel(int level) {
+        this.level = level;
+        return this;
+    }
 
     public int getId() {
         return id;
@@ -132,7 +152,9 @@ public class User {
                 ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", salt='" + salt + '\'' +
+                ", info='" + info + '\'' +
                 ", email='" + email + '\'' +
+                ", level=" + level +
                 ", type=" + type +
                 ", activeCode='" + activeCode + '\'' +
                 ", status=" + status +

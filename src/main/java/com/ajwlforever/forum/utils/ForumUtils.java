@@ -16,6 +16,20 @@ public class ForumUtils {
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
+    public static String getUserInfoJsonString(String location, String website, String about)
+    {
+        if(StringUtils.isBlank(location)&&StringUtils.isBlank(website)&&StringUtils.isBlank(about))
+            return null;
+        Map<String, Object> map = new HashMap<>();
+        map.put("location",location);
+        map.put("website",website);
+        map.put("about",about);
+        return JSONObject.toJSONString(map);
+    }
+    public static Map<String, Object> getUserInfoMap(String jsonStr) {
+        return (Map<String, Object>) JSONObject.parse(jsonStr);
+    }
+
     public static String getTags(String tags)
     {
         String[] strs = tags.split("，");
@@ -152,5 +166,8 @@ public class ForumUtils {
 //
 //        System.out.println(getLastActiveTime(date));
         System.out.println(getTags("地球，科普"));
+        String jsonStr = getUserInfoJsonString("山东泰安","www.yqxblog.top", "我是一名大学生");
+        System.out.println(jsonStr);
+        System.out.println(getUserInfoMap(jsonStr).toString());
     }
 }

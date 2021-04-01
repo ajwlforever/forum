@@ -5,10 +5,10 @@
 
 <mapper namespace="com.ajwlforever.forum.dao.UserMapper">
     <sql id="select">
-        id,username,nickname,password,salt,email,type,active_code,status,create_time,active_time,header_url
+        id,username,nickname,password,salt,info,email,level,type,active_code,status,create_time,active_time,header_url
     </sql>
     <sql id="insert">
-        username,nickname,password,salt,email,type,active_code,status,create_time,active_time,header_url
+        username,nickname,password,salt,email,level,type,active_code,status,create_time,active_time,header_url
     </sql>
 
     <select id="selectById" resultType="User">
@@ -29,7 +29,7 @@
     </select>
     <insert id="insertUser"  parameterType="User" keyProperty="id" >
         insert  into t_user( <include refid="insert"></include> )
-        values(#{username},#{nickname},#{password},#{salt},#{email},#{type},#{activeCode},#{status},#{createTime},#{activeTime},#{headerUrl})
+        values(#{username},#{nickname},#{password},#{salt},#{email},#{level},#{type},#{activeCode},#{status},#{createTime},#{activeTime},#{headerUrl})
 
     </insert>
 
@@ -42,5 +42,10 @@
     <update id="updatePassword">
         update t_user set password = #{password} where id = #{userId}
     </update>
-
+    <update id="updateInfo">
+        update t_user set info = #{info} where id = #{userId}
+    </update>
+    <update id="updateNickName">
+        update t_user set nickname = #{nickName} where id = #{userId}
+    </update>
 </mapper>

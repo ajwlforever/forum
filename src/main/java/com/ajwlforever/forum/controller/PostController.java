@@ -41,7 +41,7 @@ public class PostController implements ForumConstant {
     public String getPost(@PathVariable("postId")int postId, Page page, Model model){
         // 加载帖子
         Post post = postService.selectByPostId(postId);
-        if(post == null ) return "error404";
+        if(post == null ) return "error";
         User  postUser = userService.selectById(post.getUserId());
 
 
@@ -51,22 +51,25 @@ public class PostController implements ForumConstant {
         List<String> tagList = (List<String>) JSONObject.parse(post.getTags());
         model.addAttribute("tags",tagList);
         //Reply 处理
+        int replyAmount = post.getReplyAmount();
         page.setLimit(PAGE_REPLY_LIMIT);
-        page.setRows(post.getReplyAmount());
+        page.setRows(replyAmount);
         page.setPath("/post/"+post.getId());
-        List<Map<String,Object>> replies = new ArrayList<>();
-        List<Reply> repliyList = replyService.selectByPostId(post.getId(), page.getOffset(), page.getLimit());
-        for(Reply reply : repliyList)
-        {
-            Map<String, Object> replyMap = new HashMap<>();
-            replyMap.put("reply",reply);  //回复
-            User replyUser = userService.selectById(reply.getUserId());
-            replyMap.put("user",replyUser);  //回复的主人
-            //回复的回复
-           //todo 回复的回复暂时没有限制，全部找出来
-            List<Reply> rereplyList = replyService.selectByFatherId(reply.getId(), 0, 0);
-            if(rereplyList!=null || rereplyList.size()!=0) {
-                List<Map<String, Object>> rereplies = new ArrayList<>();
+        if(replyAmount!=0){
+        //没有回复
+            List<Map<String,Object>> replies = new ArrayList<>();
+            List<Reply> repliyList = replyService.selectByPostId(post.getId(), page.getOffset(), page.getLimit());
+            for(Reply reply : repliyList)
+            {
+                Map<String, Object> replyMap = new HashMap<>();
+                replyMap.put("reply",reply);  //回复
+                User replyUser = userService.selectById(reply.getUserId());
+                replyMap.put("user",replyUser);  //回复的主人
+                //回复的回复
+                //todo 回复的回复暂时没有限制，全部找出来
+                List<Reply> rereplyList = replyService.selectByFatherId(reply.getId(), 0, 0);
+                if(rereplyList!=null || rereplyList.size()!=0) {
+                    List<Map<String, Object>> rereplies = new ArrayList<>();
                 for (Reply rereply : rereplyList) {
                         //todo 回复的回复 回复的对象。
                     Map<String, Object> rereplyMap = new HashMap<>();
@@ -81,6 +84,8 @@ public class PostController implements ForumConstant {
             replies.add(replyMap);
         }
         model.addAttribute("replies",replies);
+
+        }
         return "/page-single-topic";
     }
     @GetMapping("/post/create")

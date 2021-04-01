@@ -7933,6 +7933,10 @@ html.ie.gecko body.modal-open {
   left: 5%;
   border-radius:50%;
 }
+.profile_user_img{
+  width:40px;
+  border-radius:50%;
+}
 .reply_user_img{
   width:40px;
   border-radius:50%;

@@ -1,6 +1,7 @@
+<!--suppress ALL-->
 <!doctype html>
-<html lang="en">
-<head>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::head">
     <meta charset="utf-8">
     <title>Forum - Responsive HTML5 Template</title>
     <meta name="keywords" content="HTML5 Template">
@@ -13,7 +14,7 @@
 </head>
 <body>
 <!-- tt-mobile menu -->
-<nav class="panel-menu" id="mobile-menu">
+<nav th:replace="index::mobile_menu" class="panel-menu" id="mobile-menu">
     <ul>
 
     </ul>
@@ -29,7 +30,7 @@
         <div class="mm-backbtn">Back</div>
     </div>
 </nav>
-<header id="tt-header">
+<header th:replace="index::header" id="tt-header">
     <div class="container">
         <div class="row tt-row no-gutters">
             <div class="col-auto">
@@ -71,7 +72,7 @@
                                     <li><a href="page-tabs.html">About</a></li>
                                     <li><a href="page-tabs_guidelines.html">Guidelines</a></li>
                                     <li><a href="_demo_modal-advancedSearch.html">Advanced Search</a></li>
-                                    <li><a href="error404.html">Error 404</a></li>
+                                    <li><a href="error.html">Error 404</a></li>
                                     <li><a href="_demo_modal-age-confirmation.html">Age Verification</a></li>
                                     <li><a href="_demo_modal-level-up.html">Level up Notification</a></li>
                                     <li><a href="messages-page.html">Message</a></li>
@@ -190,28 +191,26 @@
             <div class="tt-user-header">
                 <div class="tt-col-avatar">
                     <div class="tt-icon">
-                       <svg class="tt-icon">
-                          <use xlink:href="#icon-ava-d"></use>
-                        </svg>
+                        <img th:src="${user.headerUrl}" class="profile_user_img" alt="">
                     </div>
                 </div>
                 <div class="tt-col-title">
                     <div class="tt-title">
-                        <a href="#">Dylan89</a>
+                        <a href="javascript:;" th:text="${user.username}">Dylan89</a>
                     </div>
                     <ul class="tt-list-badge">
-                        <li><a href="#"><span class="tt-color14 tt-badge">LVL : 26</span></a></li>
+                        <li><a href="javascript:;">
+                            <span th:class="|tt-color${colorLevel}  tt-badge|">LVL :
+                                <b th:text="${user.level}"></b>
+                            </span></a></li>
                     </ul>
                 </div>
-                <div class="tt-col-btn" id="js-settings-btn">
-                    <div class="tt-list-btn">
-                        <a href="#" class="tt-btn-icon">
-                            <svg class="tt-icon">
-                              <use xlink:href="#icon-settings_fill"></use>
-                            </svg>
-                        </a>
-                        <a href="#" class="btn btn-primary">Message</a>
-                        <a href="#" class="btn btn-secondary">Follow</a>
+                <div class="tt-col-btn">
+                    <div class="tt-list-btn" >
+                        <div th:if="${loginUser.id!=user.id}">
+                            <a href="#" class="btn btn-primary">私信</a>
+                            <a href="#" class="btn btn-secondary">关注</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -219,36 +218,38 @@
     </div>
     <div class="container">
         <div class="tt-tab-wrapper">
+<!--            tabBar-->
             <div class="tt-wrapper-inner">
                 <ul class="nav nav-tabs pt-tabs-default" role="tablist">
                     <li class="nav-item show">
-                        <a class="nav-link active" data-toggle="tab" href="#tt-tab-01" role="tab"><span>Activity</span></a>
+                        <a class="nav-link active" data-toggle="tab" href="#tt-tab-01" role="tab"><span>发布的帖子</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tt-tab-02" role="tab"><span>Threads</span></a>
+                        <a class="nav-link" data-toggle="tab" href="#tt-tab-02" role="tab"><span>足迹</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tt-tab-03" role="tab"><span>Replies</span></a>
+                        <a class="nav-link" data-toggle="tab" href="#tt-tab-03" role="tab"><span>回复</span></a>
                     </li>
                     <li class="nav-item tt-hide-xs">
-                        <a class="nav-link" data-toggle="tab" href="#tt-tab-04" role="tab"><span>526 Followers</span></a>
+                        <a class="nav-link" data-toggle="tab" href="#tt-tab-04" role="tab"><span>526 个粉丝</span></a>
                     </li>
                     <li class="nav-item tt-hide-md">
-                        <a class="nav-link" data-toggle="tab" href="#tt-tab-05" role="tab"><span>489 Following</span></a>
+                        <a class="nav-link" data-toggle="tab" href="#tt-tab-05" role="tab"><span>关注了 89个人 </span></a>
                     </li>
                     <li class="nav-item tt-hide-md">
-                        <a class="nav-link" data-toggle="tab" href="#tt-tab-06" role="tab"><span>Categories</span></a>
+                        <a class="nav-link" data-toggle="tab" href="#tt-tab-06" role="tab"><span>经常活动的板块</span></a>
                     </li>
                 </ul>
             </div>
+<!--            tab内容-->
             <div class="tab-content">
                 <div class="tab-pane tt-indent-none  show active" id="tt-tab-01" role="tabpanel">
                    <div class="tt-topic-list">
                         <div class="tt-list-header">
-                            <div class="tt-col-topic">Topic</div>
-                            <div class="tt-col-value-large hide-mobile">Category</div>
-                            <div class="tt-col-value-large hide-mobile">Status</div>
-                            <div class="tt-col-value-large hide-mobile">Activity</div>
+                            <div class="tt-col-topic">标题</div>
+                            <div class="tt-col-value-large hide-mobile">板块</div>
+                            <div class="tt-col-value-large hide-mobile">状态</div>
+                            <div class="tt-col-value-large hide-mobile">时间</div>
                         </div>
                         <div class="tt-item">
                             <div class="tt-col-avatar">
@@ -2565,7 +2566,7 @@
         </div>
     </div>
 </main>
-<div id="js-popup-settings" class="tt-popup-settings">
+<div th:replace="index::setting" id="js-popup-settings" class="tt-popup-settings">
 	<div class="tt-btn-col-close">
 		<a href="#">
 			<span class="tt-icon-title">
@@ -2654,7 +2655,7 @@
 		</div>
 		</form>
 </div>
-<a href="page-create-topic.html" class="tt-btn-create-topic">
+<a th:replace="index::create" href="page-create-topic.html" class="tt-btn-create-topic">
     <span class="tt-icon">
         <svg>
           <use xlink:href="#icon-create_new"></use>
@@ -2662,7 +2663,7 @@
     </span>
 </a>
 
-<div class="modal fade" id="modalAdvancedSearch" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+<div th:replace="index::advanced_search" class="modal fade" id="modalAdvancedSearch" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="tt-modal-advancedSearch">
@@ -2787,7 +2788,7 @@
 		</div>
 	</div>
 </div>
-<script src="js/bundle.js"></script>
+<script th:src="@{/js/bundle.js}"></script>
 <svg width="0" height="0" class="hidden">
 	 <symbol aria-hidden="true" data-prefix="fab" data-icon="facebook-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 512" id="facebook-f-brands">
     <path fill="currentColor" d="M215.8 85H264V3.6C255.7 2.5 227.1 0 193.8 0 124.3 0 76.7 42.4 76.7 120.3V192H0v91h76.7v229h94V283h73.6l11.7-91h-85.3v-62.7c0-26.3 7.3-44.3 45.1-44.3z"></path>

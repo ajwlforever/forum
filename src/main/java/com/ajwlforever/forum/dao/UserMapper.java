@@ -25,5 +25,7 @@ public interface UserMapper {
     int updateHeader(int userId, String headerUrl);
 
     int updatePassword(int userId, String password);
+    int updateInfo(int userId,String info);
+    int updateNickName(int userId, String nickName);
 
 }

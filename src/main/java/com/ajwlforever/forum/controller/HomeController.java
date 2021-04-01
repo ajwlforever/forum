@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +32,10 @@ public class HomeController implements ForumConstant {
     private UserService userService;
     @Autowired
     private HostHolder hostHolder;
-
+    @GetMapping( "/error" )
+    public String getErrorPage(Model model) {
+        return "error";
+    }
     @GetMapping({"/","/index"})
     public String getHome(Model model, Page page)
     {
@@ -77,10 +78,6 @@ public class HomeController implements ForumConstant {
         return "index";
     }
 
-    @RequestMapping(path = "/error" , method = RequestMethod.GET)
-    public String getErrorPage()
-    {
-        return "/error404";
-    }
+
 
 }

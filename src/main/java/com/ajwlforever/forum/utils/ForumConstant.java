@@ -60,6 +60,7 @@ public interface ForumConstant {
      */
      int PAGE_INDEX_LIMIT = 7;
      int PAGE_REPLY_LIMIT = 7;
+     int PAGE_PROFILE_LIMIT = 10;
     /**
      * 回复的常量
      */

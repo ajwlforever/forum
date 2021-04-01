@@ -43,7 +43,14 @@
         </if>
 
     </select>
-
+    <select id="countRowsByUserId" resultType="int">
+        select count(id)
+        from  t_reply
+        <if test="userId!=0">
+        where user_id = #{userId}
+        </if>
+        order by reply_time desc
+    </select>
     <insert id="insertReply" keyProperty="id" parameterType="Reply">
         insert into t_reply(<include refid="insert"></include>)
         values(#{postId},#{userId},#{fatherId},#{replyTime},#{content},#{status})
