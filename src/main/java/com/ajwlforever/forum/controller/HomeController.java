@@ -6,6 +6,7 @@ import com.ajwlforever.forum.entity.User;
 import com.ajwlforever.forum.service.FollowService;
 import com.ajwlforever.forum.service.PostService;
 import com.ajwlforever.forum.service.UserService;
+import com.ajwlforever.forum.service.ViewService;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
@@ -32,6 +33,8 @@ public class HomeController implements ForumConstant {
     private HostHolder hostHolder;
     @Autowired
     private FollowService followService;
+    @Autowired
+    private ViewService viewService;
 
     @GetMapping( "/error" )
     public String getErrorPage(Model model) {
@@ -64,7 +67,11 @@ public class HomeController implements ForumConstant {
                 postMessage.put("tags",tagList);
                 //关注人数
                 long followCount = followService.findFansCount(ENTITY_TYPE_POST,post.getId());
-                boolean isFollowed = followService.isFollow(hostUser.getId(),ENTITY_TYPE_POST,post.getId());
+                boolean isFollowed  = followService.isFollow(hostUser,ENTITY_TYPE_POST,post.getId());
+
+                //浏览人数
+                long allViewCount = viewService.getViewEntitycount(ENTITY_TYPE_POST,post.getId());
+                postMessage.put("allViewCount",allViewCount);
                 postMessage.put("followCount",followCount);
                 postMessage.put("isFollowed",isFollowed);
                 postMessage.put("colorNumber",new Random().nextInt(10)+10);

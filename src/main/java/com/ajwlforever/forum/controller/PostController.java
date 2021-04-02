@@ -38,6 +38,8 @@ public class PostController implements ForumConstant {
     private LikeService likeService;
     @Autowired
     private FollowService followService;
+    @Autowired
+    private ViewService viewService;
 
     @GetMapping("/post/{postId}")
     public String getPost(@PathVariable("postId")int postId, Page page, Model model){
@@ -59,20 +61,26 @@ public class PostController implements ForumConstant {
         //帖子的点赞
         long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST,post.getId());
         AllLikeCount+=likeCount;
-        int likeStatus = likeService.findEntityLikeStatus(hostUser.getId(),ENTITY_TYPE_POST,post.getId());
+        int likeStatus = likeService.findEntityLikeStatus(hostUser,ENTITY_TYPE_POST,post.getId());
+
         model.addAttribute("likeCount",likeCount);
         model.addAttribute("likeStatus",likeStatus);
         //帖子的点踩
         long dislikeCount = likeService.findEntityDisLikeCount(ENTITY_TYPE_POST,post.getId());
-        int dislikeStatus = likeService.findEntityDisLikeStatus(hostUser.getId(),ENTITY_TYPE_POST,post.getId());
+
+        int dislikeStatus = likeService.findEntityDisLikeStatus(hostUser,ENTITY_TYPE_POST,post.getId());
+
+
         model.addAttribute("dislikeCount",dislikeCount);
         model.addAttribute("dislikeStatus",dislikeStatus);
         //帖子的关注
         long allFollowCount = 0;
         long followCount = followService.findFansCount(ENTITY_TYPE_POST,post.getId());
-        boolean isFollowed = followService.isFollow(hostUser.getId(),ENTITY_TYPE_POST,post.getId());
+        boolean  isFollowed = followService.isFollow(hostUser,ENTITY_TYPE_POST,post.getId());
+
+
         model.addAttribute("followCount",followCount);
-        model.addAttribute("isFollowed",isFollowed);
+        model.addAttribute("isFollowed",isFollowed == true? 1:0);
         allFollowCount+=followCount;
         //Reply 处理
         int replyAmount = post.getReplyAmount();
@@ -91,19 +99,19 @@ public class PostController implements ForumConstant {
                 replyMap.put("user",replyUser);  //回复的主人
                 //回复的点赞
                 likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_REPLY,reply.getId());
-                likeStatus = likeService.findEntityLikeStatus(hostUser.getId(),ENTITY_TYPE_REPLY,reply.getId());
+                likeStatus = likeService.findEntityLikeStatus(hostUser,ENTITY_TYPE_REPLY,reply.getId());
                 replyMap.put("likeCount",likeCount);
                 replyMap.put("likeStatus",likeStatus);
                 AllLikeCount+=likeCount;
                 //回复的点踩
                 dislikeCount = likeService.findEntityDisLikeCount(ENTITY_TYPE_REPLY,reply.getId());
-                dislikeStatus = likeService.findEntityDisLikeStatus(hostUser.getId(),ENTITY_TYPE_REPLY,reply.getId());
+                dislikeStatus = likeService.findEntityDisLikeStatus(hostUser,ENTITY_TYPE_REPLY,reply.getId());
                 replyMap.put("dislikeCount",dislikeCount);
                 replyMap.put("dislikeStatus",dislikeStatus);
 
                 //回复的关注
                 followCount = followService.findFansCount(ENTITY_TYPE_REPLY,reply.getId());
-                isFollowed = followService.isFollow(hostUser.getId(),ENTITY_TYPE_REPLY,reply.getId());
+                isFollowed = followService.isFollow(hostUser,ENTITY_TYPE_REPLY,reply.getId());
                 replyMap.put("followCount",followCount);
                 replyMap.put("isFollowed",isFollowed);
                 allFollowCount+=followCount;
@@ -130,6 +138,15 @@ public class PostController implements ForumConstant {
         }
         model.addAttribute("allLikeCount",AllLikeCount);
         model.addAttribute("allFollowCount",allFollowCount);
+        //浏览人数
+        long allViewCount = viewService.getViewEntitycount(ENTITY_TYPE_POST,post.getId());
+        model.addAttribute("allViewCount",allViewCount);
+        //用户人数
+        long allUserCount = viewService.getEntityUserCount(ENTITY_TYPE_POST,post.getId());
+        model.addAttribute("allUserCount",allUserCount);
+        //浏览人数加1
+        viewService.viewEntity(hostUser ,ENTITY_TYPE_POST,post.getId());
+
         return "/page-single-topic";
     }
     @GetMapping("/post/create")

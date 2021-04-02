@@ -1,5 +1,6 @@
 package com.ajwlforever.forum.service;
 
+import com.ajwlforever.forum.entity.User;
 import com.ajwlforever.forum.utils.RedisKeyUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +51,10 @@ public class LikeService {
         return redisTemplate.opsForSet().size(entityLikeKey);
     }
     //查询某人对某实体的点赞状态
-    public int findEntityLikeStatus(int userId, int entityType, int entityId) {
+    public int findEntityLikeStatus(User user, int entityType, int entityId) {
+        if(user == null) return 0;
         String entityLikeKey = RedisKeyUtil.getLikeKey(entityType,entityId);
-        return redisTemplate.opsForSet().isMember(entityLikeKey, userId) ==true? 1:0;
+        return redisTemplate.opsForSet().isMember(entityLikeKey, user.getId()) ==true? 1:0;
     }
     // 查询用户的总被赞数量
     public long findUserLikeCount(int userId) {
@@ -91,9 +93,10 @@ public class LikeService {
         return redisTemplate.opsForSet().size(entityLikeKey);
     }
     //查询某人对某实体的点踩状态
-    public int findEntityDisLikeStatus(int userId, int entityType, int entityId) {
+    public int findEntityDisLikeStatus(User user, int entityType, int entityId) {
+        if(user == null) return 0;
         String entityLikeKey = RedisKeyUtil.getDisLikeKey(entityType,entityId);
-        return redisTemplate.opsForSet().isMember(entityLikeKey, userId) ==true? 1:0;
+        return redisTemplate.opsForSet().isMember(entityLikeKey, user.getId()) ==true? 1:0;
     }
     // 查询用户的总被踩数量
     public long findUserDisLikeCount(int userId) {

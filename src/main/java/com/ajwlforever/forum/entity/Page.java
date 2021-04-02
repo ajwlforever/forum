@@ -29,6 +29,7 @@ public class Page  implements ForumConstant {
     {
         if(current>getTotal())
             current = getTotal();
+        if(current<=0) current =1;
     }
     public int getLimit() {
 

@@ -8,7 +8,15 @@ $(function () {
         });
     }
 
+
 });
+function scrollToReply()
+{
+    window.scrollTo({
+        top: $('.reply-hint').offset().top,
+        behavior: 'smooth'
+    });
+}
 function  showReply(id) {
     var reply = ".create-reply"+id;
     $(reply).toggle();

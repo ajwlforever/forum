@@ -139,7 +139,7 @@
                 </div>
             </div>
             <div class="col-auto ml-auto" th:if="${loginUser!=null}" >
-                <div class="tt-user-info d-flex justify-content-center">
+                <div  class="tt-user-info d-flex justify-content-center">
                     <a href="#" class="tt-btn-icon">
                         <i class="tt-icon"><svg><use xlink:href="#icon-notification"></use></svg></i>
                     </a>
@@ -228,7 +228,9 @@
                 >985</div>
                 <div class="tt-col-value tt-color-select hide-mobile"
                      th:text="${postMessage.post.replyAmount}">502</div>
-                <div class="tt-col-value hide-mobile">15.1k</div>
+                <div class="tt-col-value hide-mobile"
+                        th:text="${allViewCount}"
+                >15.1k</div>
                 <div class="tt-col-value hide-mobile"
                      th:text="${postMessage.lastActiveTime}"
                 >1h</div>
@@ -335,7 +337,9 @@
     </div>
 </main>
 <!-- 个人设置 -->
-<div th:fragment="setting" id="js-popup-settings" class="tt-popup-settings">
+<div th:fragment="setting"
+     th:if="${loginUser!=null}"
+     id="js-popup-settings" class="tt-popup-settings">
 	<div class="tt-btn-col-close">
 		<a href="#">
 			<span class="tt-icon-title">

@@ -59,7 +59,7 @@ public class EntityOperationController {
         //回显点赞数据
         long likeCount = likeService.findEntityLikeCount(entityType,entityId);
         //是点赞还是取消赞，前端显示
-        int likeStatus = likeService.findEntityLikeStatus(hostUser.getId(),entityType,entityId);
+        int likeStatus = likeService.findEntityLikeStatus(hostUser,entityType,entityId);
 
         res.put("likeCount", likeCount);
         res.put("likeStatus", likeStatus);
@@ -79,7 +79,7 @@ public class EntityOperationController {
         //回显点踩数据
         long dislikeCount = likeService.findEntityDisLikeCount(entityType,entityId);
         //是点踩还是取消赞，前端显示
-        int dislikeStatus = likeService.findEntityDisLikeStatus(hostUser.getId(),entityType,entityId);
+        int dislikeStatus = likeService.findEntityDisLikeStatus(hostUser,entityType,entityId);
 
         res.put("dislikeCount", dislikeCount);
         res.put("dislikeStatus", dislikeStatus);
@@ -96,7 +96,7 @@ public class EntityOperationController {
         Map<String, Object> res = new HashMap<>();
         //关注
         //登录用户是否关注了这个实体
-        boolean isFollowed = followService.isFollow(hostUser.getId(),entityType,entityId);
+        boolean isFollowed = followService.isFollow(hostUser,entityType,entityId);
         if(!isFollowed){
             followService.follow(entityType,entityId,hostUser.getId());
 

@@ -80,12 +80,12 @@ public class FollowService implements ForumConstant {
         return redisTemplate.opsForZSet().zCard(fansKey);
     }
     //某个人是否关注了这个实体
-    public boolean isFollow(int userId, int entityType, int entityId){
+    public boolean isFollow(User user, int entityType, int entityId){
         User hostUser = hostHolder.getUser();
         if(hostUser==null)
             return false;
         //查询
-        String followeeKey = RedisKeyUtil.getFolloweeKey(entityType,userId);
+        String followeeKey = RedisKeyUtil.getFolloweeKey(entityType,user.getId());
         return redisTemplate.opsForZSet().score(followeeKey,entityId) != null;
     }
 
@@ -107,7 +107,7 @@ public class FollowService implements ForumConstant {
                 //正确的userid
                 Map<String, Object> map = new HashMap<>();
                 //登录用户是否关注了这个用户
-                map.put("isFollowd",isFollow(hostUser.getId(),ENTITY_TYPE_USER,id));
+                map.put("isFollowd",isFollow(hostUser,ENTITY_TYPE_USER,id));
                 map.put("user",user);
                 map.put("followTime",redisTemplate.opsForZSet().score(followeeKey,id).longValue());
                 res.add(map);
@@ -134,7 +134,7 @@ public class FollowService implements ForumConstant {
                 //正确的userid
                 Map<String, Object> map = new HashMap<>();
                 //登录用户是否关注了这个用户
-                map.put("isFollowd",isFollow(hostUser.getId(),ENTITY_TYPE_USER,id));
+                map.put("isFollowd",isFollow(hostUser,ENTITY_TYPE_USER,id));
                 map.put("user",user);
                 map.put("followTime",redisTemplate.opsForZSet().score(fanKey,id).longValue());
                 res.add(map);
