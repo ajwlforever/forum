@@ -15,175 +15,10 @@
 <body>
 <!-- tt-mobile menu -->
 <nav th:replace="index::mobile_menu" class="panel-menu" id="mobile-menu">
-    <ul>
 
-    </ul>
-    <div class="mm-navbtn-names">
-        <div class="mm-closebtn">
-            Close
-            <div class="tt-icon">
-                <svg>
-                  <use xlink:href="#icon-cancel"></use>
-                </svg>
-            </div>
-        </div>
-        <div class="mm-backbtn">Back</div>
-    </div>
 </nav>
 <header th:replace="index::header" id="tt-header">
-    <div class="container">
-        <div class="row tt-row no-gutters">
-            <div class="col-auto">
-                <!-- toggle mobile menu -->
-                <a class="toggle-mobile-menu" href="#">
-                    <svg class="tt-icon">
-                      <use xlink:href="#icon-menu_icon"></use>
-                    </svg>
-                </a>
-                <!-- /toggle mobile menu -->
-                <!-- logo -->
-                <div class="tt-logo">
-                    <a href="index.html"><img src="images/logo.png" alt=""></a>
-                </div>
-                <!-- /logo -->
-                <!-- desctop menu -->
-                  <div class="tt-desktop-menu">
-                    <nav>
-                        <ul>
-                            <li><a href="page-categories.html"><span>Categories</span></a></li>
-                            <li><a href="page-tabs.html"><span>Trending</span></a></li>
-                            <li><a href="page-create-topic.html"><span>New</span></a></li>
-                            <li>
-                                <a href="page-single-user.html"><span>Pages</span></a>
-                                <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="page-single-topic.html">Single Topic</a></li>
-                                    <li><a href="page-create-topic.html">Create Topic</a></li>
-                                    <li><a href="page-single-user.html">Single User Activity</a></li>
-                                    <li><a href="page-single_threads.html">Single User Threads</a></li>
-                                    <li><a href="page-single_replies.html">Single User Replies</a></li>
-                                    <li><a href="page-single_followers.html">Single User Followers</a></li>
-                                    <li><a href="page-single_categories.html">Single User Categories</a></li>
-                                    <li><a href="page-single_settings.html">Single User Settings</a></li>
-                                    <li><a href="page-signup.html">Sign up</a></li>
-                                    <li><a href="page-login.html">Log in</a></li>
-                                    <li><a href="page-categories.html">Categories</a></li>
-                                    <li><a href="page-categories-single.html">Single Category</a></li>
-                                    <li><a href="page-tabs.html">About</a></li>
-                                    <li><a href="page-tabs_guidelines.html">Guidelines</a></li>
-                                    <li><a href="_demo_modal-advancedSearch.html">Advanced Search</a></li>
-                                    <li><a href="error.html">Error 404</a></li>
-                                    <li><a href="_demo_modal-age-confirmation.html">Age Verification</a></li>
-                                    <li><a href="_demo_modal-level-up.html">Level up Notification</a></li>
-                                    <li><a href="messages-page.html">Message</a></li>
-                                    <li><a href="messages-compose.html">Message Compose</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <!-- /desctop menu -->
-                <!-- tt-search -->
-                <div class="tt-search">
-                    <!-- toggle -->
-                    <button class="tt-search-toggle" data-toggle="modal" data-target="#modalAdvancedSearch">
-                       <svg class="tt-icon">
-                          <use xlink:href="#icon-search"></use>
-                        </svg>
-                    </button>
-                    <!-- /toggle -->
-                    <form class="search-wrapper">
-                        <div class="search-form">
-                            <input type="text" class="tt-search__input" placeholder="Search">
-                            <button class="tt-search__btn" type="submit">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-search"></use>
-                                </svg>
-                            </button>
-                             <button class="tt-search__close">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#cancel"></use>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="search-results">
-                            <div class="tt-search-scroll">
-                                <ul>
-                                    <li>
-                                        <a href="page-single-topic.html">
-                                            <h6 class="tt-title">Rdr2 secret easter eggs</h6>
-                                            <div class="tt-description">
-                                               Here’s what I’ve found in Red Dead Redem..
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       <a href="page-single-topic.html">
-                                            <h6 class="tt-title">Top 10 easter eggs in Red Dead Rede..</h6>
-                                            <div class="tt-description">
-                                                You can find these easter eggs in Red Dea..
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       <a href="page-single-topic.html">
-                                            <h6 class="tt-title">Red Dead Redemtion: Arthur Morgan..</h6>
-                                            <div class="tt-description">
-                                                Here’s what I’ve found in Red Dead Redem..
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="page-single-topic.html">
-                                            <h6 class="tt-title">Rdr2 secret easter eggs</h6>
-                                            <div class="tt-description">
-                                               Here’s what I’ve found in Red Dead Redem..
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       <a href="page-single-topic.html">
-                                            <h6 class="tt-title">Top 10 easter eggs in Red Dead Rede..</h6>
-                                            <div class="tt-description">
-                                                You can find these easter eggs in Red Dea..
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       <a href="page-single-topic.html">
-                                            <h6 class="tt-title">Red Dead Redemtion: Arthur Morgan..</h6>
-                                            <div class="tt-description">
-                                                Here’s what I’ve found in Red Dead Redem..
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button type="button" class="tt-view-all" data-toggle="modal" data-target="#modalAdvancedSearch">Advanced Search</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /tt-search -->
-            </div>
-            <div class="col-auto ml-auto">
-                 <div class="tt-user-info d-flex justify-content-center">
-                    <a href="#" class="tt-btn-icon">
-                         <i class="tt-icon"><svg><use xlink:href="#icon-notification"></use></svg></i>
-                    </a>
-                    <div class="tt-avatar-icon tt-size-md">
-                        <i class="tt-icon"><svg><use xlink:href="#icon-ava-a"></use></svg></i>
-                    </div>
-                    <div class="custom-select-01">
-                        <select>
-                            <option value="Default Sorting">azyrusmax</option>
-                            <option value="value 01">value 01</option>
-                            <option value="value 02">value 02</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </header>
 <main id="tt-pageContent" class="tt-offset-small">
     <div class="tt-wrapper-section">
@@ -203,19 +38,20 @@
                             <span th:class="|tt-color${colorLevel}  tt-badge|">LVL :
                                 <b th:text="${user.level}"></b>
                             </span></a></li>
-                        <div class="user-info ">
+
+                    </ul>
+                    <div class="user-info ">
                         居住地：<b th:if="${location!=null}" th:text="${location}"></b> <br>
                         个人网站：<b th:if="${website!=null}" th:text="${website}"></b> <br>
                         个人简介：<b th:if="${about!=null}" th:text="${about}"></b> <br>
                     </div>
-                    </ul>
 
                 </div>
                 <div class="tt-col-btn">
-                    <div class="tt-list-btn" >
-                        <div th:if="${loginUser.id!=user.id}">
+                    <div class="tt-list-btn"  >
+                        <div th:if="${loginUser.id!=user.id && isFollowed == 0}">
                             <a href="#" class="btn btn-primary">私信</a>
-                            <a href="#" class="btn btn-secondary">关注</a>
+                            <a href="javascript:;" th:onclick="|follow(this,1,${user.id});|" class="btn btn-secondary">关注</a>
                         </div>
                     </div>
                 </div>
@@ -237,10 +73,10 @@
                         <a class="nav-link" data-toggle="tab" href="#tt-tab-03" role="tab"><span>回复</span></a>
                     </li>
                     <li class="nav-item tt-hide-xs">
-                        <a class="nav-link" data-toggle="tab" href="#tt-tab-04" role="tab"><span>526 个粉丝</span></a>
+                        <a class="nav-link" data-toggle="tab" href="#tt-tab-04" role="tab"><span><b th:text="${fanCount}"></b> 个粉丝</span></a>
                     </li>
                     <li class="nav-item tt-hide-md">
-                        <a class="nav-link" data-toggle="tab" href="#tt-tab-05" role="tab"><span>关注了 89个人 </span></a>
+                        <a class="nav-link" data-toggle="tab" href="#tt-tab-05" role="tab"><span>关注了 <b th:text="${followeeCount}"></b>个人 </span></a>
                     </li>
                     <li class="nav-item tt-hide-md">
                         <a class="nav-link" data-toggle="tab" href="#tt-tab-06" role="tab"><span>经常活动的板块</span></a>
@@ -249,15 +85,26 @@
             </div>
 <!--            tab内容-->
             <div class="tab-content">
-                <div class="tab-pane tt-indent-none  show active" id="tt-tab-01" role="tabpanel">
+                <div class="tab-pane tt-indent-none active" id="tt-tab-01" role="tabpanel">
+<!--                 用户发布的帖子-->
                    <div class="tt-topic-list">
-                        <div class="tt-list-header">
-                            <div class="tt-col-topic">标题</div>
-                            <div class="tt-col-value-large hide-mobile">板块</div>
-                            <div class="tt-col-value-large hide-mobile">状态</div>
-                            <div class="tt-col-value-large hide-mobile">时间</div>
-                        </div>
-                        <div class="tt-item">
+<!--                       todo 发布的帖子区分化-->
+                       <div class="tt-list-header">
+                           <div class="tt-col-topic">标题</div>
+                           <div class="tt-col-category">板块</div>
+                           <div class="tt-col-value hide-mobile">喜爱</div>sha
+                           <div class="tt-col-value hide-mobile">回复</div>
+                           <div class="tt-col-value hide-mobile">浏览的人数</div>
+                           <div class="tt-col-value">最后活跃时间</div>
+                       </div>
+
+<!--                        <div class="tt-list-header">-->
+<!--                            <div class="tt-col-topic">标题</div>-->
+<!--                            <div class="tt-col-value-large hide-mobile">板块</div>-->
+<!--                            <div class="tt-col-value-large hide-mobile">状态</div>-->
+<!--                            <div class="tt-col-value-large hide-mobile">时间</div>-->
+<!--                        </div>-->
+                        <div th:replace="index::normal-post" class="tt-item">
                             <div class="tt-col-avatar">
                                 <svg class="tt-icon">
                                   <use xlink:href="#icon-ava-n"></use>
@@ -292,407 +139,6 @@
                             </div>
                             <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
                         </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-h"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-locked"></use>
-                                    </svg>
-                                    We Want to Hear From You! What Would You Like?
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color06 tt-badge">movies</span></a></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                            <i class="tt-icon"><svg><use xlink:href="#icon-like"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category tt-col-value-large hide-mobile"><span class="tt-color06 tt-badge">movies</span></div>
-                            <div class="tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                     <i class="tt-icon"><svg><use xlink:href="#icon-like"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                       <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-j"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Seeking partner backend developer
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color13 tt-badge">nature</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">elements</span></a></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                             <i class="tt-icon"><svg><use xlink:href="#icon-share"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">4 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category tt-col-value-large hide-mobile"><span class="tt-color13 tt-badge">nature</span></div>
-                            <div class="tt-col-category tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                     <i class="tt-icon"><svg><use xlink:href="#icon-share"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">4 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-t"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Cannot customize my intro
-                                </a></h6>
-                                <div class="tt-col-message">
-                                    <a href="#">Dylan replied:</a> I am noticed it will take little more time to review new authors submissions. All the Best
-                                </div>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color04 tt-badge">pets</span></a></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                            <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">4 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category tt-col-value-large hide-mobile"><span class="tt-color04 tt-badge">pets</span></div>
-                            <div class="tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                    <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">4 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Web Hosting Packages for ThemeForest WordPress
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">elements</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">4 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category tt-col-value-large"><span class="tt-color03 tt-badge">exchange</span></div>
-                            <div class="tt-col-value-large hide-mobile"></div>
-                            <div class="tt-col-value-large hide-mobile">4 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-k"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-verified"></use>
-                                    </svg>
-                                    Microsoft Word and Power Point
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color08 tt-badge">youtube</span></a></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                             <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">3 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="tt-col-category tt-col-value-large"><span class="tt-color08 tt-badge">youtube</span></div>
-                            <div class="tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                     <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">3 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-v"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    First website template got rejected.
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><span class="tt-color09 tt-badge">social</span></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                             <i class="tt-icon"><svg><use xlink:href="#icon-like"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">3 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="tt-col-category tt-col-value-large"><span class="tt-color09 tt-badge">social</span></div>
-                           <div class="tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                     <i class="tt-icon"><svg><use xlink:href="#icon-like"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">3 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-k"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-pinned"></use>
-                                    </svg>
-                                    Proform or looking for contacting billing department
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color10 tt-badge">science</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">contests</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">authors</span></a></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                             <i class="tt-icon"><svg><use xlink:href="#icon-like"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">2 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="tt-col-category tt-col-value-large"><span class="tt-color10 tt-badge">science</span></div>
-                            <div class="tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                     <i class="tt-icon"><svg><use xlink:href="#icon-like"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">2 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-n"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Does Envato act against the authors of Envato markets?
-                                </a></h6>
-                                <div class="tt-col-message">
-                                    <a href="#">Dylan replied:</a> It’s time to channel your inner Magnum P.I., Ron Swanson or Hercule Poroit! It’s the time that all guys (or gals) love and all our partners hate It’s Movember!
-                                </div>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color05 tt-badge">music</span></a></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                            <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="tt-col-category tt-col-value-large"><span class="tt-color05 tt-badge">music</span></div>
-                           <div class="tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                    <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-h"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-locked"></use>
-                                    </svg>
-                                    We Want to Hear From You! What Would You Like?
-                                </a></h6>
-                                 <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color06 tt-badge">movies</span></a></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                            <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="tt-col-category tt-col-value-large"><span class="tt-color06 tt-badge">movies</span></div>
-                            <div class="tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                    <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-j"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Seeking partner backend developer
-                                </a></h6>
-                                 <div class="row align-items-center no-gutters">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color13 tt-badge">nature</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">elements</span></a></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                            <i class="tt-icon"><svg><use xlink:href="#icon-share"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">4 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category tt-col-value-large"><span class="tt-color13 tt-badge">nature</span></div>
-                            <div class="tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                    <i class="tt-icon"><svg><use xlink:href="#icon-share"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">4 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-t"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Cannot customize my intro
-                                </a></h6>
-                                <div class="tt-col-message">
-                                    <a href="#">Dylan replied:</a> I am noticed it will take little more time to review new authors submissions. All the Best
-                                </div>
-                                 <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color04 tt-badge">pets</span></a></li>
-                                        </ul>
-                                        <a href="#" class="tt-btn-icon show-mobile">
-                                            <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">4 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category tt-col-value-large"><span class="tt-color04 tt-badge">pets</span></div>
-                            <div class="tt-col-value-large hide-mobile">
-                                <a href="#" class="tt-btn-icon">
-                                    <i class="tt-icon"><svg><use xlink:href="#icon-reply"></use></svg></i>
-                                </a>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">4 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Web Hosting Packages for ThemeForest WordPress
-                                </a></h6>
-                                 <div class="row align-items-center no-gutters">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">elements</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                       <div class="tt-value">4 Jan,19</div>
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="tt-col-category tt-col-value-large"><span class="tt-color03 tt-badge">exchange</span></div>
-                           <div class="tt-col-value-large hide-mobile"></div>
-                           <div class="tt-col-value-large hide-mobile">4 Jan,19</div>
-                        </div>
                         <div class="tt-row-btn">
                             <button type="button" class="btn-icon js-topiclist-showmore">
                                 <svg class="tt-icon">
@@ -702,459 +148,70 @@
                         </div>
                     </div>
                 </div>
+<!--                足迹-->
                 <div class="tab-pane tt-indent-none" id="tt-tab-02" role="tabpanel">
                     <div class="tt-topic-list">
                         <div class="tt-list-header">
-                            <div class="tt-col-topic">Topic</div>
-                            <div class="tt-col-category">Category</div>
-                            <div class="tt-col-value hide-mobile">Likes</div>
-                            <div class="tt-col-value hide-mobile">Replies</div>
-                            <div class="tt-col-value hide-mobile">Views</div>
-                            <div class="tt-col-value">Activity</div>
+                            <div class="tt-col-topic">标题</div>
+                            <div class="tt-col-category">板块</div>
+                            <div class="tt-col-value hide-mobile">喜爱</div>sha
+                            <div class="tt-col-value hide-mobile">回复</div>
+                            <div class="tt-col-value hide-mobile">浏览的人数</div>
+                            <div class="tt-col-value">最后活跃时间</div>
                         </div>
-                        <div class="tt-item">
+                        <div   th:each="postMessage : ${lookedPosts}" class="tt-item">
                             <div class="tt-col-avatar">
                                 <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
+                                    <!--                      <use xlink:href="#icon-ava-k"></use>-->
+                                    <img th:src="${postMessage.user.headerUrl}"  class="post_user_img" alt="">
                                 </svg>
                             </div>
                             <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-pinned"></use>
-                                    </svg>
-                                    Halloween Costume Contest 2018
-                                </a></h6>
+                                <h6 class="tt-title">
+                                    <a th:href="@{'/post/'+${postMessage.post.id}}" >
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-pinned"></use>
+                                        </svg>
+                                        <b th:text="${postMessage.post.title}">Halloween Costume Contest 2018</b>
+                                    </a></h6>
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-11">
                                         <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color01 tt-badge">politics</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">contests</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">authors</span></a></li>
+                                            <li class="show-mobile"><a th:href="@{'/board/'+${postMessage.post.boardName}}">
+                                    <span th:class="|tt-color${postMessage.colorNumber}   tt-badge|"
+                                          th:text="${postMessage.post.boardName}">politics</span></a></li>
+                                            <li th:each="tag:${postMessage.tags}">
+                                                <a th:href="@{'/post/search?tag='+${tag}}" >
+                                                    <span class="tt-badge" th:text="${tag}">contests</span>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">1h</div>
+                                        <div class="tt-value" th:text="${postMessage.lastActiveTime}">1h</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tt-col-category"><span class="tt-color01 tt-badge">politics</span></div>
-                            <div class="tt-col-value hide-mobile">985</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">502</div>
+                            <div class="tt-col-category">
+                                <a th:href="@{'/board/'+${postMessage.post.boardName}}">
+                    <span class="tt-color01 tt-badge"
+                          th:text="${postMessage.post.boardName}"
+                    >politics</span>
+                                </a>
+                            </div>
+                            <!--                todo 点赞和浏览人数 -->
+                            <div class="tt-col-value hide-mobile"
+                                 th:style="${postMessage.isFollowed==1?'color:#e74c3c;':'color:#666f74;'}"
+                                 th:text="${postMessage.followCount}"
+                            >985</div>
+                            <div class="tt-col-value tt-color-select hide-mobile"
+                                 th:text="${postMessage.post.replyAmount}">502</div>
                             <div class="tt-col-value hide-mobile">15.1k</div>
-                            <div class="tt-col-value hide-mobile">1h</div>
+                            <div class="tt-col-value hide-mobile"
+                                 th:text="${postMessage.lastActiveTime}"
+                            >1h</div>
                         </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-locked"></use>
-                                    </svg>
-                                    We’re removing Envato Credits from Market
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-11">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color02 tt-badge">video</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">1d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color02 tt-badge">video</span></div>
-                            <div class="tt-col-value hide-mobile">584</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">35</div>
-                            <div class="tt-col-value hide-mobile">1.3k</div>
-                            <div class="tt-col-value hide-mobile">2h</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                    Web Hosting Packages for ThemeForest WordPress
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-11">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">elements</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">2h</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color03 tt-badge">exchange</span></div>
-                            <div class="tt-col-value hide-mobile">401</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">975</div>
-                            <div class="tt-col-value hide-mobile">12.6k</div>
-                            <div class="tt-col-value hide-mobile">2h</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                    Review Queue Changes for VideoHive & PhotoDune
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-11">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color04 tt-badge">pets</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">videohive</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">photodune</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">1d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color04 tt-badge">pets</span></div>
-                            <div class="tt-col-value hide-mobile">308</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">660</div>
-                            <div class="tt-col-value hide-mobile">8.3k</div>
-                            <div class="tt-col-value hide-mobile">1d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                    Does Envato act against the authors of Envato markets?
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-11">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color05 tt-badge">music</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">videohive</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">photodune</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">1d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color05 tt-badge">music</span></div>
-                            <div class="tt-col-value hide-mobile">358</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">68</div>
-                            <div class="tt-col-value hide-mobile">8.3k</div>
-                            <div class="tt-col-value hide-mobile">1d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-locked"></use>
-                                    </svg>
-                                   We Want to Hear From You! What Would You Like?
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-11">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color06 tt-badge">movies</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">2d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color06 tt-badge">movies</span></div>
-                            <div class="tt-col-value hide-mobile">671</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">29</div>
-                            <div class="tt-col-value hide-mobile">1.3k</div>
-                            <div class="tt-col-value hide-mobile">2d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                   Seeking partner backend developer
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-11">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color15 tt-badge">nature</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">elements</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">2d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color15 tt-badge">nature</span></div>
-                            <div class="tt-col-value hide-mobile">278</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">27</div>
-                            <div class="tt-col-value hide-mobile">1.4k</div>
-                            <div class="tt-col-value hide-mobile">2d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                   Seeking partner backend developer
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-11">
-                                         <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color07 tt-badge">video games</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">videohive</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">photodune</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">2d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color07 tt-badge">video games</span></div>
-                            <div class="tt-col-value hide-mobile">364</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">36</div>
-                            <div class="tt-col-value hide-mobile">982</div>
-                            <div class="tt-col-value hide-mobile">2d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-verified"></use>
-                                </svg>
-                                   Microsoft Word and Power Point
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-11">
-                                         <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color08 tt-badge">youtube</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">3d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color08 tt-badge">youtube</span></div>
-                            <div class="tt-col-value hide-mobile">698</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">78</div>
-                            <div class="tt-col-value hide-mobile">2.1k</div>
-                            <div class="tt-col-value hide-mobile">3d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                    First website template got rejected.
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-11">
-                                         <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color09 tt-badge">social</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">3d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color09 tt-badge">social</span></div>
-                            <div class="tt-col-value hide-mobile">12</div>
-                            <div class="tt-col-value tt-color-select hide-mobile">3</div>
-                            <div class="tt-col-value hide-mobile">268</div>
-                            <div class="tt-col-value hide-mobile">3d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-pinned"></use>
-                                    </svg>
-                                   Proform or looking for contacting billing department
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-11">
-                                         <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color10 tt-badge">science</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">contests</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">authors</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">2d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color10 tt-badge">science</span></div>
-                            <div class="tt-col-value hide-mobile">364</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">36</div>
-                            <div class="tt-col-value hide-mobile">982</div>
-                            <div class="tt-col-value hide-mobile">2d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-locked"></use>
-                                    </svg>
-                                  Refund for wrongly purchase HTML template
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-11">
-                                         <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color11 tt-badge">entertainment</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">3d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color11 tt-badge">entertainment</span></div>
-                            <div class="tt-col-value hide-mobile">657</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">177</div>
-                            <div class="tt-col-value hide-mobile">2.6k</div>
-                            <div class="tt-col-value hide-mobile">3d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                  Why all my affiliate balance is pending?
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-11">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">elements</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">4d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color03 tt-badge">exchange</span></div>
-                            <div class="tt-col-value hide-mobile">37</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">31</div>
-                            <div class="tt-col-value hide-mobile">257</div>
-                            <div class="tt-col-value hide-mobile">4d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                               <h6 class="tt-title"><a href="#">
-                                 Google snippets wordpress plugin
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-11">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color04 tt-badge">pets</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">videohive</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">photodune</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">4d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color04 tt-badge">pets</span></div>
-                            <div class="tt-col-value hide-mobile">987</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">271</div>
-                            <div class="tt-col-value hide-mobile">3.8k</div>
-                            <div class="tt-col-value hide-mobile">4d</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                                <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                 How to use Team Listing?
-                                </a></h6>
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-11">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color09 tt-badge">social</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">videohive</span></a></li>
-                                            <li><a href="#"><span class="tt-badge">photodune</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-1 ml-auto show-mobile">
-                                        <div class="tt-value">5d</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><span class="tt-color09 tt-badge">social</span></div>
-                            <div class="tt-col-value hide-mobile">324</div>
-                            <div class="tt-col-value tt-color-select  hide-mobile">163</div>
-                            <div class="tt-col-value hide-mobile">2.3k</div>
-                            <div class="tt-col-value hide-mobile">5d</div>
-                        </div>
+
                         <div class="tt-row-btn">
                             <button type="button" class="btn-icon js-topiclist-showmore">
                                 <svg class="tt-icon">
@@ -1164,310 +221,55 @@
                         </div>
                     </div>
                 </div>
+<!--              回复-->
                 <div class="tab-pane tt-indent-none" id="tt-tab-03" role="tabpanel">
                      <div class="tt-topic-list">
                         <div class="tt-list-header">
-                            <div class="tt-col-topic">Topic</div>
-                            <div class="tt-col-category">Category</div>
-                            <div class="tt-col-value">Activity</div>
+                            <div class="tt-col-topic">帖子与内容</div>
+                            <div class="tt-col-category">板块</div>
+                            <div class="tt-col-value">回复时间</div>
                         </div>
-                        <div class="tt-item">
+                        <div th:each="message:${replyMessages}" class="tt-item">
                             <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
+                                <a th:href="@{'/user/profile/'+${message.user.id}}">
+                                    <img th:src="${message.user.headerUrl}"  class="post_user_img" alt="">
+                                </a>
+
                             </div>
                             <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Does Envato act against the authors of Envato markets?
+                                <h6 class="tt-title"><a th:href="@{'/post/'+${message.post.id}}">
+                                    <b th:text="${message.post.title}"></b>
                                 </a></h6>
                                 <div class="row align-items-center no-gutters hide-desktope">
                                     <div class="col-9">
                                         <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color06 tt-badge">movies</span></a></li>
+                                            <li class="show-mobile">
+                                                <a th:href="@{'/board/'+${message.post.boardName}}">
+                                                    <span   th:text="${message.post.boardName}"
+                                                            class="tt-color06 tt-badge">movies</span></a></li>
                                         </ul>
                                     </div>
                                     <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
+                                        <div class="tt-value"
+                                            th:text="${#dates.format(message.reply.replyTime,'MM-dd,yyyy')}"
+                                        >5 Jan,19</div>
                                     </div>
                                 </div>
-                                <div class="tt-content">
+                                <div class="tt-content" th:text="${message.reply.content}"
+                                >
                                     I really liked new badge - T-shirt. Will there be new contests with new badges for AudioJungle?
                                 </div>
                             </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color06 tt-badge">movies</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
+                            <div class="tt-col-category">
+                                <a th:href="@{'/board/'+${message.post.boardName}}">
+                                                    <span   th:text="${message.post.boardName}"
+                                                            class="tt-color06 tt-badge">movies</span></a>
+                            </div>
+                            <div class="tt-col-value-large hide-mobile"
+                                 th:text="${#dates.format(message.reply.replyTime,'MM-dd,yyyy')}"
+                            >5 Jan,19</div>
                         </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    We Want to Hear From You! What Would You Like?
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color15 tt-badge">nature</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                    Can it be in not vector format but in very big resolution (far far beyond enough for print on shirts) ?
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color15 tt-badge">nature</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Seeking partner backend developer
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color05 tt-badge">music</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                    One more question -> what is the maximum space (in cm or inches) the design can be?
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color05 tt-badge">music</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Cannot customize my intro
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color05 tt-badge">music</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                    Wow great to see another good contest, I hope we will submit one of our entry this time and try to win it
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color05 tt-badge">music</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Web Hosting Packages for ThemeForest WordPress
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                    Keep an eye on author dashboard or forums and thr are chances for such contest in each and every category on Envato market
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Microsoft Word and Power Point
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color08 tt-badge">youtube</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                    99% of authors are keeping eyes on the upper right corner hehehehe
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color08 tt-badge">youtube</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Does Envato act against the authors of Envato markets?
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color06 tt-badge">movies</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                    I really liked new badge - T-shirt. Will there be new contests with new badges for AudioJungle?
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color06 tt-badge">movies</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    We Want to Hear From You! What Would You Like?
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color15 tt-badge">nature</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                    Can it be in not vector format but in very big resolution (far far beyond enough for print on shirts) ?
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color15 tt-badge">nature</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Seeking partner backend developer
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color15 tt-badge">music</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                    One more question -> what is the maximum space (in cm or inches) the design can be?
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color15 tt-badge">music</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Cannot customize my intro
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color15 tt-badge">music</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                    Wow great to see another good contest, I hope we will submit one of our entry this time and try to win it
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color15 tt-badge">music</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-avatar">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-ava-d"></use>
-                                </svg>
-                            </div>
-                            <div class="tt-col-description">
-                                <h6 class="tt-title"><a href="#">
-                                    Web Hosting Packages for ThemeForest WordPress
-                                </a></h6>
-                                <div class="row align-items-center no-gutters hide-desktope">
-                                    <div class="col-9">
-                                        <ul class="tt-list-badge">
-                                            <li class="show-mobile"><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-3 ml-auto show-mobile">
-                                        <div class="tt-value">5 Jan,19</div>
-                                    </div>
-                                </div>
-                                <div class="tt-content">
-                                   Keep an eye on author dashboard or forums and thr are chances for such contest in each and every category on Envato market
-                                </div>
-                            </div>
-                            <div class="tt-col-category"><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></div>
-                            <div class="tt-col-value-large hide-mobile">5 Jan,19</div>
-                        </div>
+
                         <div class="tt-row-btn">
                             <button type="button" class="btn-icon js-topiclist-showmore">
                                 <svg class="tt-icon">
@@ -1477,631 +279,87 @@
                         </div>
                     </div>
                 </div>
+<!--粉丝-->
                 <div class="tab-pane tt-indent-none" id="tt-tab-04" role="tabpanel">
                     <div class="tt-followers-list">
                         <div class="tt-list-header">
-                            <div class="tt-col-name">User</div>
-                            <div class="tt-col-value-large hide-mobile">Follow date</div>
-                            <div class="tt-col-value-large hide-mobile">Last Activity</div>
-                            <div class="tt-col-value-large hide-mobile">Threads</div>
-                            <div class="tt-col-value-large hide-mobile">Replies</div>
-                            <div class="tt-col-value">Level</div>
+                            <div class="tt-col-name">用户</div>
+                            <div class="tt-col-value-large hide-mobile">关注日期</div>
+                            <div class="tt-col-value-large hide-mobile"> </div>
+                            <div class="tt-col-value-large hide-mobile">私信数量</div>
+                            <div class="tt-col-value-large hide-mobile"></div>
+                            <div class="tt-col-value"></div>
                         </div>
-                        <div class="tt-item">
+                        <div    th:each="fan : ${fansMessages}"
+                                class="tt-item" >
                             <div class="tt-col-merged">
                                 <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-t"></use>
-                                    </svg>
+                                    <img th:src="${fan.user.headerUrl}"  class="post_user_img" alt="">
                                 </div>
                                 <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Taylor</a></h6>
+                                    <h6 class="tt-title"><a
+                                            th:href="@{'/user/profile/'+${fan.user.id}}"
+                                        th:text="${fan.user.nickname}"
+                                    >Taylor</a></h6>
                                     <ul>
-                                        <li><a href="mailto:@tails23">@tails23</a></li>
+<!--                                        <li><a href="mailto:@tails23">@tails23</a></li>-->
                                     </ul>
                                 </div>
                             </div>
-                            <div class="tt-col-value-large hide-mobile">10/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">10 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">0</div>
-                            <div class="tt-col-value-large hide-mobile">6</div>
-                            <div class="tt-col-value"><span class="tt-color16 tt-badge">LVL : 02</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-k"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Kevin</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@kevin27">@kevin27</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">08/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">4 days ago</div>
-                            <div class="tt-col-value-large hide-mobile">0</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value"><span class="tt-color17 tt-badge">LVL : 26</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-g"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Green</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@green63">@green63</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">09/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">1 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">9</div>
-                            <div class="tt-col-value-large hide-mobile">32</div>
-                            <div class="tt-col-value"><span class="tt-color16 tt-badge">LVL : 06</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-d"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Dylan</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@dylan89">@dylan89</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">09/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">18 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value-large hide-mobile">3</div>
-                            <div class="tt-col-value"><span class="tt-color17 tt-badge">LVL : 27</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-p"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Peterson</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@dylan89">@dylan89</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">09/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">3 days ago</div>
-                            <div class="tt-col-value-large hide-mobile">8</div>
-                            <div class="tt-col-value-large hide-mobile">21</div>
-                            <div class="tt-col-value"><span class="tt-color18 tt-badge">LVL : 13</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-a"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">azyrus</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@azyrus21">@azyrus21</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">08/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">2 days ago</div>
-                            <div class="tt-col-value-large hide-mobile">19</div>
-                            <div class="tt-col-value-large hide-mobile">32</div>
-                            <div class="tt-col-value"><span class="tt-color18 tt-badge">LVL : 18</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-s"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Smith</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@smith45">@smith45</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">08/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">1 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">6</div>
-                            <div class="tt-col-value-large hide-mobile">13</div>
-                            <div class="tt-col-value"><span class="tt-color07 tt-badge">LVL : 42</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-u"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Usain</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@bolt24">@bolt24</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">07/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">9 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">20</div>
-                            <div class="tt-col-value-large hide-mobile">43</div>
-                            <div class="tt-col-value"><span class="tt-color17 tt-badge">LVL : 21</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-l"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Larry</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@larry74">@larry74</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">06/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">6 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value-large hide-mobile">5</div>
-                            <div class="tt-col-value"><span class="tt-color19 tt-badge">LVL : 39</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-j"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Jordan</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@jordan36">@jordan36</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">05/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">6 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">6</div>
-                            <div class="tt-col-value-large hide-mobile">23</div>
-                            <div class="tt-col-value"><span class="tt-color07 tt-badge">LVL : 46</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-c"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Clive</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@clive45">@clive45</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">05/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">8 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value-large hide-mobile">8</div>
-                            <div class="tt-col-value"><span class="tt-color18 tt-badge">LVL : 16</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-m"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Mitchell</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@mitchell73">@mitchell73</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">05/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">1 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">1</div>
-                            <div class="tt-col-value-large hide-mobile">3</div>
-                            <div class="tt-col-value"><span class="tt-color19 tt-badge">LVL : 33</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-v"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Vans</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@vans49">@vans49</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">04/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">23 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">4</div>
-                            <div class="tt-col-value-large hide-mobile">9</div>
-                            <div class="tt-col-value"><span class="tt-color20 tt-badge">LVL : 99</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-b"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Baker</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@baker65">@baker65</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">03/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">4 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">28</div>
-                            <div class="tt-col-value-large hide-mobile">86</div>
-                            <div class="tt-col-value"><span class="tt-color07 tt-badge">LVL : 43</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-f"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Foster</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@foster87">@foster87</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">03/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">7 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value-large hide-mobile">16</div>
-                            <div class="tt-col-value"><span class="tt-color21 tt-badge">LVL : 62</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane tt-indent-none" id="tt-tab-05" role="tabpanel">
-                    <div class="tt-followers-list">
-                        <div class="tt-list-header">
-                            <div class="tt-col-name">User</div>
-                            <div class="tt-col-value-large hide-mobile">Follow date</div>
-                            <div class="tt-col-value-large hide-mobile">Last Activity</div>
-                            <div class="tt-col-value-large hide-mobile">Threads</div>
-                            <div class="tt-col-value-large hide-mobile">Replies</div>
-                            <div class="tt-col-value">Level</div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-m"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Mitchell</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@mitchell73">@mitchell73</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">05/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">1 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">1</div>
-                            <div class="tt-col-value-large hide-mobile">3</div>
-                            <div class="tt-col-value"><span class="tt-color19 tt-badge">LVL : 33</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-v"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Vans</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@vans49">@vans49</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">04/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">23 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">4</div>
-                            <div class="tt-col-value-large hide-mobile">9</div>
-                            <div class="tt-col-value"><span class="tt-color20 tt-badge">LVL : 99</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-b"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Baker</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@baker65">@baker65</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">03/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">4 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">28</div>
-                            <div class="tt-col-value-large hide-mobile">86</div>
-                            <div class="tt-col-value"><span class="tt-color07 tt-badge">LVL : 43</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-f"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Foster</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@foster87">@foster87</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">03/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">7 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value-large hide-mobile">16</div>
-                            <div class="tt-col-value"><span class="tt-color21 tt-badge">LVL : 62</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-t"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Taylor</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@tails23">@tails23</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">10/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">10 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">0</div>
-                            <div class="tt-col-value-large hide-mobile">6</div>
-                            <div class="tt-col-value"><span class="tt-color16 tt-badge">LVL : 02</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-k"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Kevin</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@kevin27">@kevin27</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">08/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">4 days ago</div>
-                            <div class="tt-col-value-large hide-mobile">0</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value"><span class="tt-color17 tt-badge">LVL : 26</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-g"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Green</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@green63">@green63</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">09/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">1 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">9</div>
-                            <div class="tt-col-value-large hide-mobile">32</div>
-                            <div class="tt-col-value"><span class="tt-color16 tt-badge">LVL : 06</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-d"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Dylan</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@dylan89">@dylan89</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">09/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">18 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value-large hide-mobile">3</div>
-                            <div class="tt-col-value"><span class="tt-color17 tt-badge">LVL : 27</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-p"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Peterson</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@dylan89">@dylan89</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">09/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">3 days ago</div>
-                            <div class="tt-col-value-large hide-mobile">8</div>
-                            <div class="tt-col-value-large hide-mobile">21</div>
-                            <div class="tt-col-value"><span class="tt-color18 tt-badge">LVL : 13</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-a"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">azyrus</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@azyrus21">@azyrus21</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">08/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">2 days ago</div>
-                            <div class="tt-col-value-large hide-mobile">19</div>
-                            <div class="tt-col-value-large hide-mobile">32</div>
-                            <div class="tt-col-value"><span class="tt-color18 tt-badge">LVL : 18</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-s"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Smith</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@smith45">@smith45</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">08/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">1 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">6</div>
-                            <div class="tt-col-value-large hide-mobile">13</div>
-                            <div class="tt-col-value"><span class="tt-color07 tt-badge">LVL : 42</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-u"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Usain</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@bolt24">@bolt24</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">07/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">9 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">20</div>
-                            <div class="tt-col-value-large hide-mobile">43</div>
-                            <div class="tt-col-value"><span class="tt-color17 tt-badge">LVL : 21</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-l"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Larry</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@larry74">@larry74</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">06/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">6 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value-large hide-mobile">5</div>
-                            <div class="tt-col-value"><span class="tt-color19 tt-badge">LVL : 39</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-j"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Jordan</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@jordan36">@jordan36</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">05/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">6 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">6</div>
-                            <div class="tt-col-value-large hide-mobile">23</div>
-                            <div class="tt-col-value"><span class="tt-color07 tt-badge">LVL : 46</span></div>
-                        </div>
-                        <div class="tt-item">
-                            <div class="tt-col-merged">
-                                <div class="tt-col-avatar">
-                                    <svg class="tt-icon">
-                                      <use xlink:href="#icon-ava-c"></use>
-                                    </svg>
-                                </div>
-                                <div class="tt-col-description">
-                                    <h6 class="tt-title"><a href="#">Clive</a></h6>
-                                    <ul>
-                                        <li><a href="mailto:@clive45">@clive45</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tt-col-value-large hide-mobile">05/01/2019</div>
-                            <div class="tt-col-value-large hide-mobile tt-color-select">8 hours ago</div>
-                            <div class="tt-col-value-large hide-mobile">2</div>
-                            <div class="tt-col-value-large hide-mobile">8</div>
-                            <div class="tt-col-value"><span class="tt-color18 tt-badge">LVL : 16</span></div>
+                            <div class="tt-col-value-large hide-mobile"
+                                th:text="${#dates.format(fan.followTime,'MM/dd/yyyy')}"
+                            >10/01/2019</div>
+                            <div class="tt-col-value-large hide-mobile tt-color-select"></div>
+                            <div class="tt-col-value-large hide-mobile"></div>
+                            <div class="tt-col-value-large hide-mobile"></div>
+                            <div class="tt-col-value"><span class="tt-color16 tt-badge">LVL : <b
+                            th:text="${fan.user.level}"
+                            ></b></span></div>
                         </div>
 
                     </div>
                 </div>
+<!--               关注-->
+                <div class="tab-pane tt-indent-none" id="tt-tab-05" role="tabpanel">
+                    <div class="tt-followers-list">
+                        <div class="tt-list-header">
+                            <div class="tt-col-name">用户</div>
+                            <div class="tt-col-value-large hide-mobile">关注日期</div>
+                            <div class="tt-col-value-large hide-mobile"> </div>
+                            <div class="tt-col-value-large hide-mobile"></div>
+                            <div class="tt-col-value-large hide-mobile"></div>
+                            <div class="tt-col-value">等级</div>
+                        </div>
+                        <div    th:each="fan : ${followeeMessages}"
+                                class="tt-item" >
+                            <div class="tt-col-merged">
+                                <div class="tt-col-avatar">
+                                    <img th:src="${fan.user.headerUrl}"  style="width: 40px;" alt="">
+                                </div>
+                                <div class="tt-col-description">
+                                    <h6 class="tt-title"><a
+                                            th:href="@{'/user/profile/'+${fan.user.id}}"
+                                            th:text="${fan.user.nickname}"
+                                    >Taylor</a></h6>
+                                    <ul>
+                                        <!--                                        <li><a href="mailto:@tails23">@tails23</a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tt-col-value-large hide-mobile"
+                                 th:text="${#dates.format(fan.followTime,'MM/dd/yyyy')}"
+                            >10/01/2019</div>
+                            <div class="tt-col-value-large hide-mobile tt-color-select"></div>
+                            <div class="tt-col-value-large hide-mobile"></div>
+                            <div class="tt-col-value-large hide-mobile"></div>
+                            <div class="tt-col-value"><span class="tt-color16 tt-badge">LVL : <b
+                                    th:text="${fan.user.level}"
+                            ></b></span></div>
+                        </div>
+
+                    </div>
+                </div>
+<!--                经常活动的板块-->
                 <div class="tab-pane" id="tt-tab-06" role="tabpanel">
                     <div class="tt-wrapper-inner">
                         <div class="tt-categories-list">
@@ -2134,427 +392,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color02 tt-badge">video</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 368</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">movies</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">new movies</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">marvel movies</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">netflix</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">prime</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 381</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color04 tt-badge">pets</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 98</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color05 tt-badge">music</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 28</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color06 tt-badge">movies</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 74</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color15 tt-badge">nature</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 1,245</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color07 tt-badge">video games</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 1,245</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color08 tt-badge">youtube</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 1,245</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color09 tt-badge">social</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 1,245</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color10 tt-badge">science</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 1,245</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color11 tt-badge">entertainment</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 1,245</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color04 tt-badge">pets</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 1,245</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color05 tt-badge">music</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 1,245</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="tt-item">
-                                        <div class="tt-item-header">
-                                            <ul class="tt-list-badge">
-                                                <li><a href="#"><span class="tt-color06 tt-badge">movies</span></a></li>
-                                            </ul>
-                                            <h6 class="tt-title"><a href="#">Threads - 1,245</a></h6>
-                                        </div>
-                                        <div class="tt-item-layout">
-                                           <div class="tt-innerwrapper">
-                                               Lets discuss about whats happening around the world politics.
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <h6 class="tt-title">Similar TAGS</h6>
-                                                <ul class="tt-list-badge">
-                                                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
-                                                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
-                                                </ul>
-                                           </div>
-                                           <div class="tt-innerwrapper">
-                                                <a href="#" class="tt-btn-icon">
-                                                    <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-12">
                                     <div class="tt-row-btn">
                                         <button type="button" class="btn-icon js-topiclist-showmore">
@@ -2570,96 +407,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>F
 </main>
 <div th:replace="index::setting" id="js-popup-settings" class="tt-popup-settings">
-	<div class="tt-btn-col-close">
-		<a href="#">
-			<span class="tt-icon-title">
-				<svg>
-					<use xlink:href="#icon-settings_fill"></use>
-				</svg>
-			</span>
-			<span class="tt-icon-text">
-				Settings
-			</span>
-			<span class="tt-icon-close">
-				<svg>
-					<use xlink:href="#icon-cancel"></use>
-				</svg>
-			</span>
-		</a>
-	</div>
-	<form class="form-default">
-		<div class="tt-form-upload">
-			<div class="row no-gutter">
-				<div class="col-auto">
-					<div class="tt-avatar">
-		                <svg>
-		                  <use xlink:href="#icon-ava-d"></use>
-		                </svg>
-		            </div>
-				</div>
-				<div class="col-auto ml-auto">
-					<a href="#" class="btn btn-primary">Upload Picture</a>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserName">Username</label>
-		   <input type="text" name="name" class="form-control" id="settingsUserName" placeholder="azyrusmax">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserEmail">Email</label>
-		   <input type="text" name="name" class="form-control" id="settingsUserEmail" placeholder="Sample@sample.com">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserPassword">Password</label>
-		   <input type="password" name="name" class="form-control" id="settingsUserPassword" placeholder="************">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserLocation">Location</label>
-		   <input type="text" name="name" class="form-control" id="settingsUserLocation" placeholder="Slovakia">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserWebsite">Website</label>
-		   <input type="text" name="name" class="form-control" id="settingsUserWebsite" placeholder="Sample.com">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserAbout">About</label>
-		    <textarea name="" placeholder="Few words about you" class="form-control" id="settingsUserAbout"></textarea>
-		</div>
-		<div class="form-group">
-			<label for="settingsUserAbout">Notify me via Email</label>
-			<div class="checkbox-group">
-		        <input type="checkbox" id="settingsCheckBox01" name="checkbox">
-		        <label for="settingsCheckBox01">
-		            <span class="check"></span>
-		            <span class="box"></span>
-		            <span class="tt-text">When someone replies to my thread</span>
-		        </label>
-		    </div>
-		    <div class="checkbox-group">
-		        <input type="checkbox" id="settingsCheckBox02" name="checkbox">
-		        <label for="settingsCheckBox02">
-		            <span class="check"></span>
-		            <span class="box"></span>
-		            <span class="tt-text">When someone likes my thread or reply</span>
-		        </label>
-		    </div>
-		    <div class="checkbox-group">
-		        <input type="checkbox" id="settingsCheckBox03" name="checkbox">
-		        <label for="settingsCheckBox03">
-		            <span class="check"></span>
-		            <span class="box"></span>
-		            <span class="tt-text">When someone mentions me</span>
-		        </label>
-		    </div>
-		</div>
-		<div class="form-group">
-			<a href="#" class="btn btn-secondary">Save</a>
-		</div>
-		</form>
+
 </div>
 <a th:replace="index::create" href="page-create-topic.html" class="tt-btn-create-topic">
     <span class="tt-icon">
@@ -2668,133 +419,12 @@
         </svg>
     </span>
 </a>
-
 <div th:replace="index::advanced_search" class="modal fade" id="modalAdvancedSearch" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="tt-modal-advancedSearch">
-				<div class="tt-modal-title">
-					<i class="pt-icon">
-						<svg>
-							<use xlink:href="#icon-advanced_search"></use>
-						</svg>
-					</i>
-					Advanced Search
-					<a class="pt-close-modal" href="#" data-dismiss="modal">
-						<svg class="icon">
-							<use xlink:href="#icon-cancel"></use>
-						</svg>
-					</a>
-				</div>
-				<form class="form-default">
-					<div class="form-group">
-						<i class="pt-customInputIcon">
-                           <svg class="tt-icon">
-                              <use xlink:href="#icon-search"></use>
-                            </svg>
-                        </i>
-						<input type="text" name="name" class="form-control pt-customInputSearch" id="searchForum" placeholder="Search all forums">
-					</div>
-					<div class="form-group">
-						<label for="searchName">Posted by</label>
-						<input type="text" name="name" class="form-control" id="searchName" placeholder="Username">
-					</div>
-					<div class="form-group">
-						<label for="searchCategory">In Category</label>
-						<input type="text" name="name" class="form-control" id="searchCategory" placeholder="Add Category">
-					</div>
-					<div class="checkbox-group">
-				        <input type="checkbox" id="searcCheckBox01" name="checkbox">
-				        <label for="searcCheckBox01">
-				            <span class="check"></span>
-				            <span class="box"></span>
-				            <span class="tt-text">Include all tags</span>
-				        </label>
-				    </div>
-					<div class="form-group">
-						<label>Only return topics/posts that...</label>
-						<div class="checkbox-group">
-					        <input type="checkbox" id="searcCheckBox02" name="checkbox">
-					        <label for="searcCheckBox02">
-					            <span class="check"></span>
-					            <span class="box"></span>
-					            <span class="tt-text">I liked</span>
-					        </label>
-					    </div>
-					    <div class="checkbox-group">
-					        <input type="checkbox" id="searcCheckBox03" name="checkbox">
-					        <label for="searcCheckBox03">
-					            <span class="check"></span>
-					            <span class="box"></span>
-					            <span class="tt-text">are in my messages</span>
-					        </label>
-					    </div>
-					    <div class="checkbox-group">
-					        <input type="checkbox" id="searcCheckBox04" name="checkbox">
-					        <label for="searcCheckBox04">
-					            <span class="check"></span>
-					            <span class="box"></span>
-					            <span class="tt-text">I’ve read</span>
-					        </label>
-					    </div>
-					</div>
-					<div class="form-group">
-						<select class="form-control" id="searchTop">
-							<option>any</option>
-							<option>value 01</option>
-							<option>value 02</option>
-							<option>value 03</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="searchaTopics">Where topics</label>
-						<select class="form-control" id="searchaTopics">
-							<option>any</option>
-							<option>value 01</option>
-							<option>value 02</option>
-							<option>value 03</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="searchAdvTime">Posted</label>
-						<div class="row">
-							<div class="col-6">
-								<select class="form-control">
-									<option>any</option>
-									<option>value 01</option>
-									<option>value 02</option>
-									<option>value 03</option>
-								</select>
-							</div>
-							<div class="col-6">
-								<input type="text" name="name" class="form-control" id="searchAdvTime" placeholder="dd-mm-yyyy">
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="minPostCount">Minimum Post Count</label>
-						<select class="form-control" id="minPostCount">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-							<option>6</option>
-							<option>7</option>
-							<option>8</option>
-							<option>9</option>
-							<option selected>10</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<a href="#" class="btn btn-secondary btn-block">Search</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+
 </div>
+<script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
 <script th:src="@{/js/bundle.js}"></script>
+<script th:src="@{/js/profile.js}"></script>
 <svg width="0" height="0" class="hidden">
 	 <symbol aria-hidden="true" data-prefix="fab" data-icon="facebook-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 512" id="facebook-f-brands">
     <path fill="currentColor" d="M215.8 85H264V3.6C255.7 2.5 227.1 0 193.8 0 124.3 0 76.7 42.4 76.7 120.3V192H0v91h76.7v229h94V283h73.6l11.7-91h-85.3v-62.7c0-26.3 7.3-44.3 45.1-44.3z"></path>

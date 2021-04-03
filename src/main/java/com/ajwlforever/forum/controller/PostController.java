@@ -2,6 +2,7 @@ package com.ajwlforever.forum.controller;
 
 import com.ajwlforever.forum.dao.BoardMapper;
 import com.ajwlforever.forum.entity.*;
+import com.ajwlforever.forum.event.EventProducer;
 import com.ajwlforever.forum.service.*;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
@@ -40,6 +41,8 @@ public class PostController implements ForumConstant {
     private FollowService followService;
     @Autowired
     private ViewService viewService;
+    @Autowired
+    private EventProducer eventProducer;
 
     @GetMapping("/post/{postId}")
     public String getPost(@PathVariable("postId")int postId, Page page, Model model){
@@ -145,7 +148,7 @@ public class PostController implements ForumConstant {
         long allUserCount = viewService.getEntityUserCount(ENTITY_TYPE_POST,post.getId());
         model.addAttribute("allUserCount",allUserCount);
         //浏览人数加1
-        viewService.viewEntity(hostUser ,ENTITY_TYPE_POST,post.getId());
+        viewService.viewEntity(hostUser ,ENTITY_TYPE_POST, post.getId(), USER_OPERATION_LOOK);
 
         return "/page-single-topic";
     }
@@ -185,7 +188,25 @@ public class PostController implements ForumConstant {
         reply.setUserId(user.getId()).setReplyTime(new Date()
         ).setStatus(REPLY_STATUS_NORMAL);
         replyService.insert(reply);
+        //发送评论系统通知
+        Event event = new Event()
+                .setUserId(user.getId())
+                .setTopic(TOPIC_REPLY)
+                .setEntityType(reply.getFatherId()==0? ENTITY_TYPE_POST:ENTITY_TYPE_REPLY)  //对帖子回复还是回复 回复
+                .setEntityId(reply.getId())
+                .setData("postId",reply.getPostId());
+        if(reply.getFatherId() == 0)
+        {
+            //是评论的回复
+            Post post = postService.selectByPostId(reply.getPostId());
+            event.setEntityUserId(post.getUserId());
+        }else{
+            Reply reply1 = replyService.selectById(reply.getFatherId());
+            event.setEntityUserId(reply1.getUserId());
+        }
+        eventProducer.fireEvent(event);
 
+        viewService.viewEntity(user,ENTITY_TYPE_POST,reply.getPostId(),USER_OPERATION_REPLY);
         return ForumUtils.toJsonString(0,"回复成功!");
     }
 }

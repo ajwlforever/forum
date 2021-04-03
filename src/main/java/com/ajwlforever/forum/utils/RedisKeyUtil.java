@@ -11,7 +11,8 @@ public class RedisKeyUtil {
     private static final String PREFIX_FANS = "follower";
     private static final String PREFIX_FOLLOWEE = "followee";
     private static final String PREFIX_VIEW = "view";
-    private static final String PREFIX_USER= "user";
+    private static final String PREFIX_USER = "user";
+    private static final String PREFIX_POST = "post";
 
     public static String getTicketKey(String ticket){
         return PREFIX_TICKET+SPLIT+ticket;
@@ -45,6 +46,11 @@ public class RedisKeyUtil {
     //view:entityType:entityId : int   count计数
     public static String getViewCountKey(int entityType, int entityId){
         return PREFIX_VIEW+SPLIT+entityType+SPLIT+entityId;
+    }
+    //用户的足迹
+    //view:userId:entityType:operation zset(postId)
+    public static String getUserViewKey(int userId,int entityType,int userOp){
+        return PREFIX_VIEW+SPLIT+userId+SPLIT+entityType+SPLIT+userOp;
     }
     //view:user:entityType:entityId   :  set(userId)
     public static String getViewUserKey(int entityType, int entityId){

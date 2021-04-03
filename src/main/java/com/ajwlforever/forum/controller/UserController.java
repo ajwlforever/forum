@@ -4,9 +4,7 @@ import com.ajwlforever.forum.entity.Page;
 import com.ajwlforever.forum.entity.Post;
 import com.ajwlforever.forum.entity.Reply;
 import com.ajwlforever.forum.entity.User;
-import com.ajwlforever.forum.service.PostService;
-import com.ajwlforever.forum.service.ReplyService;
-import com.ajwlforever.forum.service.UserService;
+import com.ajwlforever.forum.service.*;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
@@ -22,9 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * User的控制器
@@ -50,6 +46,10 @@ public class UserController implements ForumConstant {
     private PostService postService;
     @Autowired
     private ReplyService replyService;
+    @Autowired
+    private ViewService viewService;
+    @Autowired
+    private FollowService followService;
 
     @GetMapping("/img/{filename}")
     public void getImage(@PathVariable("filename")String fileName, HttpServletResponse response){
@@ -78,20 +78,55 @@ public class UserController implements ForumConstant {
     }
 
     @GetMapping("/profile/{userId}")
-    public String getProfile(@PathVariable("userId") int userId, Page page,Model model) {
+    public String getProfile(@PathVariable("userId") int userId, Model model) {
         User user = hostHolder.getUser();
         User profileUser = user;
         if(userId!=user.getId()) {
             profileUser = userService.selectById(userId);
         }
         //todo 个人中心具体化
-        page.setPath("/profile/"+profileUser.getId());
-        page.setLimit(PAGE_PROFILE_LIMIT);
-        page.setRows(postService.selectPostRows(profileUser.getId()));
-        model.addAttribute("user",profileUser);
-        List<Post> posts = postService.selectAllPost(profileUser.getId(), page.getOffset(), page.getLimit());
 
-        model.addAttribute("posts", posts);
+        model.addAttribute("user",profileUser);
+        boolean isFollowed = followService.isFollow(user,ENTITY_TYPE_USER,profileUser.getId());
+        model.addAttribute("isFollowed",isFollowed == true? 1 : 0);
+        //所有帖子
+        //todo 个人中心帖子部分显示
+        List<Post> posts = postService.selectAllPost(profileUser.getId(),0,-1);
+        model.addAttribute("normalPostMessages", postService.getPostMessages(posts));
+
+        //100条看帖子足迹
+        List<Post> lookedPosts = viewService.getUserViewPost(profileUser.getId(),USER_OPERATION_LOOK,0,99);
+        // List<Post> repliedPosts = viewService.getUserViewPost(profileUser.getId(),USER_OPERATION_REPLY,0,99);
+        model.addAttribute("lookedPosts", postService.getPostMessages(lookedPosts));
+        //回复内容
+        List<Reply> replies = replyService.selectByUserId(profileUser.getId(),0,100);
+        List<Map<String, Object>> replyMessages = new ArrayList<>();
+        for( Reply reply : replies){
+            Map<String, Object> map = new HashMap<>();
+            map.put("reply",reply);
+            Post post = postService.selectByPostId(reply.getPostId());
+            if(post != null){
+                map.put("post",post);
+                map.put("user",userService.selectById(post.getUserId()));
+            }
+            replyMessages.add(map);
+        }
+        model.addAttribute("replyMessages",replyMessages);
+        //粉丝
+        List<Map<String, Object>> fansMessages = followService.getFansList(profileUser.getId(),0,100);
+        model.addAttribute("fansMessages",fansMessages);
+        long fanCount = followService.findFansCount(ENTITY_TYPE_USER,profileUser.getId());
+        model.addAttribute("fanCount",fanCount);
+
+        //关注了
+        List<Map<String, Object>> followeeMessages = followService.getFolloweeUserList(profileUser.getId(),0,100);
+        model.addAttribute("followeeMessages",followeeMessages);
+        long followeeCount = followService.findFolloweesCount(profileUser.getId(),ENTITY_TYPE_USER);
+        model.addAttribute("followeeCount",followeeCount);
+
+        //板块
+
+        model.addAttribute("lookedPosts", postService.getPostMessages(lookedPosts));
         model.addAttribute("colorLevel", new Random().nextInt(10)+10);
 
         return "page-single-user";

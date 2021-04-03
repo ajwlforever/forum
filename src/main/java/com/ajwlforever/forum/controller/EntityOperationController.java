@@ -1,9 +1,12 @@
 package com.ajwlforever.forum.controller;
 
 
+import com.ajwlforever.forum.entity.Event;
 import com.ajwlforever.forum.entity.User;
+import com.ajwlforever.forum.event.EventProducer;
 import com.ajwlforever.forum.service.FollowService;
 import com.ajwlforever.forum.service.LikeService;
+import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +42,7 @@ import java.util.Map;
  *
  */
 @Controller
-public class EntityOperationController {
+public class EntityOperationController implements ForumConstant {
 
     @Autowired
     private LikeService likeService;
@@ -47,6 +50,8 @@ public class EntityOperationController {
     private HostHolder hostHolder;
     @Autowired
     private FollowService followService;
+    @Autowired
+    private EventProducer eventProducer;
 
     @PostMapping("/like")
     @ResponseBody
@@ -66,6 +71,15 @@ public class EntityOperationController {
 
         //todo 发送点赞通知
 
+        Event event = new Event()
+                .setUserId(hostUser.getId())
+                .setTopic(TOPIC_LIKE)
+                .setEntityType(entityType)
+                .setEntityId(entityId)
+                .setEntityUserId(entityUserId)
+                .setData("postId",postId);
+        eventProducer.fireEvent(event );
+
         return ForumUtils.toJsonString(0,"点赞成功",res);
     }
     @PostMapping("/dislike")
@@ -78,13 +92,12 @@ public class EntityOperationController {
         likeService.dislike(hostUser.getId(),entityType,entityId,entityUserId);
         //回显点踩数据
         long dislikeCount = likeService.findEntityDisLikeCount(entityType,entityId);
-        //是点踩还是取消赞，前端显示
+        //是点踩还是取消踩，前端显示
         int dislikeStatus = likeService.findEntityDisLikeStatus(hostUser,entityType,entityId);
 
         res.put("dislikeCount", dislikeCount);
         res.put("dislikeStatus", dislikeStatus);
 
-        //todo 发送点赞通知
         return ForumUtils.toJsonString(0,"点踩成功",res);
     }
     //关注 entityUserId 实体的主人
@@ -104,13 +117,21 @@ public class EntityOperationController {
             //有多少人关注了这个实体
             res.put("followCount",followService.findFansCount(entityType,entityId));
             //todo 发送关注通知
+            Event event = new Event()
+                    .setUserId(hostUser.getId())
+                    .setTopic(TOPIC_LIKE)
+                    .setEntityType(entityType)
+                    .setEntityId(entityId)
+                    .setEntityUserId(entityId);
+            eventProducer.fireEvent(event);
+
             return ForumUtils.toJsonString(0,"关注成功",res);
         }else{
             followService.unfollow(entityType,entityId,hostUser.getId());
             res.put("isFollowed",0);
             //有多少人关注了这个实体
             res.put("followCount",followService.findFansCount(entityType,entityId));
-            //todo 发送取关通知
+
             return ForumUtils.toJsonString(0,"取关成功",res);
         }
 
@@ -123,8 +144,6 @@ public class EntityOperationController {
         User hostUser = hostHolder.getUser();
         //关注
         followService.unfollow(entityType,entityId,hostUser.getId());
-        //todo 发送取关通知
-
         return ForumUtils.toJsonString(0,"取关成功");
     }
 

@@ -257,7 +257,7 @@
                 </div>
             </div>
             <!-- 普通帖子 -->
-            <div th:each="postMessage : ${normalPostMessages}" class="tt-item">
+            <div th:fragment="normal-post" th:each="postMessage : ${normalPostMessages}" class="tt-item">
                 <div class="tt-col-avatar">
                     <svg class="tt-icon">
                         <!--                      <use xlink:href="#icon-ava-k"></use>-->

@@ -19,7 +19,10 @@
         and user_id = #{userId}
         </if>
         order by status desc , create_time desc
-        limit #{offset} , #{limit}
+        <if test="limit!=-1">
+            limit #{offset} , #{limit}
+        </if>
+
     </select>
 
     <select id="selectPostRows" resultType="int">

@@ -6,12 +6,12 @@ import com.ajwlforever.forum.entity.Post;
 import com.ajwlforever.forum.entity.User;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
+import com.ajwlforever.forum.utils.HostHolder;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 帖子的服务层
@@ -22,6 +22,47 @@ public class PostService implements ForumConstant {
     @Autowired
     private PostMapper postMapper;
 
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private FollowService followService;
+    @Autowired
+    private HostHolder hostHolder;
+    @Autowired
+    private  ViewService viewService;
+
+    public List<Map<String, Object>> getPostMessages(List<Post> postList){
+        List<Map<String,Object>> res = new ArrayList<>();
+        User hostUser = hostHolder.getUser();
+        if(postList!=null){
+            for(Post post : postList)
+            {
+
+                Map<String, Object> postMessage = new HashMap<>();
+                //帖子信息
+                postMessage.put("post",post);
+                postMessage.put("user",userService.selectById(post.getUserId()));
+                //tags
+                List<String> tagList = (List<String>) JSONObject.parse(post.getTags());
+                postMessage.put("tags",tagList);
+                //关注人数
+                long followCount = followService.findFansCount(ENTITY_TYPE_POST,post.getId());
+                boolean isFollowed  = followService.isFollow(hostUser,ENTITY_TYPE_POST,post.getId());
+
+                //浏览人数
+                long allViewCount = viewService.getViewEntitycount(ENTITY_TYPE_POST,post.getId());
+                postMessage.put("allViewCount",allViewCount);
+                postMessage.put("followCount",followCount);
+                postMessage.put("isFollowed",isFollowed);
+                postMessage.put("colorNumber",new Random().nextInt(10)+10);
+                //最后活跃时间
+                postMessage.put("lastActiveTime", ForumUtils.getLastActiveTime(post.getCreateTime()));
+                //封装入PostMessages
+                 res.add(postMessage);
+            }
+        }
+        return res;
+    }
     //创建帖子
     public int createPost(Post post)
     {

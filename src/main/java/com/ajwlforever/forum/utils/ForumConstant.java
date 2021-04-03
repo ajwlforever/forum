@@ -5,6 +5,9 @@ package com.ajwlforever.forum.utils;
  */
 
 public interface ForumConstant {
+
+    //  系统用户Id
+    int SYSTEM_USERID = 1;
     /**
      * 激活成功
       */
@@ -78,4 +81,26 @@ public interface ForumConstant {
     int ENTITY_TYPE_POST = 2;
     int ENTITY_TYPE_BOARD = 3;
     int ENTITY_TYPE_REPLY = 4;
+    /**
+     * 消息状态
+     */
+    //0-未读;1-已读;2-删除;
+    int MESSAGE_STATUS_UNREAD = 0;
+    int MESSAGE_STATUS_READ = 1;
+    int MESSAGE_STATUS_DELETE = 2;
+
+    /**
+     * 用户行为
+     */
+    //1-看帖 2-回复
+    int USER_OPERATION_LOOK = 1;
+    int USER_OPERATION_REPLY = 2;
+    /**
+     * 消息的类型
+     */
+    // 1-回复 2-关注 3-点赞
+    String TOPIC_REPLY = "reply";
+    String TOPIC_FOLLOW = "follow";
+    String TOPIC_LIKE = "like";
+
 }
