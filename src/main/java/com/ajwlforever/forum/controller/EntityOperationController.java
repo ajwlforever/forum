@@ -2,10 +2,14 @@ package com.ajwlforever.forum.controller;
 
 
 import com.ajwlforever.forum.entity.Event;
+import com.ajwlforever.forum.entity.Post;
+import com.ajwlforever.forum.entity.Reply;
 import com.ajwlforever.forum.entity.User;
 import com.ajwlforever.forum.event.EventProducer;
 import com.ajwlforever.forum.service.FollowService;
 import com.ajwlforever.forum.service.LikeService;
+import com.ajwlforever.forum.service.PostService;
+import com.ajwlforever.forum.service.ReplyService;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
@@ -52,6 +56,10 @@ public class EntityOperationController implements ForumConstant {
     private FollowService followService;
     @Autowired
     private EventProducer eventProducer;
+    @Autowired
+    private PostService postService;
+    @Autowired
+    private ReplyService replyService;
 
     @PostMapping("/like")
     @ResponseBody
@@ -119,10 +127,18 @@ public class EntityOperationController implements ForumConstant {
             //todo 发送关注通知
             Event event = new Event()
                     .setUserId(hostUser.getId())
-                    .setTopic(TOPIC_LIKE)
+                    .setTopic(TOPIC_FOLLOW)
                     .setEntityType(entityType)
                     .setEntityId(entityId)
                     .setEntityUserId(entityId);
+            //关注的是啥
+            if(entityType == ENTITY_TYPE_POST){
+                Post post = postService.selectByPostId(entityId);
+                event.setEntityUserId(post.getUserId());
+            }else{
+                Reply reply = replyService.selectById(entityId);
+                event.setEntityUserId(reply.getUserId());
+            }
             eventProducer.fireEvent(event);
 
             return ForumUtils.toJsonString(0,"关注成功",res);

@@ -56,7 +56,6 @@ public interface ForumConstant {
     int POST_STATUS_DELTE = 0;
     int POST_STATUS_NOMAL = 1;
     int POST_STATUS_ESSENCE = 2;
-    int POST_STATUS_TOP = 3;
 
     /**
      * 分页显示
@@ -64,6 +63,7 @@ public interface ForumConstant {
      int PAGE_INDEX_LIMIT = 7;
      int PAGE_REPLY_LIMIT = 7;
      int PAGE_PROFILE_LIMIT = 10;
+     int PAGE_MESSAGE_LIMIT = 10;
     /**
      * 回复的常量
      */
@@ -102,5 +102,10 @@ public interface ForumConstant {
     String TOPIC_REPLY = "reply";
     String TOPIC_FOLLOW = "follow";
     String TOPIC_LIKE = "like";
-
+    /**
+     * 消息来自谁
+     */
+    // 1-来自登录用户 2-来自别人
+    int FROM_WHO_SELF = 1;
+    int FROM_WHO_OTHER = 2;
 }

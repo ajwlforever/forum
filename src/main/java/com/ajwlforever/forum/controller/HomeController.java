@@ -48,7 +48,7 @@ public class HomeController implements ForumConstant {
         //设置总页数
         page.setRows(postService.selectPostRows(0));
         page.setPath("/index");
-        System.out.println(page.getOffset()+":"+page.getLimit()+":"+page.getTotal());
+        //System.out.println(page.getOffset()+":"+page.getLimit()+":"+page.getTotal());
         //获取帖子列表
         List<Post> postList = postService.selectAllPost(0,page.getOffset(),page.getLimit());
 
