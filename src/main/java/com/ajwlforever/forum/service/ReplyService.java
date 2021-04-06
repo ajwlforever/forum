@@ -4,6 +4,7 @@ import com.ajwlforever.forum.dao.ReplyMapper;
 import com.ajwlforever.forum.dao.UserMapper;
 import com.ajwlforever.forum.entity.Post;
 import com.ajwlforever.forum.entity.Reply;
+import com.ajwlforever.forum.utils.SensitiveFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -23,7 +24,8 @@ public class ReplyService {
     private ReplyMapper replyMapper;
     @Autowired
     private PostService  postService;
-
+    @Autowired
+    private SensitiveFilter sensitiveFilter;
 
     // REQUIRED: 支持当前事务(外部事务),如果不存在则创建新事务.
     // REQUIRES_NEW: 创建一个新事务,并且暂停当前事务(外部事务).
@@ -35,6 +37,7 @@ public class ReplyService {
             Post post = postService.selectByPostId(reply.getPostId());
             postService.updateReplyAmount(post.getId(),post.getReplyAmount()+1);
         }
+        reply.setContent(sensitiveFilter.filter(reply.getContent()));
         return insertReply(reply);
     }
 

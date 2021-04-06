@@ -5,6 +5,7 @@ import com.ajwlforever.forum.entity.Message;
 import com.ajwlforever.forum.entity.User;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.HostHolder;
+import com.ajwlforever.forum.utils.SensitiveFilter;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,8 @@ public class MessageService implements ForumConstant {
     private HostHolder hostHolder;
     @Autowired
     private UserService userService;
+    @Autowired
+    private SensitiveFilter sensitiveFilter;
 
     //得到每一个会话具体的信息
     public List<Map<String, Object>> getConversationsMessages(List<Message> conversations)
@@ -132,6 +135,7 @@ public class MessageService implements ForumConstant {
     }
     public int addMessage(Message message){
         //message.setContent(HtmlUtils.htmlEscape(message.getContent()));
+        message.setContent(sensitiveFilter.filter(message.getContent()));
         return messageMapper.insertMessage(message);
     }
 

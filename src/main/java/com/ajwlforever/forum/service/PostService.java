@@ -7,6 +7,7 @@ import com.ajwlforever.forum.entity.User;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
+import com.ajwlforever.forum.utils.SensitiveFilter;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,8 @@ public class PostService implements ForumConstant {
     private HostHolder hostHolder;
     @Autowired
     private  ViewService viewService;
+    @Autowired
+    private SensitiveFilter sensitiveFilter;
 
     public List<Map<String, Object>> getPostMessages(List<Post> postList){
         List<Map<String,Object>> res = new ArrayList<>();
@@ -71,6 +74,9 @@ public class PostService implements ForumConstant {
                 .setReplyAmount(0)
                 .setStatus(POST_STATUS_NOMAL)
                 .setTags(ForumUtils.getTags(post.getTags()));
+        post.setTitle(sensitiveFilter.filter(post.getTitle()));
+        post.setContent(sensitiveFilter.filter(post.getContent()));
+
         return insertPost(post);
     }
     // 找所有帖子，userId为0是所有，>0是具体用户的帖子
