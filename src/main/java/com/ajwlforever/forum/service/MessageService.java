@@ -79,17 +79,22 @@ public class MessageService implements ForumConstant {
         }
 
         //更新全部已读
-        messageMapper.updateMessageStatus(ids,MESSAGE_STATUS_READ);
+        updateMessageStatus(ids,MESSAGE_STATUS_READ);
         return messagesInfo;
     }
-
+    public int updateMessageStatus(List<Integer> ids,int status){
+        if(ids==null || ids.size() == 0) return 0;
+        return messageMapper.updateMessageStatus(ids,MESSAGE_STATUS_READ);
+    }
     public List<Map<String, Object>> getNoticesInfo(List<Message> notices){
         List<Map<String, Object>> res = new ArrayList<>();
+        List<Integer> ids = new ArrayList<>();
+        Collections.reverse(notices);
         if(notices!=null){
             for(Message notice : notices){
                 Map<String, Object> noticeVO = new HashMap<>();
                 String content = notice.getContent();
-
+                ids.add(notice.getId());
                 Map<String, Object> data = JSONObject.parseObject(content);
                 noticeVO.put("user", userService.selectById((Integer)data.get("userId")));
                 int entityType =(Integer) data.get("entityType");
@@ -99,11 +104,11 @@ public class MessageService implements ForumConstant {
                 noticeVO.put("postId", data.get("postId")==null?0:data.get("postId"));
 
                 noticeVO.put("notice",notice);
-                //通知的作者 系统用户
-                noticeVO.put("fromUser",userService.selectById(1));
+
                 res.add(noticeVO);
             }
         }
+        updateMessageStatus(ids,MESSAGE_STATUS_READ);
         return res;
     }
     public String getTopic(String topic){

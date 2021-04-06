@@ -205,7 +205,7 @@
                     </a>
 <!--                    左侧会话列表-->
                     <div class="tt-all-avatar">
- 
+
                         <div class="tt-list-avatar js-init-scroll">
 <!--                            会话-->
 <!--                            系统会话-->
@@ -217,6 +217,7 @@
                                 </div>
                                 <div class="tt-col-description">
                                     <h3 class="tt-title"><span>系统通知</span> <span class="time"> </span></h3>
+                                    <b  th:if="${noticeUnread!=0}" th:text="${noticeUnread}" style="color:red;">contests</b>
                                 </div>
                             </a>
 <!--                            用户会话-->
@@ -231,7 +232,7 @@
                                     <h4 class="tt-title">
                                         <span th:text="${cv.user.nickname}"
                                         >Taylor</span>
-                                        <b class="tt-badge tt-color08" th:if="${unreadCount!=0}" th:text="${cv.unreadCount}">contests</b>
+                                        <b  th:if="${cv.unreadCount!=0}" th:text="${cv.unreadCount}" style="color:red;">contests</b>
                                         <span class="time"
                                         th:text="${#dates.format(cv.message.createTime,'MM/dd')}"
                                     >Feb 03</span></h4>
@@ -271,20 +272,18 @@
                     <div class="tt-list-time-topic">
                         <div th:each="nc : ${noticesInfo}" class="tt-item">
                             <div class="tt-col-avatar">
-                                <img th:src="${nc.fromUser.headerUrl}"   style="width: 40px;border-radius: 50%" alt="">
+                                <img th:src="${opposeUser.headerUrl}"   style="width: 40px;border-radius: 50%" alt="">
                             </div>
                             <div class="tt-col-description">
                                 <h4 class="tt-title">
-                                    <a th:href="@{'/user/profile/'+${nc.fromUser.id}}"
-                                       th:text="${nc.fromUser.nickname}"
-                                    >Kevin</a>
-                                    <span class="time" th:text="${#dates.format(nc.notice.createTime,'yyyy-MM-dd HH:mm:ss a')}">3:12 AM</span></h4>
-                                <div >
                                     <a th:href="@{'/user/profile/'+${nc.user.id}}"
                                        th:text="${nc.user.nickname}"
                                     ></a>
+                                    <span class="time" th:text="${#dates.format(nc.notice.createTime,'yyyy-MM-dd HH:mm:ss a')}">3:12 AM</span></h4>
+                                <div >
+
                                     <b th:text="${nc.notice.content}"></b>
-                                    <a th:if="nc.postId!=0" th:href="@{'/post/'+${nc.postId}}"></a>
+                                    <a th:if="nc.postId!=0" th:href="@{'/post/'+${nc.postId}}">跳转</a>
                                 </div>
                             </div>
                         </div>

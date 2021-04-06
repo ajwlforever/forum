@@ -1,5 +1,6 @@
 package com.ajwlforever.forum.controller;
 
+import com.ajwlforever.forum.annotation.LoginRequired;
 import com.ajwlforever.forum.entity.Message;
 import com.ajwlforever.forum.entity.Page;
 import com.ajwlforever.forum.entity.User;
@@ -33,6 +34,7 @@ public class MessageController implements ForumConstant {
     @Autowired
     private UserService userService;
     //只显示会话和系统消息
+    @LoginRequired
     @GetMapping({"/messages","/letters"})
     public String getMessages(Model model,Page page)
     {
@@ -45,15 +47,21 @@ public class MessageController implements ForumConstant {
         page.setPath("/messages");
         page.setLimit(PAGE_MESSAGE_LIMIT);
         int noticeCount = messageService.selectNoticeCount(hostUser.getId());
+        int noticeUnread = messageService.selectNoticeUnreadCount(hostUser.getId());
+        model.addAttribute("noticeUnread",noticeUnread);
+
         page.setRows(noticeCount);
         List<Message> notices = messageService.selectAllNotices(hostUser.getId(),page.getOffset(),page.getLimit());
+
         model.addAttribute("noticesInfo",messageService.getNoticesInfo(notices));
 
         model.addAttribute("opposeUser",userService.selectById(1));
 
+
         return "messages-page";
     }
 
+    @LoginRequired
     @GetMapping("/message/{conversationId}")
     public String getMessage(@PathVariable("conversationId") String conversationId, Page page, Model model) {
         User hostUser = hostHolder.getUser();
@@ -77,6 +85,7 @@ public class MessageController implements ForumConstant {
         return "messages-page";
     }
 
+    @LoginRequired
     @PostMapping("/create_message")
     @ResponseBody
     public String createMessage(Message message){

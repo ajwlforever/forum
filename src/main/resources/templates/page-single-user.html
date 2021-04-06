@@ -104,6 +104,7 @@
 <!--                            <div class="tt-col-value-large hide-mobile">状态</div>-->
 <!--                            <div class="tt-col-value-large hide-mobile">时间</div>-->
 <!--                        </div>-->
+<!--                        </div>-->
                         <div th:replace="index::normal-post" class="tt-item">
                             <div class="tt-col-avatar">
                                 <svg class="tt-icon">
@@ -294,7 +295,7 @@
                                 class="tt-item" >
                             <div class="tt-col-merged">
                                 <div class="tt-col-avatar">
-                                    <img th:src="${fan.user.headerUrl}"  class="post_user_img" alt="">
+                                    <img th:src="${fan.user.headerUrl}"  style="width: 40px;" alt="">
                                 </div>
                                 <div class="tt-col-description">
                                     <h6 class="tt-title"><a

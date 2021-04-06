@@ -1,5 +1,6 @@
 package com.ajwlforever.forum.controller;
 
+import com.ajwlforever.forum.annotation.LoginRequired;
 import com.ajwlforever.forum.entity.Page;
 import com.ajwlforever.forum.entity.Post;
 import com.ajwlforever.forum.entity.Reply;
@@ -51,6 +52,7 @@ public class UserController implements ForumConstant {
     @Autowired
     private FollowService followService;
 
+
     @GetMapping("/img/{filename}")
     public void getImage(@PathVariable("filename")String fileName, HttpServletResponse response){
         fileName = uploadPath+"/"+fileName;
@@ -76,6 +78,7 @@ public class UserController implements ForumConstant {
 
         }
     }
+
 
     @GetMapping("/profile/{userId}")
     public String getProfile(@PathVariable("userId") int userId, Model model) {
@@ -132,6 +135,7 @@ public class UserController implements ForumConstant {
         return "page-single-user";
     }
 
+    @LoginRequired
     @PostMapping("/upload")
     public String uploadHead(MultipartFile headerImage, Model model)
     {
@@ -178,6 +182,7 @@ public class UserController implements ForumConstant {
         return "redirect:/index";
     }
 
+    @LoginRequired
     @PostMapping("/setting")
     @ResponseBody
     public String changeUserInfo(String nickName,String email,String password,String location, String website,

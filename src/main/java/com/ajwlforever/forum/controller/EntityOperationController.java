@@ -1,6 +1,7 @@
 package com.ajwlforever.forum.controller;
 
 
+import com.ajwlforever.forum.annotation.LoginRequired;
 import com.ajwlforever.forum.entity.Event;
 import com.ajwlforever.forum.entity.Post;
 import com.ajwlforever.forum.entity.Reply;
@@ -61,6 +62,7 @@ public class EntityOperationController implements ForumConstant {
     @Autowired
     private ReplyService replyService;
 
+    @LoginRequired
     @PostMapping("/like")
     @ResponseBody
     public String like(int entityType, int entityId, int entityUserId,int postId ){
@@ -91,6 +93,7 @@ public class EntityOperationController implements ForumConstant {
         return ForumUtils.toJsonString(0,"点赞成功",res);
     }
     @PostMapping("/dislike")
+    @LoginRequired
     @ResponseBody
     public String dislike(int entityType, int entityId, int entityUserId,int postId ){
         // todo 是否要验证数据正确性?
@@ -110,6 +113,7 @@ public class EntityOperationController implements ForumConstant {
     }
     //关注 entityUserId 实体的主人
     @PostMapping("/follow")
+    @LoginRequired
     @ResponseBody
     public String follow(int entityType, int entityId){
 
@@ -135,9 +139,11 @@ public class EntityOperationController implements ForumConstant {
             if(entityType == ENTITY_TYPE_POST){
                 Post post = postService.selectByPostId(entityId);
                 event.setEntityUserId(post.getUserId());
+                event.setData("postId",entityId);
             }else{
                 Reply reply = replyService.selectById(entityId);
                 event.setEntityUserId(reply.getUserId());
+                event.setData("postId",reply.getPostId());
             }
             eventProducer.fireEvent(event);
 
@@ -155,6 +161,7 @@ public class EntityOperationController implements ForumConstant {
     }
     //取关
     @PostMapping("/unfollow")
+    @LoginRequired
     @ResponseBody
     public String unfollow(int entityType, int entityId){
         User hostUser = hostHolder.getUser();

@@ -1,5 +1,6 @@
 package com.ajwlforever.forum.controller;
 
+import com.ajwlforever.forum.annotation.LoginRequired;
 import com.ajwlforever.forum.dao.BoardMapper;
 import com.ajwlforever.forum.entity.*;
 import com.ajwlforever.forum.event.EventProducer;
@@ -160,6 +161,7 @@ public class PostController implements ForumConstant {
         return "page-create-topic";
     }
 
+    @LoginRequired
     @PostMapping("/post/create")
     @ResponseBody
     public String createPost(Post post, Model model){
@@ -177,6 +179,7 @@ public class PostController implements ForumConstant {
         return ForumUtils.toJsonString(code,msg) ;
     }
 
+    @LoginRequired
     @PostMapping("/post/reply/create")
     @ResponseBody
     public String createPostReply(Reply reply,Model model) {
