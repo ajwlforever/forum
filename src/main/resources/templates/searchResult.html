@@ -1,376 +1,102 @@
 <!--suppress ALL-->
 <!doctype html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
-    <meta charset="utf-8">
-    <title>Forum</title>
-    <meta name="keywords" content="HTML5 Template">
-    <meta name="description" content="Forum - Responsive HTML5 Template">
-    <meta name="author" content="Forum">
-    <link rel="shortcut icon" href="favicon/favicon.ico">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <script th:src="@{/js/setting.js}"></script>
-    <script th:src="@{/js/entityoperation.js}"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+<head th:replace="index::head">
 
 </head>
 <body>
 <!-- tt-mobile menu -->
-<nav th:fragment="mobile_menu" class="panel-menu" id="mobile-menu">
-    <ul>
+<nav th:replace="index::mobile_menu" class="panel-menu" id="mobile-menu">
 
-    </ul>
-    <div class="mm-navbtn-names">
-        <div class="mm-closebtn">
-            Close
-            <div class="tt-icon">
-                <svg>
-                  <use xlink:href="#icon-cancel"></use>
-                </svg>
-            </div>
-        </div>
-        <div class="mm-backbtn">Back</div>
-    </div>
 </nav>
-<header th:fragment="header" id="tt-header">
-    <div class="container">
-        <div class="row tt-row no-gutters">
-            <div class="col-auto">
-                <!-- toggle mobile menu -->
-                <a class="toggle-mobile-menu" th:href="@{/index}">
-                    <svg class="tt-icon">
-                      <use xlink:href="#icon-menu_icon"></use>
-                    </svg>
-                </a>
-                <!-- /toggle mobile menu -->
-                <!-- logo -->
-                <div class="tt-logo">
-                    <a th:href="@{/index}" ><img th:src="@{/images/logo.png}" alt=""></a>
-                </div>
-                <!-- /logo -->
-                <!-- desctop menu -->
-                 <div class="tt-desktop-menu">
-                    <nav>
-                        <ul>
-                            <li><a th:href="@{/boards}"><span>板块</span></a></li>
-                            <li><a href="page-tabs.html"><span>流行趋势</span></a></li>
-                            <li><a th:href="@{/post/create}"><span>发布</span></a></li>
-                            <li>
-                                <a th:href="@{/messages}"><span>消息</span></a>
+<header th:replace="index::header" id="tt-header">
 
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <!-- /desctop menu -->
-                <!-- tt-search -->
-                <div class="tt-search">
-                    <!-- toggle -->
-                    <button class="tt-search-toggle" data-toggle="modal" data-target="#modalAdvancedSearch">
-                       <svg class="tt-icon">
-                          <use xlink:href="#icon-search"></use>
-                        </svg>
-                    </button>
-                    <!-- /toggle -->
-                    <form class="search-wrapper" th:action="@{/post/search}" method="post">
-                        <div class="search-form">
-                            <input type="text" class="tt-search__input" id="title" name="title" placeholder="键入标题" required>
-                            <button class="tt-search__btn" type="submit">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#icon-search"></use>
-                                </svg>
-                            </button>
-                             <button class="tt-search__close">
-                               <svg class="tt-icon">
-                                  <use xlink:href="#cancel"></use>
-                                </svg>
-                            </button>
-                        </div>
-
-                    </form>
-                </div>
-                <!-- /tt-search -->
-            </div>
-            <div class="col-auto" style="margin-left:20px;">
-                <span type="button" class="tt-view-all" data-toggle="modal" data-target="#modalAdvancedSearch">高级搜索</span>
-            </div>
-            <div class="col-auto ml-auto" th:if="${loginUser==null}">
-                <div class="tt-account-btn">
-                    <a th:href="@{/login}" class="btn btn-primary">登录</a>
-                    <a th:href="@{/register}" class="btn btn-secondary">注册</a>
-                </div>
-            </div>
-            <div class="col-auto ml-auto" th:if="${loginUser!=null}" >
-                <div  class="tt-user-info d-flex justify-content-center">
-                    <a href="#" class="tt-btn-icon">
-                        <i class="tt-icon"><svg><use xlink:href="#icon-notification"></use></svg></i>
-                    </a>
-                    <div class="tt-avatar-icon tt-size-md">
-                        <i class="tt-icon">
-<!--                            <svg><use xlink:href="#icon-ava-a"></use></svg>-->
-                            <img th:src="${loginUser.headerUrl}" style="width:30px;margin-top: 10px" alt="">
-                        </i>
-                    </div>
-                    <div class="">
-                        <div class="dropdown">
-                            <div class="dropbtn" th:text="${loginUser.nickname}">下拉菜单</div>
-                            <div class="dropdown-content">
-                                <a th:href="@{'/user/profile/'+${loginUser.id}}">个人中心</a>
-                                <a th:href="@{/user/setting}" id="js-settings-btn">个人设置</a>
-                                <a th:href="@{/logout}">退出登录</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </header>
 <main id="tt-pageContent" class="tt-offset-small">
     <div class="container">
         <div class="tt-topic-list">
             <div class="tt-list-header">
-                <div class="tt-col-topic">标题</div>
+                <div class="tt-col-topic">用户</div>
+                <div class="tt-col-topic">搜索内容</div>
                 <div class="tt-col-category">板块</div>
-                <div class="tt-col-value hide-mobile">喜爱</div>sha
-                <div class="tt-col-value hide-mobile">回复</div>
-                <div class="tt-col-value hide-mobile">浏览的人数</div>
-                <div class="tt-col-value">最后活跃时间</div>
+                <div class="tt-col-value">创建时间</div>
             </div>
-<!--            todo-->
-<!--            <div class="tt-topic-alert tt-alert-default" role="alert">-->
-<!--              <a href="#" target="_blank">4 new posts</a> are added recently, click here to load them.-->
-<!--            </div>-->
-            <!-- 置顶 -->
-            <div th:each="postMessage : ${topPostMessages}" class="tt-item tt-itemselect">
+<!--未搜索到内容-->
+			<div th:if="${results.size()==0}" class="tt-col-topic">
+				<h1 style="color:#e74c3c;text-align:center">您搜索的内容不存在</h1>
+			</div>
+<!--			搜索结果展示-->
+            <div th:each="result:${results}" class="tt-item">
                 <div class="tt-col-avatar">
-                    <svg class="tt-icon">
-<!--                      <use xlink:href="#icon-ava-k"></use>-->
-                        <img class="post_user_img" th:src="${postMessage.user.headerUrl}"  alt="">
-                    </svg>
+					<a th:href="@{'/user/profile/'+${result.user.id}}">
+					<img th:src="${result.user.headerUrl}"
+						 class="post_user_img" alt=""></a>
                 </div>
                 <div class="tt-col-description">
-                    <h6 class="tt-title">
-                        <a th:href="@{'/post/'+${postMessage.post.id}}" >
-                        <svg class="tt-icon">
-                          <use xlink:href="#icon-pinned"></use>
-                        </svg>
-                       <b th:text="${postMessage.post.title}">Halloween Costume Contest 2018</b>
+                    <h6 class="tt-title"><a th:href="@{'/post/'+${result.post.id}}"
+						th:utext="${result.post.title}"
+					>
+                        Does Envato act against the authors of Envato markets?
                     </a></h6>
-                    <div class="row align-items-center no-gutters">
-                        <div class="col-11">
-                            <ul class="tt-list-badge">
-                                <li class="show-mobile"><a th:href="@{'/board/'+${postMessage.post.boardName}}">
-                                    <span th:class="|tt-color${postMessage.colorNumber}   tt-badge|"
-                                          th:text="${postMessage.post.boardName}">politics</span></a></li>
-                                <li th:each="tag:${postMessage.tags}">
-                                    <a th:href="@{'/post/search?tag='+${tag}}" >
-                                        <span class="tt-badge" th:text="${tag}">contests</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-1 ml-auto show-mobile">
-                            <div class="tt-value" th:text="${postMessage.lastActiveTime}">1h</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tt-col-category">
-                    <a th:href="@{'/board/'+${postMessage.post.boardName}}">
-                    <span class="tt-color01 tt-badge"
-                          th:text="${postMessage.post.boardName}"
-                    >politics</span>
-                    </a>
-                </div>
-<!--                todo 点赞和浏览人数 -->
-                <div class="tt-col-value hide-mobile"
-                     th:style="${postMessage.isFollowed==1?'color:#e74c3c;':'color:#666f74;'}"
-                     th:text="${postMessage.followCount}"
-                >985</div>
-                <div class="tt-col-value tt-color-select hide-mobile"
-                     th:text="${postMessage.post.replyAmount}">502</div>
-                <div class="tt-col-value hide-mobile"
-                        th:text="${allViewCount}"
-                >15.1k</div>
-                <div class="tt-col-value hide-mobile"
-                     th:text="${postMessage.lastActiveTime}"
-                >1h</div>
-            </div>
-            <!-- 提示注册 -->
-            <div th:fragment="hint-login" th:if="${loginUser==null}" class="tt-item tt-item-popup hint-sign">
-                <div class="tt-col-avatar">
-                    <svg class="tt-icon">
-                        <use xlink:href="#icon-ava-f"></use>
-                    </svg>
-                </div>
-                <div class="tt-col-message">
-                    看起来你是刚来到这O(∩_∩)O，免费注册，加入Axforum吧！
-                </div>
-                <div class="tt-col-btn">
-                    <a th:href="@{/login}" ><button type="button" class="btn btn-primary">登录</button></a>
-                    <a th:href="@{/register}" style="color: white"><button type="button" class="btn btn-secondary">注册
-                   </button> </a>
-                    <button type="button" id="hint-sign-cancel" class="btn-icon">
-                        <svg class="tt-icon">
-                            <use xlink:href="#icon-cancel"></use>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <!-- 普通帖子 -->
-            <div th:fragment="normal-post" th:each="postMessage : ${normalPostMessages}" class="tt-item">
-                <div class="tt-col-avatar">
-                    <svg class="tt-icon">
-                        <!--                      <use xlink:href="#icon-ava-k"></use>-->
-                        <img th:src="${postMessage.user.headerUrl}"  class="post_user_img" alt="">
-                    </svg>
-                </div>
-                <div class="tt-col-description">
-                    <h6 class="tt-title">
-                        <a th:href="@{'/post/'+${postMessage.post.id}}" >
-                            <svg class="tt-icon">
-                                <use xlink:href="#icon-pinned"></use>
-                            </svg>
-                            <b th:text="${postMessage.post.title}">Halloween Costume Contest 2018</b>
-                        </a></h6>
-                    <div class="row align-items-center no-gutters">
-                        <div class="col-11">
-                            <ul class="tt-list-badge">
-                                <li class="show-mobile"><a th:href="@{'/board/'+${postMessage.post.boardName}}">
-                                    <span th:class="|tt-color${postMessage.colorNumber}   tt-badge|"
-                                          th:text="${postMessage.post.boardName}">politics</span></a></li>
-                                <li th:each="tag:${postMessage.tags}">
-                                    <a th:href="@{'/post/search?tag='+${tag}}" >
-                                        <span class="tt-badge" th:text="${tag}">contests</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-1 ml-auto show-mobile">
-                            <div class="tt-value" th:text="${postMessage.lastActiveTime}">1h</div>
+					<div th:if="${result.pureSearch==false}"
+						 th:utext="${result.post.content}"
+						 class="tt-content">
+						I really liked new badge - T-shirt. Will there be new contests with new badges for AudioJungle?
+					</div>
+					<div th:if="${result.pureSearch==false}" class="row align-items-center no-gutters">
+						<div class="col-11">
+							<ul class="tt-list-badge">
+								<li class="show-mobile"><a th:href="@{'/board/'+${result.post.boardName}}">
+                                    <span th:class="|tt-color${result.colorNumber}   tt-badge|"
+										  th:text="${result.post.boardName}">politics</span></a></li>
+								<li th:each="t:${result.tags}">
+									<a th:href="@{'/post/search?tag='+${t.tagText}}" >
+										<span class="tt-badge" th:utext="${t.tagHighLight}">contests</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+<!--                    <div class="row align-items-center no-gutters hide-desktope">-->
+<!--                        <div class="col-9">-->
+<!--                            <ul class="tt-list-badge">-->
+<!--                                <li class="show-mobile">-->
+<!--									<a th:href="@{'/board/'+${result.post.boardName}}" >-->
+<!--										<span class="tt-color06 tt-badge"-->
+<!--											th:text="${result.post.boardName}"-->
+<!--										>movies</span></a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+                        <div class="col-3 ml-auto show-mobile">
+                            <div class="tt-value"
+								th:text="${#dates.format(result.post.createTime,'MM/dd,yy')}"
+							>5 Jan,19</div>
                         </div>
                     </div>
-                </div>
-                <div class="tt-col-category">
-                    <a th:href="@{'/board/'+${postMessage.post.boardName}}">
-                    <span class="tt-color01 tt-badge"
-                          th:text="${postMessage.post.boardName}"
-                    >politics</span>
-                    </a>
-                </div>
-                <!--                todo 点赞和浏览人数 -->
-                <div class="tt-col-value hide-mobile"
-                     th:style="${postMessage.isFollowed==1?'color:#e74c3c;':'color:#666f74;'}"
-                     th:text="${postMessage.followCount}"
-                >985</div>
-                <div class="tt-col-value tt-color-select hide-mobile"
-                     th:text="${postMessage.post.replyAmount}">502</div>
-                <div class="tt-col-value hide-mobile">15.1k</div>
-                <div class="tt-col-value hide-mobile"
-                     th:text="${postMessage.lastActiveTime}"
-                >1h</div>
+
+                <div class="tt-col-category"><a th:href="@{'/board/'+${result.post.boardName}}"
+				><span th:utext="${result.post.boardName}"
+						class="tt-color06 tt-badge">movies</span></a></div>
+                <div class="tt-col-value-large hide-mobile"
+					 th:text="${#dates.format(result.post.createTime,'MM/dd,yy')}"
+				>5 Jan,19</div>
             </div>
-            <!-- 分页 -->
-<!--            <div class="tt-row-btn">-->
-<!--                <button type="button" class="btn-icon js-topiclist-showmore">-->
-<!--                    <svg class="tt-icon">-->
-<!--                        <use xlink:href="#icon-load_lore_icon"></use>-->
-<!--                    </svg>-->
-<!--                </button>-->
-<!--            </div>-->
+
             <div class="tt-row-btn">
-            <nav class="mt-5" th:if="${page.rows>0&&page.rows>page.limit}" th:fragment="pagination">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link"  th:href="@{${page.path}(current=1)}">首页</a></li>
-                    <li th:class="|page-item ${page.current==1?'disabled':''}|">
-                        <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">上一页</a>
-                    </li>
-                    <li th:class="|page-item ${i==page.current?'active':''}|"  th:each="i:${#numbers.sequence(page.from,page.to)}">
-                        <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}">1</a>
-                    </li>
-                    <li th:class="|page-item ${page.current==page.total?'diabled':''}|">
-                        <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">下一页</a></li>
-                    <li class="page-item"><a class="page-link" th:href="@{${page.path}(current=${page.total})}">末页</a></li>
-                </ul>
-            </nav>
+                <nav th:replace="index::pagination"></nav>
             </div>
         </div>
     </div>
 </main>
 <!-- 个人设置 -->
-<div th:fragment="setting"
+<div th:replace="index::setting"
      th:if="${loginUser!=null}"
      id="js-popup-settings" class="tt-popup-settings">
-	<div class="tt-btn-col-close">
-		<a href="#">
-			<span class="tt-icon-title">
-				<svg>
-					<use xlink:href="#icon-settings_fill"></use>
-				</svg>
-			</span>
-			<span class="tt-icon-text">
-				设置
-			</span>
-			<span class="tt-icon-close">
-				   <svg>
-					<use xlink:href="#icon-cancel"></use>
-				</svg>
-			</span>
-		</a>
-	</div>
-	<form class="form-default" enctype="multipart/form-data" th:action="@{/user/upload}" method="post">
-		<div class="tt-form-upload">
-			<div class="row no-gutter">
-				<div class="col-auto">
-					<div class="tt-avatar">
-		               <img th:src="${loginUser.headerUrl}" class="profile_user_img" alt="">
-		            </div>
-				</div>
-				<div class="col-auto ml-auto">
-                    <input type="file"
-                           th:class="|form-control ${error!=null ? 'is-invalid':''}|"
-                           id="head-image" name="headerImage" lang="es" required="" >
-                    <button type="submit" class="btn btn-primary ">上传图片</button>
-                    <div class="invalid-feedback" th:text="${error}"></div>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserName">昵 称</label>
-		   <input type="text" name="name" class="form-control" id="settingsUserName" th:placeholder="${loginUser.nickname}">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserEmail">邮 件</label>
-		   <input type="text" name="name" class="form-control" id="settingsUserEmail" th:placeholder="${loginUser.email}">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserPassword">密码</label>
-		   <input type="password" name="name" class="form-control" id="settingsUserPassword" placeholder="************">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserLocation">所在地</label>
-		   <input type="text" name="name" class="form-control" id="settingsUserLocation" th:placeholder="${location}">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserWebsite">个人网站</label>
-		   <input type="text" name="name" class="form-control" id="settingsUserWebsite" th:placeholder="${website}">
-		</div>
-		<div class="form-group">
-		    <label for="settingsUserAbout">个人简介</label>
-		    <textarea name="" th:placeholder="${about}" class="form-control" id="settingsUserAbout"></textarea>
-		</div>
-<!--		 邮件通知-->
-		<div class="form-group">
-			<a href="javascript:;" class="btn btn-secondary change-info">保存</a>
-		</div>
-		</form>
+
 </div>
 <!--新建帖子-->
-<a th:fragment="create" th:href="@{/post/create}" class="tt-btn-create-topic">
+<a th:replace="index::create" th:href="@{/post/create}" class="tt-btn-create-topic">
     <span class="tt-icon">
         <svg>
           <use xlink:href="#icon-create_new"></use>
@@ -378,7 +104,7 @@
     </span>
 </a>
 <!-- 高级搜索-->
-<div th:fragment="advanced_search" class="modal fade" id="modalAdvancedSearch" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+<div th:replace="index::advanced_search" class="modal fade" id="modalAdvancedSearch" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="tt-modal-advancedSearch">
@@ -395,22 +121,22 @@
 						</svg>
 					</a>
 				</div>
-				<form class="form-default" th:action="@{'/post/ad_search'}" method="post">
+				<form class="form-default">
 					<div class="form-group">
 						<i class="pt-customInputIcon">
                            <svg class="tt-icon">
                               <use xlink:href="#icon-search"></use>
                             </svg>
                         </i>
-						<input type="text" name="title" class="form-control pt-customInputSearch" id="title" placeholder="标题">
+						<input type="text" name="name" class="form-control pt-customInputSearch" id="searchForum" placeholder="标题">
 					</div>
 					<div class="form-group">
-						<label for="searchName">内容:</label>
-						<input type="text" name="content" class="form-control" id="content" placeholder="内容">
+						<label for="searchName">发布者:</label>
+						<input type="text" name="name" class="form-control" id="searchName" placeholder="用户名或昵称">
 					</div>
 					<div class="form-group">
-						<label for="searchCategory">标签</label>
-						<input type="text" name="tags" class="form-control" id="tags" placeholder="输入标签，以，分割">
+						<label for="searchCategory">内容</label>
+						<input type="text" name="name" class="form-control" id="searchCategory" placeholder="输入关键字">
 					</div>
 					<div class="checkbox-group">
 				        <input type="checkbox" id="searcCheckBox01" name="checkbox">
@@ -420,83 +146,83 @@
 				            <span class="tt-text">包括所有标签</span>
 				        </label>
 				    </div>
-<!--					<div class="form-group">-->
-<!--						<label>只搜索以下帖子:</label>-->
-<!--						<div class="checkbox-group">-->
-<!--					        <input type="checkbox" id="searcCheckBox02" name="checkbox">-->
-<!--					        <label for="searcCheckBox02">-->
-<!--					            <span class="check"></span>-->
-<!--					            <span class="box"></span>-->
-<!--					            <span class="tt-text">我赞过的</span>-->
-<!--					        </label>-->
-<!--					    </div>-->
-<!--					    <div class="checkbox-group">-->
-<!--					        <input type="checkbox" id="searcCheckBox03" name="checkbox">-->
-<!--					        <label for="searcCheckBox03">-->
-<!--					            <span class="check"></span>-->
-<!--					            <span class="box"></span>-->
-<!--					            <span class="tt-text">在我留言中的</span>-->
-<!--					        </label>-->
-<!--					    </div>-->
-<!--					    <div class="checkbox-group">-->
-<!--					        <input type="checkbox" id="searcCheckBox04" name="checkbox">-->
-<!--					        <label for="searcCheckBox04">-->
-<!--					            <span class="check"></span>-->
-<!--					            <span class="box"></span>-->
-<!--					            <span class="tt-text">我曾经浏览过的</span>-->
-<!--					        </label>-->
-<!--					    </div>-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<select class="form-control" id="searchTop">-->
-<!--							<option>any</option>-->
-<!--							<option>value 01</option>-->
-<!--							<option>value 02</option>-->
-<!--							<option>value 03</option>-->
-<!--						</select>-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label for="searchaTopics">什么板块</label>-->
-<!--						<select class="form-control" id="searchaTopics">-->
-<!--							<option>any</option>-->
-<!--							<option>value 01</option>-->
-<!--							<option>value 02</option>-->
-<!--							<option>value 03</option>-->
-<!--						</select>-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label for="searchAdvTime">发布时间</label>-->
-<!--						<div class="row">-->
-<!--							<div class="col-6">-->
-<!--								<select class="form-control">-->
-<!--									<option>any</option>-->
-<!--									<option>value 01</option>-->
-<!--									<option>value 02</option>-->
-<!--									<option>value 03</option>-->
-<!--								</select>-->
-<!--							</div>-->
-<!--							<div class="col-6">-->
-<!--								<input type="text" name="name" class="form-control" id="searchAdvTime" placeholder="dd-mm-yyyy">-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div class="form-group">-->
-<!--						<label for="minPostCount">最小贴子数</label>-->
-<!--						<select class="form-control" id="minPostCount">-->
-<!--							<option>1</option>-->
-<!--							<option>2</option>-->
-<!--							<option>3</option>-->
-<!--							<option>4</option>-->
-<!--							<option>5</option>-->
-<!--							<option>6</option>-->
-<!--							<option>7</option>-->
-<!--							<option>8</option>-->
-<!--							<option>9</option>-->
-<!--							<option selected>10</option>-->
-<!--						</select>-->
-<!--					</div>-->
 					<div class="form-group">
-						<button   type="submit" class="btn btn-secondary btn-block">搜索(*^_^*)</button>
+						<label>只搜索以下帖子:</label>
+						<div class="checkbox-group">
+					        <input type="checkbox" id="searcCheckBox02" name="checkbox">
+					        <label for="searcCheckBox02">
+					            <span class="check"></span>
+					            <span class="box"></span>
+					            <span class="tt-text">我赞过的</span>
+					        </label>
+					    </div>
+					    <div class="checkbox-group">
+					        <input type="checkbox" id="searcCheckBox03" name="checkbox">
+					        <label for="searcCheckBox03">
+					            <span class="check"></span>
+					            <span class="box"></span>
+					            <span class="tt-text">在我留言中的</span>
+					        </label>
+					    </div>
+					    <div class="checkbox-group">
+					        <input type="checkbox" id="searcCheckBox04" name="checkbox">
+					        <label for="searcCheckBox04">
+					            <span class="check"></span>
+					            <span class="box"></span>
+					            <span class="tt-text">我曾经浏览过的</span>
+					        </label>
+					    </div>
+					</div>
+					<div class="form-group">
+						<select class="form-control" id="searchTop">
+							<option>any</option>
+							<option>value 01</option>
+							<option>value 02</option>
+							<option>value 03</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="searchaTopics">什么板块</label>
+						<select class="form-control" id="searchaTopics">
+							<option>any</option>
+							<option>value 01</option>
+							<option>value 02</option>
+							<option>value 03</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="searchAdvTime">发布时间</label>
+						<div class="row">
+							<div class="col-6">
+								<select class="form-control">
+									<option>any</option>
+									<option>value 01</option>
+									<option>value 02</option>
+									<option>value 03</option>
+								</select>
+							</div>
+							<div class="col-6">
+								<input type="text" name="name" class="form-control" id="searchAdvTime" placeholder="dd-mm-yyyy">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="minPostCount">最小贴子数</label>
+						<select class="form-control" id="minPostCount">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option selected>10</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<a href="#" class="btn btn-secondary btn-block">搜索(*^_^*)</a>
 					</div>
 				</form>
 			</div>

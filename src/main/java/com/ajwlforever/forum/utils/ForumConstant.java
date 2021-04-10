@@ -63,7 +63,8 @@ public interface ForumConstant {
      int PAGE_INDEX_LIMIT = 7;
      int PAGE_REPLY_LIMIT = 7;
      int PAGE_PROFILE_LIMIT = 10;
-     int PAGE_MESSAGE_LIMIT = 10;
+     int PAGE_SEARCH_LIMIT = 100;//这个页先不分
+     int PAGE_MESSAGE_LIMIT = 5;
     /**
      * 回复的常量
      */
@@ -108,4 +109,8 @@ public interface ForumConstant {
     // 1-来自登录用户 2-来自别人
     int FROM_WHO_SELF = 1;
     int FROM_WHO_OTHER = 2;
+    /**
+     * ElasticSearch的索引
+     */
+    String ES_INDEX_POST = "posts";
 }

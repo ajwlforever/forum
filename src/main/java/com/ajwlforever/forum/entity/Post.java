@@ -1,5 +1,11 @@
 package com.ajwlforever.forum.entity;
 
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import java.util.Date;
 
 /**
@@ -18,18 +24,34 @@ import java.util.Date;
  reply_amount int(10) UN zerofill
  last_reply_time timestamp
  */
+
+//elasricSearch注释
+@Document(indexName = "posts",shards = 6, replicas = 3)
 public class Post {
+    @Id
+    @Field(type = FieldType.Integer)
     private int id;
+    @Field(type = FieldType.Integer)
     private int userId;
+    @Field(type = FieldType.Text, analyzer = "ik_max_word" ,searchAnalyzer ="ik_smart" )
     private String boardName;
+    @Field(type = FieldType.Text, analyzer = "ik_max_word" ,searchAnalyzer ="ik_smart" )
     private String title;
+    @Field(type = FieldType.Text, analyzer = "ik_max_word" ,searchAnalyzer ="ik_smart" )
     private String content;
+    @Field(type = FieldType.Integer)
     private int type;  //Post 的内容类型
+    @Field(type = FieldType.Integer)
     private int level;  //帖子的级别
+    @Field(type = FieldType.Text, analyzer = "ik_max_word" ,searchAnalyzer ="ik_smart" )
     private String tags;
+    @Field(type = FieldType.Integer)
     private int status;  // 0-删除 1-正常状态 2-加精 3-置顶
+    @Field(type = FieldType.Date)
     private Date createTime;
+    @Field(type = FieldType.Integer)
     private int replyAmount;  //初始为0
+    @Field(type = FieldType.Date)
     private Date lastReplyTime;   //可以为空
 
     @Override

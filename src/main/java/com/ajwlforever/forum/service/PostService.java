@@ -4,14 +4,12 @@ package com.ajwlforever.forum.service;
 import com.ajwlforever.forum.dao.PostMapper;
 import com.ajwlforever.forum.entity.Post;
 import com.ajwlforever.forum.entity.User;
-import com.ajwlforever.forum.utils.ForumConstant;
-import com.ajwlforever.forum.utils.ForumUtils;
-import com.ajwlforever.forum.utils.HostHolder;
-import com.ajwlforever.forum.utils.SensitiveFilter;
+import com.ajwlforever.forum.utils.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -33,7 +31,8 @@ public class PostService implements ForumConstant {
     private  ViewService viewService;
     @Autowired
     private SensitiveFilter sensitiveFilter;
-
+    @Autowired
+    private ESUtils<Post> esUtils;
     public List<Map<String, Object>> getPostMessages(List<Post> postList){
         List<Map<String,Object>> res = new ArrayList<>();
         User hostUser = hostHolder.getUser();
@@ -66,9 +65,9 @@ public class PostService implements ForumConstant {
         }
         return res;
     }
+
     //创建帖子
-    public int createPost(Post post)
-    {
+    public int createPost(Post post) throws IOException {
         post.setLevel(POST_LEVEL_NORMAL)
                 .setCreateTime(new Date())
                 .setReplyAmount(0)
@@ -76,8 +75,11 @@ public class PostService implements ForumConstant {
                 .setTags(ForumUtils.getTags(post.getTags()));
         post.setTitle(sensitiveFilter.filter(post.getTitle()));
         post.setContent(sensitiveFilter.filter(post.getContent()));
-
-        return insertPost(post);
+        insertPost(post);
+        int rows = selectPostRows(0);
+        //插入es服务器
+        esUtils.addDoc(ES_INDEX_POST,String.valueOf(rows),post);
+        return rows;
     }
     // 找所有帖子，userId为0是所有，>0是具体用户的帖子
     public List<Post> selectAllPost(int userId, int offset, int limit){

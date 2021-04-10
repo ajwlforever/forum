@@ -5,23 +5,27 @@ import com.ajwlforever.forum.dao.BoardMapper;
 import com.ajwlforever.forum.entity.*;
 import com.ajwlforever.forum.event.EventProducer;
 import com.ajwlforever.forum.service.*;
+import com.ajwlforever.forum.utils.ESUtils;
 import com.ajwlforever.forum.utils.ForumConstant;
 import com.ajwlforever.forum.utils.ForumUtils;
 import com.ajwlforever.forum.utils.HostHolder;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 
+import java.io.IOException;
 import java.util.*;
 
-@Controller
+@Controller()
+@RequestMapping("/post")
 public class PostController implements ForumConstant {
 
     @Autowired
@@ -44,8 +48,10 @@ public class PostController implements ForumConstant {
     private ViewService viewService;
     @Autowired
     private EventProducer eventProducer;
+    @Autowired
+    private ESUtils<Post> esUtils;
 
-    @GetMapping("/post/{postId}")
+    @GetMapping("/{postId}")
     public String getPost(@PathVariable("postId")int postId, Page page, Model model){
 
         User hostUser = hostHolder.getUser();
@@ -153,7 +159,7 @@ public class PostController implements ForumConstant {
 
         return "/page-single-topic";
     }
-    @GetMapping("/post/create")
+    @GetMapping("/create")
     public String getCreatePostPage(Model model) {
          //板块注入
         List<Board> boards = boardMapper.selectAllBoards();
@@ -162,9 +168,9 @@ public class PostController implements ForumConstant {
     }
 
     @LoginRequired
-    @PostMapping("/post/create")
+    @PostMapping("/create")
     @ResponseBody
-    public String createPost(Post post, Model model){
+    public String createPost(Post post, Model model) throws IOException {
         User user = hostHolder.getUser();
         String msg = "";
         int code = 0;
@@ -174,13 +180,14 @@ public class PostController implements ForumConstant {
             return ForumUtils.toJsonString(code,msg);
         }
         post.setUserId(user.getId());
-         postService.createPost(post);
+        postService.createPost(post);
+
 
         return ForumUtils.toJsonString(code,msg) ;
     }
 
     @LoginRequired
-    @PostMapping("/post/reply/create")
+    @PostMapping("/reply/create")
     @ResponseBody
     public String createPostReply(Reply reply,Model model) {
 
@@ -211,5 +218,147 @@ public class PostController implements ForumConstant {
 
         viewService.viewEntity(user,ENTITY_TYPE_POST,reply.getPostId(),USER_OPERATION_REPLY);
         return ForumUtils.toJsonString(0,"回复成功!");
+    }
+
+    @PostMapping("/search")
+    public String searchBytitle(String title,Page page,Model model) throws IOException {
+        page.setPath("/search");
+        page.setLimit(PAGE_SEARCH_LIMIT);
+        List<Map<String, Object>> res = esUtils.search(ES_INDEX_POST,"title",title,page.getOffset(),page.getLimit());
+        // 封装搜索结果
+        List<Map<String, Object>> results = new ArrayList<>();
+        for(Map<String, Object> map : res){
+            Map<String, Object> result = new HashMap<>();
+            Post post = new Post();
+            // 只显示帖子的标题 和 板块
+            post.setId((int)map.get("id"))
+                    .setTitle(map.get("title").toString())
+                    .setTags(map.get("tags").toString()) //todo 默认有标签
+                    .setUserId((int)map.get("userId"))
+                    .setCreateTime(new Date((long)map.get("createTime")))
+                    .setBoardName((map.get("boardName").toString()));
+            result.put("post", post);
+            User user = userService.selectById(post.getUserId());
+            result.put("user", user);
+
+            result.put("pureSearch", true);
+            results.add(result);
+        }
+        model.addAttribute("results",results);
+        return "searchResult";
+    }
+    @GetMapping("/search")
+    public String searchByTag(String tag,Page page, Model model) throws IOException {
+        page.setPath("/search");
+        page.setLimit(PAGE_SEARCH_LIMIT);
+        tag = HtmlUtils.htmlUnescape(tag);
+        tag = Jsoup.parse(tag).text();
+        List<Map<String,Object>> results = new ArrayList<>();
+        if(!StringUtils.isBlank(tag)){
+            List<Map<String, Object>> res = esUtils.search(ES_INDEX_POST,"tags",tag,page.getOffset(),page.getLimit());
+
+            //封装数据
+            if(res!=null){
+                for(Map<String, Object> map:res){
+                    Map<String, Object> result = new HashMap<>();
+                    Post post = new Post();
+                    // 只显示帖子的标题 和 板块
+                    post.setId((int)map.get("id"))
+                            .setTitle(map.get("title").toString())
+                            .setTags(map.get("tags").toString()) //todo 默认有标签
+                            .setUserId((int)map.get("userId"))
+                            .setCreateTime(new Date((long)map.get("createTime")))
+                            .setBoardName((map.get("boardName").toString()));
+
+                    result.put("post", post);
+                    //处理tags
+                    //tags
+                    List<String> tagList = (List<String>)JSONObject.parse(post.getTags());
+                    List<Map<String ,Object>> tagLs = new ArrayList<>();
+                    for(String i : tagList){
+                        Map<String, Object> t = new HashMap<>();
+                        t.put("tagHighLight",i);
+                        t.put("tagText",Jsoup.parse(HtmlUtils.htmlUnescape(i)).text());
+                        tagLs.add(t);
+                    }
+                    result.put("tags",tagLs);
+
+                    result.put("colorNumber",new Random().nextInt(10)+10);
+                    User user = userService.selectById(post.getUserId());
+                    result.put("user", user);
+                     result.put("pureSearch",false);
+                    results.add(result);
+                }
+            }
+
+        }
+        model.addAttribute("results",results);
+        return "searchResult";
+    }
+    @PostMapping("/ad_search")
+    public String advancedSearch(boolean checkbox, String title, String content, String tags, Page page,Model model) throws IOException {
+
+        //分页设置
+        page.setPath("/search");
+        page.setLimit(PAGE_SEARCH_LIMIT);
+        //处理匹配字段
+        int d = 0;
+        Map<String,String> data = new HashMap<>();
+        if(!StringUtils.isBlank(title)){
+            //标题字段注入
+            data.put("title",title);
+            d+=1;
+        }
+        if(!StringUtils.isBlank(content)){
+            data.put("content",content);
+            d+=3;
+        }
+        if(!StringUtils.isBlank(tags) || checkbox == false){
+            data.put("tags",tags);
+            d+=3;
+        }
+        List<Map<String,Object>> res = esUtils.advancedSearch(ES_INDEX_POST,data,page.getOffset(),page.getLimit());
+        List<Map<String,Object>> results = new ArrayList<>();
+        //封装数据
+        if(res!=null){
+            for(Map<String, Object> map:res){
+                Map<String, Object> result = new HashMap<>();
+                Post post = new Post();
+                // 只显示帖子的标题 和 板块
+                post.setId((int)map.get("id"))
+                        .setTitle(map.get("title").toString())
+                        .setTags(map.get("tags").toString()) //todo 默认有标签
+                        .setUserId((int)map.get("userId"))
+                        .setCreateTime(new Date((long)map.get("createTime")))
+                        .setBoardName((map.get("boardName").toString()));
+                if(!StringUtils.isBlank(content) ){
+                    //搜索中有内容,去掉html标签，应该在放入es中做
+                    String c = map.get("content").toString();
+                    post.setContent(c);
+                }
+                result.put("post", post);
+                //处理tags
+                //tags
+                List<String> tagList = (List<String>)JSONObject.parse(post.getTags());
+                List<Map<String ,Object>> tagLs = new ArrayList<>();
+                for(String i : tagList){
+                    Map<String, Object> t = new HashMap<>();
+                    t.put("tagHighLight",i);
+                    t.put("tagText",Jsoup.parse(HtmlUtils.htmlUnescape(i)).text());
+                    tagLs.add(t);
+                }
+                result.put("tags",tagLs);
+
+
+                result.put("colorNumber",new Random().nextInt(10)+10);
+                User user = userService.selectById(post.getUserId());
+                result.put("user", user);
+                if(d<3) result.put("pureSearch", true);  //只显示标题
+                else result.put("pureSearch",false);
+                results.add(result);
+            }
+        }
+        model.addAttribute("results",results);
+        return "searchResult";
     }
 }
